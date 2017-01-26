@@ -21,7 +21,7 @@ namespace Cobalt.MvM.Element
 
         public string FirstSpawnOutput = null;
 
-        public Boolean Support = false;
+        public bool Support = false;
         public SquadType SpawnerType = SquadType.TFBot;
         public Child[] Spawner;
 

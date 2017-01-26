@@ -1,10 +1,8 @@
-﻿using System;
-
-namespace Cobalt.MvM.Element
+﻿namespace Cobalt.MvM.Element
 {
     public class Tank : Child
     {
-        public Boolean Skin = false;
+        public bool Skin = false;
         public int Speed = 75;
         public string StartingPathTrackNode = "boss_tank_path_a1_01";
         public string OnKilledOutput = "boss_dead_relay:Trigger";
