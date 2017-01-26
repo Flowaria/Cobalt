@@ -1,0 +1,30 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Cobalt.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="PATH_IMG_ITEMS" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Image/Backpack-Icon/</Value>
+    </Setting>
+    <Setting Name="PATH_CFG" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Config/</Value>
+    </Setting>
+    <Setting Name="PATH_BASE" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Templates/</Value>
+    </Setting>
+    <Setting Name="API_KEY" Type="System.String" Scope="User">
+      <Value Profile="(Default)">B8CD702663355E7D7D49FB849E2AF407</Value>
+    </Setting>
+    <Setting Name="API_LANG" Type="System.String" Scope="User">
+      <Value Profile="(Default)">ko_KR</Value>
+    </Setting>
+    <Setting Name="LOAD_ITEM" Type="System.String" Scope="User">
+      <Value Profile="(Default)">아이템 스캐마 불러오는 중 . . .</Value>
+    </Setting>
+    <Setting Name="LOAD_TEMPLATE" Type="System.String" Scope="User">
+      <Value Profile="(Default)">템플릿 불러오는 중 . . .</Value>
+    </Setting>
+    <Setting Name="LOAD_ITEM_IMAGE" Type="System.String" Scope="User">
+      <Value Profile="(Default)">아이템 이미지 다운로드 중 . . .</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
