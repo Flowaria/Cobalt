@@ -11,9 +11,9 @@ namespace Cobalt.Src
     {
         private WebClient client;
 
-        public Boolean Override = false;
-        public String BaseURL; //다운로드시 중점 url
-        public String BaseDirectory; //다운로드시 중점 저장 디렉토리
+        public bool Override = false;
+        public string BaseURL; //다운로드시 중점 url
+        public string BaseDirectory; //다운로드시 중점 저장 디렉토리
 
         public event EventHandler<DlStartedEventArgs> DownloadFileStarted = null;
         public event AsyncCompletedEventHandler DownloadFileCompleted = null;
@@ -37,7 +37,7 @@ namespace Cobalt.Src
         //URL 리스트로 다운로드
         public async Task downloadFiles(List<String> items)
         {
-            foreach (string item in items)
+            foreach (String item in items)
             {
                 await downloadFile(item);           
             }
