@@ -52,7 +52,7 @@ namespace Cobalt.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("PLASEGETTHEKEY")]
+        [global::System.Configuration.DefaultSettingValueAttribute("B8CD702663355E7D7D49FB849E2AF407")]
         public string API_KEY {
             get {
                 return ((string)(this["API_KEY"]));

@@ -66,7 +66,8 @@
 
             <!--가운데 영역-->
             <StackPanel Grid.Column="1" VerticalAlignment="Center" Orientation="Horizontal" HorizontalAlignment="Center">
-                <Button x:Name="button222" Content="Wave 1" Width="48" Style="{DynamicResource ButtonWave}"/>
+                <Button x:Name="button222" Content="Wave 1" Width="48" Style="{DynamicResource ButtonWave}"
+                        Click="ButtonClick_Close"/>
             </StackPanel>
         </Grid>
 
