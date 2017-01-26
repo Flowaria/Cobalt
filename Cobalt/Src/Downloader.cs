@@ -64,7 +64,7 @@ namespace Cobalt.Src
             }
             catch
             {
-                MessageBox.Show("다운로드중 문제가 발생하였습니다.", "다운로드중 문제 발생",
+                MessageBox.Show("다운로드 중 문제가 발생하였습니다.", "문제 발생",
                     MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }

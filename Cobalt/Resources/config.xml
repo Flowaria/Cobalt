@@ -6,7 +6,7 @@
   </API>
   <MESSAGE>
     <ItemSchemaLoad>아이템 스캐마 불러오는 중 . . .</ItemSchemaLoad>
-    <ItemImageDownload>아이템 이미지 다운로드 중 . . .</ItemImageDownload>
+    <ItemImageDownload>이미지 다운로드 중 . . .</ItemImageDownload>
     <TemplateLoad>템플릿 불러오는 중 . . .</TemplateLoad>
   </MESSAGE>
 </Config>
