@@ -12,7 +12,7 @@
       <Value Profile="(Default)">Templates/</Value>
     </Setting>
     <Setting Name="API_KEY" Type="System.String" Scope="User">
-      <Value Profile="(Default)">B8CD702663355E7D7D49FB849E2AF407</Value>
+      <Value Profile="(Default)">PLASEGETTHEKEY</Value>
     </Setting>
     <Setting Name="API_LANG" Type="System.String" Scope="User">
       <Value Profile="(Default)">ko_KR</Value>

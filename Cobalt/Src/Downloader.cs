@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.IO;
 using System.Net;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace Cobalt.Src
 {
@@ -38,9 +39,7 @@ namespace Cobalt.Src
         public async Task downloadFiles(List<String> items)
         {
             foreach (String item in items)
-            {
-                await downloadFile(item);           
-            }
+                await downloadFile(item);
         }
 
         //URL로 단일 파일 다운로드
@@ -59,7 +58,16 @@ namespace Cobalt.Src
             OnDownloadStarted(new DlStartedEventArgs(BaseURL, BaseDirectory, item));
 
             //다운로드 시작
-            await client.DownloadFileTaskAsync(new Uri(BaseURL + oItem), BaseDirectory + item);
+            try
+            {
+                await client.DownloadFileTaskAsync(new Uri(BaseURL + oItem), BaseDirectory + item);
+            }
+            catch
+            {
+                MessageBox.Show("다운로드중 문제가 발생하였습니다.", "다운로드중 문제 발생",
+                    MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
         }
 
         //다운로드 시작시 핸들러
