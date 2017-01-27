@@ -1,0 +1,40 @@
+﻿<Window x:Class="Cobalt.LoadingWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Cobalt"
+        mc:Ignorable="d"
+        Title="LoadingWindow" Height="600" Width="800" WindowStyle="None" WindowStartupLocation="CenterScreen" AllowsTransparency="True" Background="{x:Null}">
+    <Grid>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="536"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Label x:Name="eLabelVersion" Panel.ZIndex="1" Content="Cobalt" Height="36"
+                   HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontFamily="Malgun Gothic" Margin="10,490,10,10" Width="780" FontWeight="Bold">
+                <Label.Foreground>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FF2E3AB0" Offset="0.468"/>
+                        <GradientStop Color="#FF0DF4FF" Offset="1"/>
+                        <GradientStop Color="#FF0303FF"/>
+                    </LinearGradientBrush>
+                </Label.Foreground>
+            </Label>
+            <Image x:Name="eImage" HorizontalAlignment="Left" Height="536" VerticalAlignment="Top" Width="800">
+                <Image.Source>
+                    <BitmapImage  UriSource="/Resources/Splash/3.png" />
+                </Image.Source>
+                <Image.OpacityMask>
+                    <ImageBrush ImageSource="/Resources/Splash/Mask01.png"/>
+                </Image.OpacityMask>
+            </Image>
+        </Grid>
+        <Grid Grid.Row="1" VerticalAlignment="Center" Width="800">
+            <ProgressBar x:Name="eBar" Height="64" IsIndeterminate="True"/>
+            <Label x:Name="eLabel" HorizontalAlignment="Center" Content=". . ." Height="32" FontSize="16"/>
+        </Grid>
+    </Grid>
+</Window>

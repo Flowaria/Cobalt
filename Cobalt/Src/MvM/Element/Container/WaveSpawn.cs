@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Cobalt.MvM.Element
+﻿namespace Cobalt.MvM.Element
 {
     class WaveSpawn
     {

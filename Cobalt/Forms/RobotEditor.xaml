@@ -1,9 +1,9 @@
-﻿<Window x:Class="Cobalt.ToolWindow.RobotEditor"
+﻿<Window x:Class="Cobalt.Forms.RobotEditor"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Cobalt.ToolWindow"
+        xmlns:local="clr-namespace:Cobalt.Forms"
         mc:Ignorable="d"
         Title="RobotEditor" Height="300" Width="300">
     <Grid>

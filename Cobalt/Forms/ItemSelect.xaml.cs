@@ -1,25 +1,19 @@
-﻿using Cobalt.MvM.DB;
-using Cobalt.MvM.Items;
+﻿using Cobalt.TFItems;
 using System;
+using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 
-namespace Cobalt.ToolWindow
+namespace Cobalt.Forms
 {
-    /// <summary>
-    /// ItemSelect.xaml에 대한 상호 작용 논리
-    /// </summary>
     public partial class ItemSelect : Window
     {
-        ItemsDB db;
-        public ItemSelect(ItemsDB data)
+        public ItemSelect(List<TFItem> items)
         {
-            db = data;
-
             InitializeComponent();
             RoutedEventHandler handler = new RoutedEventHandler(this.Button_Click_Items);
             Button t_Button = null; Image t_Img = null;
-            foreach(TFItem item in db.querryAllItem())
+            foreach(TFItem item in items)
             {
                 t_Button = new Button();
                 t_Button.Content = item.DefId;
@@ -37,7 +31,6 @@ namespace Cobalt.ToolWindow
         private void Button_Click_Items(object sender, EventArgs e)
         {
             Button clicked = (Button)sender;
-            Console.WriteLine(db.FindItemById((int)clicked.Content));
             this.Hide();
         }
 

@@ -1,4 +1,4 @@
-﻿namespace Cobalt.MvM.Items
+﻿namespace Cobalt.TFItems
 {
     //축약용 클래스
     public class TFItemInstance

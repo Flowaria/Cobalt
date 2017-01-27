@@ -61,17 +61,18 @@ namespace Cobalt.Properties {
         }
         
         /// <summary>
-        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
-        /// </summary>
-        internal static System.Drawing.Bitmap _792 {
-            get {
-                object obj = ResourceManager.GetObject("_792", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   &lt;Config&gt;
+        ///  &lt;API&gt;
+        ///    &lt;!-- 반드시! http://steamcommunity.com/dev/apikey 에서 API 키를 받아 작성해주세요 --&gt;
+        ///    &lt;Key&gt;EDITPLEASE&lt;/Key&gt;
+        ///    &lt;BaseLang&gt;ko_KR&lt;/BaseLang&gt;
+        ///  &lt;/API&gt;
+        ///  &lt;MESSAGE&gt;
+        ///    &lt;ItemSchemaLoad&gt;아이템 스캐마 불러오는 중 . . .&lt;/ItemSchemaLoad&gt;
+        ///    &lt;ItemImageDownload&gt;이미지 다운로드 중 . . .&lt;/ItemImageDownload&gt;
+        ///    &lt;TemplateLoad&gt;템플릿 불러오는 중 . . .&lt;/TemplateLoad&gt;
+        ///  &lt;/MESSAGE&gt;
+        ///&lt;/Config&gt;과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string config {
             get {
@@ -86,6 +87,16 @@ namespace Cobalt.Properties {
             get {
                 object obj = ResourceManager.GetObject("icon", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
+        internal static System.Drawing.Bitmap Mask01 {
+            get {
+                object obj = ResourceManager.GetObject("Mask01", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
@@ -166,6 +177,76 @@ namespace Cobalt.Properties {
         internal static string robot_standard {
             get {
                 return ResourceManager.GetString("robot_standard", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
+        internal static System.Drawing.Bitmap Splash0 {
+            get {
+                object obj = ResourceManager.GetObject("Splash0", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
+        internal static System.Drawing.Bitmap Splash1 {
+            get {
+                object obj = ResourceManager.GetObject("Splash1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
+        internal static System.Drawing.Bitmap Splash2 {
+            get {
+                object obj = ResourceManager.GetObject("Splash2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
+        internal static System.Drawing.Bitmap Splash3 {
+            get {
+                object obj = ResourceManager.GetObject("Splash3", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
+        internal static System.Drawing.Bitmap Splash4 {
+            get {
+                object obj = ResourceManager.GetObject("Splash4", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
+        internal static System.Drawing.Bitmap Splash5 {
+            get {
+                object obj = ResourceManager.GetObject("Splash5", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
+        internal static System.Drawing.Bitmap Splash6 {
+            get {
+                object obj = ResourceManager.GetObject("Splash6", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
     }

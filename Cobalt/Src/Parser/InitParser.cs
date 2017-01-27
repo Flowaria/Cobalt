@@ -1,30 +1,28 @@
-﻿using Cobalt.MvM.DB;
-using Cobalt.MvM.Items;
-using Cobalt.Src;
+﻿using Cobalt.Enums;
+using Cobalt.Parser;
+using Cobalt.TFItems;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
 using System.Threading.Tasks;
-using System.Windows;
+using System.Windows.Controls;
 
-namespace Cobalt.Forms
+namespace Cobalt.Src.Parser
 {
-    /// <summary>
-    /// LoadingWindow.xaml에 대한 상호 작용 논리
-    /// </summary>
-    public partial class LoadingWindow : Window
+    class InitParser
     {
-        public LoadingWindow()
-        {  
-            InitializeComponent();
-            e_label.Content = Properties.Settings.Default.LOAD_ITEM;
-            //디폴트 텍스트로 바꾸기
+        ProgressBar eBar;
+        Label eLabel;
+        public InitParser(ProgressBar bar, Label label)
+        {
+            eBar = bar;
+            eLabel = label;
         }
 
         int QuerryCountTotal;
         int QuerryCount;
-        public async Task initItemsResource(ItemsDB db)
+        public async Task initSchema(SchemaParser db)
         {
             //난 초기화를 좋아하니까 ㅎ
             QuerryCountTotal = 0;
@@ -36,22 +34,21 @@ namespace Cobalt.Forms
             List<String> FileList = new List<String>();
             foreach (TFItem item in db.querryAllItem())
             {
-                if(item.ImageURL != null)
+                if (item.ImageURL != null)
                 {
-                    string[] splited = item.ImageURL.Split('/');
-                    string fileName = splited[splited.Length - 1];
-                    if (!File.Exists(Properties.Settings.Default.PATH_IMG_ITEMS+fileName) && !FileList.Contains(fileName))
+                    string fileName = Format.UrlFile(item.ImageURL);
+                    if (!File.Exists(Properties.Settings.Default.PATH_IMG_ITEMS + Format.ItemImage(fileName)) && !FileList.Contains(fileName))
                         FileList.Add(fileName);
                     item.ImageURL = fileName;
-                }    
+                }
             }
 
             //파일 리스트가 비어있지 않으면
-            if(FileList.Count > 0)
+            if (FileList.Count > 0)
             {
                 //설정
                 QuerryCountTotal = FileList.Count;
-                e_bar.IsIndeterminate = false;
+                eBar.IsIndeterminate = false;
 
                 //다운로더 생성
                 Downloader dl = new Downloader();
@@ -60,7 +57,8 @@ namespace Cobalt.Forms
                 dl.DownloadFileStarted += c_DownloadFileStarted;
                 dl.DownloadFileCompleted += c_DownloadFileCompleted;
                 dl.HandlerChanged();
-                dl.saveFormatFunction = formatName;
+                dl.Mode = OverrideMode.WhenNotEqual;
+                dl.saveFormatFunction = Format.ItemImage;
                 await dl.downloadFiles(FileList);
             }
         }
@@ -71,7 +69,7 @@ namespace Cobalt.Forms
         void c_DownloadFileStarted(object sender, DlStartedEventArgs e)
         {
             // 이미지 다운로드 중 . . . : filename.png 형식으로 라벨 변경
-            e_label.Content = String.Format("{0} : {1}", Properties.Settings.Default.LOAD_ITEM_IMAGE, e.File);
+            eLabel.Content = String.Format("{0} : {1}", Properties.Settings.Default.Load_Item_Image, e.File);
         }
 
         /*
@@ -81,24 +79,13 @@ namespace Cobalt.Forms
         {
             QuerryCount++;
             double percentage = (double)QuerryCount / QuerryCountTotal * 100;
-            e_bar.Value = percentage;
+            eBar.Value = percentage;
         }
 
-        /*포멧
-             * 입력 포멧
-             * w_bottle.859ddb315a2748f04bcc211aa7a04f2c926e6169.png
-             * 출력 포멧
-             * w_bottle.png
-        */
-        //파일이름 포멧
-        string formatName(string url)
-        {
-            return url.Split('.')[0]+".png";
-        }
 
-        public async Task initTemplateResource(TemplateDB db)
+        public async Task initTemplate(TemplateParser db)
         {
-            
+
         }
     }
 }

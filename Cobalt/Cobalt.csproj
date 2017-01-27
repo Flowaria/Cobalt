@@ -77,7 +77,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Forms\LoadingWindow.xaml.cs">
+    <Compile Include="LoadingWindow.xaml.cs">
       <DependentUpon>LoadingWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\Resources.Designer.cs">
@@ -86,30 +86,34 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="Src\Downloader.cs" />
+    <Compile Include="Src\Enums\DownloaderEnum.cs" />
+    <Compile Include="Src\Enums\ItemsEnum.cs" />
+    <Compile Include="Src\Enums\TFEnum.cs" />
     <Compile Include="Src\MvM\Element\Child\Child.cs" />
     <Compile Include="Src\MvM\Element\Child\Tank.cs" />
     <Compile Include="Src\MvM\Element\Child\TFBot.cs" />
     <Compile Include="Src\MvM\Element\Container\Mission.cs" />
     <Compile Include="Src\MvM\Element\Container\WaveSpawn.cs" />
-    <Compile Include="Src\MvM\DB\TemplateDB.cs" />
-    <Compile Include="Src\MvM\DB\ItemsDB.cs" />
-    <Compile Include="Src\MvM\Items\TFAttribute.cs" />
-    <Compile Include="Src\MvM\Items\TFItemInstance.cs" />
-    <Compile Include="Src\ProjectFunction.cs" />
-    <Compile Include="Src\MvM\Items\TFItem.cs" />
+    <Compile Include="Src\Parser\InitParser.cs" />
+    <Compile Include="Src\Parser\TemplateParser.cs" />
+    <Compile Include="Src\Parser\SchemaParser.cs" />
+    <Compile Include="Src\Format.cs" />
+    <Compile Include="Src\TFItems\TFAttribute.cs" />
+    <Compile Include="Src\TFItems\TFItemInstance.cs" />
+    <Compile Include="Src\TFItems\TFItem.cs" />
     <Compile Include="Src\MvM\Function\BotList.cs" />
     <Compile Include="Src\MvM\Function\TFFunction.cs" />
-    <Compile Include="ToolWindow\ItemSelect.xaml.cs">
+    <Compile Include="Forms\ItemSelect.xaml.cs">
       <DependentUpon>ItemSelect.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ToolWindow\RobotEditor.xaml.cs">
+    <Compile Include="Forms\RobotEditor.xaml.cs">
       <DependentUpon>RobotEditor.xaml</DependentUpon>
     </Compile>
     <Page Include="ButtonDesign.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Forms\LoadingWindow.xaml">
+    <Page Include="LoadingWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -125,11 +129,11 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="ToolWindow\ItemSelect.xaml">
+    <Page Include="Forms\ItemSelect.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ToolWindow\RobotEditor.xaml">
+    <Page Include="Forms\RobotEditor.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -145,6 +149,7 @@
     </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
@@ -160,7 +165,7 @@
     <Folder Include="Windows\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\icon.ico" />
+    <Resource Include="Resources\icon.ico" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
@@ -184,10 +189,31 @@
     <None Include="Resources\robot_standard.txt" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\792.png" />
+    <Resource Include="Resources\Splash\0.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\config.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Splash\Mask01.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Splash\1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Splash\2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Splash\3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Splash\4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Splash\5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Splash\6.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

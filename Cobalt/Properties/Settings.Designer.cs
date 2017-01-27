@@ -101,12 +101,42 @@ namespace Cobalt.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("아이템 이미지 다운로드 중 . . .")]
-        public string LOAD_ITEM_IMAGE {
+        public string Load_Item_Image {
             get {
-                return ((string)(this["LOAD_ITEM_IMAGE"]));
+                return ((string)(this["Load_Item_Image"]));
             }
             set {
-                this["LOAD_ITEM_IMAGE"] = value;
+                this["Load_Item_Image"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://api.steampowered.com/IEconItems_440/GetSchema/v0001/?key={0}&language={1}")]
+        public string Format_Schema {
+            get {
+                return ((string)(this["Format_Schema"]));
+            }
+            set {
+                this["Format_Schema"] = value;
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0.0 PreBuild")]
+        public string VERSION_STRING {
+            get {
+                return ((string)(this["VERSION_STRING"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        public double VERSION {
+            get {
+                return ((double)(this["VERSION"]));
             }
         }
     }

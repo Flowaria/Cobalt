@@ -1,9 +1,9 @@
-﻿<Window x:Class="Cobalt.ToolWindow.ItemSelect"
+﻿<Window x:Class="Cobalt.Forms.ItemSelect"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Cobalt.ToolWindow"
+        xmlns:local="clr-namespace:Cobalt.Forms"
         mc:Ignorable="d"
         Title="ItemSelect" Width="612" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" WindowStyle="None"
         Deactivated="Window_Deactivated" ShowInTaskbar="False">

@@ -1,10 +1,11 @@
-﻿using Cobalt.MvM.Items;
+﻿using Cobalt.Enums;
+using Cobalt.TFItems;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Cobalt.MvM.DB
+namespace Cobalt.Parser
 {
     class Root
     {
@@ -45,7 +46,7 @@ namespace Cobalt.MvM.DB
         public string effect_type { get; set; }
     }
 
-    public class ItemsDB
+    public class SchemaParser
     {
         //API 주소
         //추후 상수가 아닌 변수로 변경할것
@@ -55,9 +56,9 @@ namespace Cobalt.MvM.DB
         private List<TFAttribute> m_Attributes;
 
         //초기화
-        public ItemsDB()
+        public SchemaParser()
         {
-            API_URL = String.Format("http://api.steampowered.com/IEconItems_440/GetSchema/v0001/?key={0}&language={1}",
+            API_URL = String.Format(Properties.Settings.Default.Format_Schema,
                 Properties.Settings.Default.API_KEY,
                 Properties.Settings.Default.API_LANG);
             m_Items = new List<TFItem>();
@@ -65,7 +66,7 @@ namespace Cobalt.MvM.DB
         }
 
         //데이터 불러오기
-        public async Task initDB()
+        public async Task parse()
         {
             //JSON 파싱
             System.Net.WebClient wc = new System.Net.WebClient();
@@ -101,7 +102,7 @@ namespace Cobalt.MvM.DB
                 iItem.DefName = item.name;
                 iItem.DefId = item.defindex;
                 iItem.ImageURL = item.image_url;
-                iItem.Quality = item.item_quality;
+                iItem.Quality = (ItemQuality)Enum.Parse(typeof(ItemQuality), item.item_quality.ToString());
 
                 //Attributes 유효성 검사
                 if (item.attributes != null)

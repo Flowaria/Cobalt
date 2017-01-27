@@ -130,10 +130,31 @@
   <data name="robot_standard" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\robot_standard.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;ks_c_5601-1987</value>
   </data>
-  <data name="_792" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\792.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Mask01" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Splash\Mask01.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Splash0" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Splash\0.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="config" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\config.xml;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;ks_c_5601-1987</value>
+  </data>
+  <data name="Splash1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\splash\1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Splash2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\splash\2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Splash3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\splash\3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Splash4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\splash\4.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Splash5" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\splash\5.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Splash6" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\splash\6.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

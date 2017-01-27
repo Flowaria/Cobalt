@@ -1,21 +1,23 @@
-﻿using Cobalt.MvM.Element;
+﻿using Cobalt.Enums;
+using Cobalt.MvM.Element;
 using System.Collections.Generic;
 using System.IO;
+using System.Threading.Tasks;
 
-namespace Cobalt.MvM.DB
+namespace Cobalt.Parser
 {
-    public class TemplateDB
+    public class TemplateParser
     {
         //템플릿 보관
         private List<TFBot> m_Templates;
 
         //쿼리시 필터링
-        private TFBot.TFClass[] filter_Class;
+        private TFClass filter_Class;
         private string filter_ContainName;
         private string filter_TemplateFile;
         private bool filter_Gatebot;
 
-        public TemplateDB()
+        public TemplateParser()
         {
             if (!Directory.Exists(Properties.Settings.Default.PATH_BASE))
             {
@@ -27,22 +29,25 @@ namespace Cobalt.MvM.DB
                 File.WriteAllText(Properties.Settings.Default.PATH_BASE + "robot_gatebot.pop",
                     Properties.Resources.robot_gatebot);
             }
-                
+        }
+
+        public async Task parse()
+        {
             string[] files = Directory.GetFiles(Properties.Settings.Default.PATH_BASE);
-            foreach(string file in files)
+            foreach (string file in files)
             {
                 if (!file.EndsWith(".pop"))
                     continue;
 
-                addFile(getFilename(file));
+                await parseFile(getFilename(file));
             }
         }
 
         //파일 추가
-        public bool addFile(string name)
+        public async Task parseFile(string name)
         {
             if(true)
-                return false;
+                return;
         }
 
         public TFBot[] querry()

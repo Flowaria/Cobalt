@@ -1,26 +1,47 @@
-﻿namespace Cobalt.MvM.Items
+﻿using Cobalt.Enums;
+
+namespace Cobalt.TFItems
 {
     public class TFItem : TFItemInstance
     {
-        public enum ItemSlot
+        private string m_DefName, m_Classname, m_ImageURL;
+        private ItemQuality m_Quality;
+        private ItemSlot m_Itemslot;
+        public string DefName
         {
-            Primary, Secondary, Melee,
-            Pda1, Pda2, Building, Misc, Action
+            get{return m_DefName;}
+            set{m_DefName = value;}
+        }
+        public string Classname
+        {
+            get { return m_Classname; }
+            set { m_Classname = value; }
+        }
+        public string ImageURL
+        {
+            get { return m_ImageURL; }
+            set { m_ImageURL = value; }
+        }
+        public ItemQuality Quality
+        {
+            get { return m_Quality; }
+            set { m_Quality = value; }
+        }
+        public ItemSlot ItemSlot
+        {
+            get { return m_Itemslot; }
+            set { m_Itemslot = value; }
         }
 
-        public string DefName, Classname, ImageURL;
-        public int Quality;
         public TFAttribute[] Attribute;
         public float[] AttributeValue;
-        private short AttributeIndex;
-        public ItemSlot Itemslot;
 
         public TFItem()
         {
             Name = "Bat";
             DefId = 0;
             Quality = 0;
-            Itemslot = ItemSlot.Melee;
+            ItemSlot = ItemSlot.Melee;
             DefName = "TF_WEAPON_BAT";
             Classname = "tf_weapon_bat";
             ImageURL = "http://media.steampowered.com/apps/440/icons/c_bat.png";
@@ -28,6 +49,7 @@
             AttributeValue = new float[15];
         }
 
+        private short AttributeIndex;
         public void addAttribute(TFAttribute attribute, float value)
         {
             Attribute[AttributeIndex] = attribute;

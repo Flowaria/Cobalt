@@ -1,8 +1,10 @@
-﻿using System;
+﻿using Cobalt.Enums;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
 using System.Net;
+using System.Security.Cryptography;
 using System.Threading.Tasks;
 using System.Windows;
 
@@ -11,8 +13,9 @@ namespace Cobalt.Src
     public class Downloader
     {
         private WebClient client;
+        private MD5CryptoServiceProvider md5;
 
-        public bool Override = false;
+        public OverrideMode Mode = OverrideMode.Off;
         public string BaseURL; //다운로드시 중점 url
         public string BaseDirectory; //다운로드시 중점 저장 디렉토리
 
@@ -26,6 +29,23 @@ namespace Cobalt.Src
         {
             client = new WebClient();
             client.Encoding = System.Text.Encoding.UTF8;
+            md5 = new MD5CryptoServiceProvider();
+        }
+
+        //접근 가능한 URL 인지 확인
+        public static bool CheckValidURL(string url)
+        {
+            try
+            {
+                HttpWebRequest querry = (HttpWebRequest)WebRequest.Create(url);
+                HttpWebResponse response = (HttpWebResponse)querry.GetResponse();
+                response.Close();
+                return (response.StatusCode == HttpStatusCode.OK);
+            }
+            catch
+            {
+                return false;
+            }
         }
 
         //Completed 핸들 변경시 불러올것
@@ -46,8 +66,19 @@ namespace Cobalt.Src
         public async Task downloadFile(String item)
         {
             //파일 존재하면 걍 안받
-            if (File.Exists(BaseDirectory + item) && !Override)
-                return;
+            if (File.Exists(BaseDirectory + item))
+            {
+                if(Mode == OverrideMode.Off)
+                    return;
+                else if (Mode == OverrideMode.WhenNotEqual)
+                {
+                    /*
+                     * Add Soon
+                     */
+                    return;
+                }
+            }
+                
 
             //이름 수정
             String oItem = item;

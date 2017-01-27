@@ -23,8 +23,17 @@
     <Setting Name="LOAD_TEMPLATE" Type="System.String" Scope="User">
       <Value Profile="(Default)">템플릿 불러오는 중 . . .</Value>
     </Setting>
-    <Setting Name="LOAD_ITEM_IMAGE" Type="System.String" Scope="User">
+    <Setting Name="Load_Item_Image" Type="System.String" Scope="User">
       <Value Profile="(Default)">아이템 이미지 다운로드 중 . . .</Value>
+    </Setting>
+    <Setting Name="Format_Schema" Type="System.String" Scope="User">
+      <Value Profile="(Default)">http://api.steampowered.com/IEconItems_440/GetSchema/v0001/?key={0}&amp;language={1}</Value>
+    </Setting>
+    <Setting Name="VERSION_STRING" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">0.0 PreBuild</Value>
+    </Setting>
+    <Setting Name="VERSION" Type="System.Double" Scope="Application">
+      <Value Profile="(Default)">1</Value>
     </Setting>
   </Settings>
 </SettingsFile>
