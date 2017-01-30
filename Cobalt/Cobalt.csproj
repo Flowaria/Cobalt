@@ -77,6 +77,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Forms\Controls\TFBotIcon.xaml.cs">
+      <DependentUpon>TFBotIcon.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Tools\Navigator.xaml.cs">
+      <DependentUpon>Navigator.xaml</DependentUpon>
+    </Compile>
     <Compile Include="LoadingWindow.xaml.cs">
       <DependentUpon>LoadingWindow.xaml</DependentUpon>
     </Compile>
@@ -103,13 +109,18 @@
     <Compile Include="Src\TFItems\TFItem.cs" />
     <Compile Include="Src\MvM\Function\BotList.cs" />
     <Compile Include="Src\MvM\Function\TFFunction.cs" />
-    <Compile Include="Forms\ItemSelect.xaml.cs">
+    <Compile Include="Forms\Tools\ItemSelect.xaml.cs">
       <DependentUpon>ItemSelect.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Forms\RobotEditor.xaml.cs">
-      <DependentUpon>RobotEditor.xaml</DependentUpon>
-    </Compile>
     <Page Include="ButtonDesign.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Forms\Controls\TFBotIcon.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Forms\Tools\Navigator.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -129,11 +140,7 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Forms\ItemSelect.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Forms\RobotEditor.xaml">
+    <Page Include="Forms\Tools\ItemSelect.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -214,6 +221,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Splash\6.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\loch_rotate_darker.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

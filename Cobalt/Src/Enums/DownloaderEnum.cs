@@ -1,6 +1,6 @@
 ﻿namespace Cobalt.Enums
 {
-    public enum OverrideMode
+    public enum DownloaderOverrideMode
     {
         All, WhenNotEqual, Off
     };

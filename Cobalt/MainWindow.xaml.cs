@@ -1,4 +1,5 @@
-﻿using Cobalt.Parser;
+﻿using Cobalt.Forms.Tools;
+using Cobalt.Parser;
 using Cobalt.Src;
 using Cobalt.Src.Parser;
 using System;
@@ -17,6 +18,7 @@ namespace Cobalt
         private SchemaParser p_Schema;
         private TemplateParser p_Template;
         private LoadingWindow w_Loading;
+        private Navigator nav;
 
         public MainWindow()
         {
@@ -27,6 +29,7 @@ namespace Cobalt
             p_Schema = new SchemaParser();
             p_Template = new TemplateParser();
             w_Loading = new LoadingWindow();
+            nav = new Navigator();
 
             //리소스 불러오기  
             initConfig();
@@ -39,10 +42,11 @@ namespace Cobalt
             w_Loading.Show();
             await p_Schema.parse(); //스캐마 파싱
             await initP.initSchema(p_Schema);
-            await p_Template.parse(); //템플릿 파싱
-            await initP.initTemplate(p_Template);
+            //await p_Template.parse(); //템플릿 파싱
+            //await initP.initTemplate(p_Template);
             w_Loading.Close();
             this.Show();
+            nav.Show();
         }
 
         public void initConfig()

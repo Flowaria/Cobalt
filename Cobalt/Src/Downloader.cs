@@ -15,14 +15,29 @@ namespace Cobalt.Src
         private WebClient client;
         private MD5CryptoServiceProvider md5;
 
-        public OverrideMode Mode = OverrideMode.Off;
+        public DownloaderOverrideMode Mode = DownloaderOverrideMode.Off;
         public string BaseURL; //다운로드시 중점 url
         public string BaseDirectory; //다운로드시 중점 저장 디렉토리
 
-        public event EventHandler<DlStartedEventArgs> DownloadFileStarted = null;
-        public event AsyncCompletedEventHandler DownloadFileCompleted = null;
-
         public Func<string, string> saveFormatFunction = null;
+        public Func<string, string, bool> validateFunction = null;
+
+        public bool AutoDispose = false;
+
+        public event EventHandler<DownloaderEventArgs> DownloadFileStarted = null;
+        public event EventHandler<DownloaderEventArgs> DownloadFileError = null;
+        private event AsyncCompletedEventHandler m_DownloadFileCompleted = null;
+        public AsyncCompletedEventHandler DownloadFileCompleted
+        {
+            get{return m_DownloadFileCompleted;}
+            set
+            {
+                if(value != null)
+                {
+                    client.DownloadFileCompleted += value;
+                }
+            }
+        }
 
         //생성자 : 클라이언트 생성 / 설정
         public Downloader()
@@ -30,6 +45,72 @@ namespace Cobalt.Src
             client = new WebClient();
             client.Encoding = System.Text.Encoding.UTF8;
             md5 = new MD5CryptoServiceProvider();
+        }
+
+        //URL 리스트로 다운로드
+        public async Task downloadFiles(List<String> items)
+        {
+            foreach (String item in items)
+                await downloadFile(item);
+
+            if(AutoDispose)
+                client.Dispose();
+        }
+
+        //URL로 단일 파일 다운로드
+        private async Task downloadFile(String item)
+        {
+            //파일 존재하면 걍 안받
+            if (File.Exists(BaseDirectory + item))
+            {
+                if(Mode == DownloaderOverrideMode.Off)
+                    return;
+                else if (Mode == DownloaderOverrideMode.WhenNotEqual)
+                {
+                    if(validateFunction(BaseDirectory + item, BaseURL + item))
+                        return;
+                }
+            }
+                
+
+            //이름 수정
+            String oItem = item;
+            if (saveFormatFunction != null)
+                item = saveFormatFunction(item);
+
+            //다운로드 시작 핸들 전달
+            OnDownloadStarted(new DownloaderEventArgs(BaseURL, BaseDirectory, item));
+
+            //다운로드 시작
+            try
+            {
+                await client.DownloadFileTaskAsync(new Uri(BaseURL + oItem), BaseDirectory + item);
+            }
+            catch
+            {
+                OnDownloadError(new DownloaderEventArgs(BaseURL, BaseDirectory, item));
+                return;
+            }
+        }
+
+        //다운로드 시작시 핸들러
+        protected virtual void OnDownloadStarted(DownloaderEventArgs e)
+        {
+            EventHandler<DownloaderEventArgs> handler = DownloadFileStarted;
+            if (handler != null)
+            {
+                handler(this, e);
+            }
+        }
+
+        //다운로드 에러시 핸들러
+        protected virtual void OnDownloadError(DownloaderEventArgs e)
+        {
+            EventHandler<DownloaderEventArgs> handler = DownloadFileError;
+            if (handler != null)
+            {
+                handler(this, e);
+            }
         }
 
         //접근 가능한 URL 인지 확인
@@ -48,78 +129,20 @@ namespace Cobalt.Src
             }
         }
 
-        //Completed 핸들 변경시 불러올것
-        public void HandlerChanged()
+        public void Dispose()
         {
-            if (DownloadFileCompleted != null)
-                client.DownloadFileCompleted += DownloadFileCompleted;
-        }
-
-        //URL 리스트로 다운로드
-        public async Task downloadFiles(List<String> items)
-        {
-            foreach (String item in items)
-                await downloadFile(item);
-        }
-
-        //URL로 단일 파일 다운로드
-        public async Task downloadFile(String item)
-        {
-            //파일 존재하면 걍 안받
-            if (File.Exists(BaseDirectory + item))
-            {
-                if(Mode == OverrideMode.Off)
-                    return;
-                else if (Mode == OverrideMode.WhenNotEqual)
-                {
-                    /*
-                     * Add Soon
-                     */
-                    return;
-                }
-            }
-                
-
-            //이름 수정
-            String oItem = item;
-            if (saveFormatFunction != null)
-                item = saveFormatFunction(item);
-
-            //다운로드 시작 핸들 전달
-            OnDownloadStarted(new DlStartedEventArgs(BaseURL, BaseDirectory, item));
-
-            //다운로드 시작
-            try
-            {
-                await client.DownloadFileTaskAsync(new Uri(BaseURL + oItem), BaseDirectory + item);
-            }
-            catch
-            {
-                MessageBox.Show("다운로드 중 문제가 발생하였습니다.", "문제 발생",
-                    MessageBoxButton.OK, MessageBoxImage.Warning);
-                return;
-            }
-        }
-
-        //다운로드 시작시 핸들러
-        protected virtual void OnDownloadStarted(DlStartedEventArgs e)
-        {
-            EventHandler<DlStartedEventArgs> handler = DownloadFileStarted;
-            if (handler != null)
-            {
-                handler(this, e);
-            }
+            client.Dispose();
         }
     }
 
     //이벤트 Args
-    public class DlStartedEventArgs : EventArgs
+    public class DownloaderEventArgs : EventArgs
     {
         public String File { get; set; }
         public String Directory { get; set; }
         public String Url { get; set; }
 
-        public DlStartedEventArgs(String Url, String Directory, String File)
+        public DownloaderEventArgs(String Url, String Directory, String File)
         {
             this.Url = Url;
             this.Directory = Directory;

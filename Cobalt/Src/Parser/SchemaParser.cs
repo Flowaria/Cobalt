@@ -103,6 +103,7 @@ namespace Cobalt.Parser
                 iItem.DefId = item.defindex;
                 iItem.ImageURL = item.image_url;
                 iItem.Quality = (ItemQuality)Enum.Parse(typeof(ItemQuality), item.item_quality.ToString());
+                //iItem.ItemSlot = (ItemSlot)Enum.Parse(typeof(ItemSlot), item.item_slot);
 
                 //Attributes 유효성 검사
                 if (item.attributes != null)

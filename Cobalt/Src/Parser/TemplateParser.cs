@@ -1,7 +1,10 @@
 ﻿using Cobalt.Enums;
 using Cobalt.MvM.Element;
+using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace Cobalt.Parser
@@ -48,6 +51,29 @@ namespace Cobalt.Parser
         {
             if(true)
                 return;
+
+        }
+
+        public async Task Parse(string content)
+        {
+            foreach (string line in content.Split('\n'))
+            {
+                //앞부분 탭과 주석 제거
+                string cut = Regex.Replace(line, @"^\s*|\/\/.*", "");
+                Match inString = Regex.Match(cut, @""".*""");
+                if (inString.Success) //스트링 내부일경우
+                {
+                    //공간을 § 문자로 변경하고 "를 공백으로 변경
+                    cut = cut.Replace(inString.Value, Regex.Replace(inString.Value, @"\s", "§").Replace(@"""", ""));
+                }
+
+                //공백 기준으로 Split
+                bool isValue = false;
+                foreach (string str in Regex.Split(cut, @"\s").Where(x => !string.IsNullOrEmpty(x)))
+                {
+                    string value = str.Replace("§", " ");
+                }
+            }
         }
 
         public TFBot[] querry()

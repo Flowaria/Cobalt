@@ -4,7 +4,11 @@ using Cobalt.TFItems;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Drawing.Imaging;
 using System.IO;
+using System.Linq;
+using System.Net;
+using System.Security.Cryptography;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 
@@ -39,7 +43,7 @@ namespace Cobalt.Src.Parser
                     string fileName = Format.UrlFile(item.ImageURL);
                     if (!File.Exists(Properties.Settings.Default.PATH_IMG_ITEMS + Format.ItemImage(fileName)) && !FileList.Contains(fileName))
                         FileList.Add(fileName);
-                    item.ImageURL = fileName;
+                    item.ImageURL = Format.ItemImage(fileName);
                 }
             }
 
@@ -56,17 +60,44 @@ namespace Cobalt.Src.Parser
                 dl.BaseDirectory = Properties.Settings.Default.PATH_IMG_ITEMS;
                 dl.DownloadFileStarted += c_DownloadFileStarted;
                 dl.DownloadFileCompleted += c_DownloadFileCompleted;
-                dl.HandlerChanged();
-                dl.Mode = OverrideMode.WhenNotEqual;
+                dl.Mode = DownloaderOverrideMode.Off;
                 dl.saveFormatFunction = Format.ItemImage;
+                dl.AutoDispose = true;
                 await dl.downloadFiles(FileList);
             }
+            return;
         }
+
+        /*
+        public bool isImageValid(string local, string web)
+        {
+            try
+            {
+                using (WebClient client = new WebClient())
+                {
+                    Console.WriteLine("Valid Check!");
+                    MD5CryptoServiceProvider md5 = new MD5CryptoServiceProvider();
+                    byte[] byte_web = client.DownloadData(web);
+                    byte[] byte_local = File.ReadAllBytes(local);
+                    if (byte_web.SequenceEqual(byte_local))
+                    {
+                        Console.WriteLine("Valid!");
+                        return true;
+                    }
+                }
+                return false;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+        */
 
         /*
          * 파일 다운로드 시작시 이벤트
          */
-        void c_DownloadFileStarted(object sender, DlStartedEventArgs e)
+        void c_DownloadFileStarted(object sender, DownloaderEventArgs e)
         {
             // 이미지 다운로드 중 . . . : filename.png 형식으로 라벨 변경
             eLabel.Content = String.Format("{0} : {1}", Properties.Settings.Default.Load_Item_Image, e.File);
