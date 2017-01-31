@@ -1,4 +1,4 @@
-﻿namespace Cobalt.Src
+﻿namespace Cobalt
 {
     public class Format
     {

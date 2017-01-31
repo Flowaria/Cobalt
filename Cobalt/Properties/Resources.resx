@@ -121,15 +121,6 @@
   <data name="icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icon.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="robot_gatebot" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\robot_gatebot.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;ks_c_5601-1987</value>
-  </data>
-  <data name="robot_giant" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\robot_giant.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;ks_c_5601-1987</value>
-  </data>
-  <data name="robot_standard" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\robot_standard.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;ks_c_5601-1987</value>
-  </data>
   <data name="Mask01" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Splash\Mask01.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -159,5 +150,14 @@
   </data>
   <data name="TempIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\loch_rotate_darker.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="robot_gatebot" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\template\robot_gatebot.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;ks_c_5601-1987</value>
+  </data>
+  <data name="robot_giant" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\template\robot_giant.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;ks_c_5601-1987</value>
+  </data>
+  <data name="robot_standard" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\template\robot_standard.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;ks_c_5601-1987</value>
   </data>
 </root>

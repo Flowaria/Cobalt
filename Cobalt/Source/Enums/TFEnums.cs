@@ -1,5 +1,41 @@
 ﻿namespace Cobalt.Enums
 {
+    //TF
+    public enum TFClass
+    {
+        None, Scout, Soldier, Pyro,
+        Demoman, Engineer, HeavyWeapons,
+        Medic, Spy, Sniper
+    }
+
+    public enum TFBotAttribute //BOT ATTRIBUTE
+    {
+        None,
+        SpawnWithFullCharge,
+        AlwaysCrit,
+        AlwaysFireWeapon,
+        MiniBoss,
+        UseBossHealthBar,
+        HoldFireUntilFullReload,
+        IgnoreFlag,
+        TeleportToHint,
+        AutoJump,
+        AirChargeOnly,
+        Parachute,
+        VaccinatorBullets, VaccinatorBlast, VaccinatorFire, ProjectileShield
+    }
+
+    public enum TFBotSkill //BOT SKILL LEVEL
+    {
+        Easy, Normal, Hard, Expert
+    }
+
+    public enum TFBotWeaponRestrictions //BOT WEAPON RESTRICTION
+    {
+        None, PrimaryOnly, SecondaryOnly, MeleeOnly
+    }
+
+    //ITEMS
     public enum ItemSlot
     {
         Primary, Secondary, Melee,
@@ -37,7 +73,7 @@
         Inverted_Percentage,
         Additive,
         Additive_Percentage,
-        
+
         From_Lookup_Table,
         Date,
         Or,

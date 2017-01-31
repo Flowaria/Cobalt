@@ -8,8 +8,14 @@ using System.Security.Cryptography;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace Cobalt.Src
+namespace Cobalt
 {
+    //DOWNLOADER
+    public enum DownloaderOverrideMode
+    {
+        All, WhenNotEqual, Off
+    };
+
     public class Downloader
     {
         private WebClient client;
