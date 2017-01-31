@@ -1,0 +1,35 @@
+<Rottenburg>
+	<!--Rottenburg v01-->
+	<Where>
+		<Where name="spawnbot"/>
+		<Where name="flankers"/>
+		<Where name="spawnbot_chief"/>
+		<Where name="spawnbot_mission_sniper"/>
+		<Where name="spawnbot_mission_spy"/>
+		<Where name="spawnbot_mission_sentry_buster"/>
+	</Where>
+	
+	<Relay>
+		<Wave>
+			<WaveStarted name="wave_start_relay_classic"/>
+			<WaveDone name="wave_finished_relay"/>
+		</Wave>
+		<Spawn>
+			<FirstSpawn name="boss_spawn_relay"/>
+			<FirstSpawn name="w3_engie_hints"/>
+		</Spawn>
+		<Tank>
+			<Killed name="boss_dead_relay"/>
+			<BombDropped name="boss_deploy_relay"/>
+		</Tank>
+	</Relay>
+	
+	<TankPath>
+		<Path name="tank_path_a_10"/>
+		<Path name="tank_path_b_10"/>
+	</TankPath>
+	
+	<Tag>
+		<Bot name="flankers"/>
+	</Tag>
+</Rottenburg>

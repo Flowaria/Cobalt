@@ -83,6 +83,18 @@
     <Compile Include="Forms\Tools\Navigator.xaml.cs">
       <DependentUpon>Navigator.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Windows\TabMission.xaml.cs">
+      <DependentUpon>TabMission.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Windows\TabSetting.xaml.cs">
+      <DependentUpon>TabSetting.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Windows\TabTemplate.xaml.cs">
+      <DependentUpon>TabTemplate.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Windows\TabWave.xaml.cs">
+      <DependentUpon>TabWave.xaml</DependentUpon>
+    </Compile>
     <Compile Include="LoadingWindow.xaml.cs">
       <DependentUpon>LoadingWindow.xaml</DependentUpon>
     </Compile>
@@ -121,6 +133,22 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Forms\Tools\Navigator.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Forms\Windows\TabMission.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Forms\Windows\TabSetting.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Forms\Windows\TabTemplate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Forms\Windows\TabWave.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -224,6 +252,15 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\loch_rotate_darker.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\MapConfig\mvm_bigrock.xml" />
+    <EmbeddedResource Include="Resources\MapConfig\mvm_coaltown.xml" />
+    <EmbeddedResource Include="Resources\MapConfig\mvm_decoy.xml" />
+    <EmbeddedResource Include="Resources\MapConfig\mvm_ghost_town.xml" />
+    <EmbeddedResource Include="Resources\MapConfig\mvm_mannhattan.xml" />
+    <EmbeddedResource Include="Resources\MapConfig\mvm_mannworks.xml" />
+    <EmbeddedResource Include="Resources\MapConfig\mvm_rottenburg.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

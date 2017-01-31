@@ -7,7 +7,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="32" d:DesignWidth="32">
     <Grid>
-        <Image x:Name="Image_Icon" Panel.ZIndex="2" Height="30" Width="30" Source="/Cobalt;component/Resources/loch_rotate_darker.png"/>
-        <Rectangle Name="Rectangle_Bg" StrokeThickness="2" Panel.ZIndex="1" Height="32" Width="32" RadiusY="4" RadiusX="4"/>
+        <Image x:Name="Image_Icon" Panel.ZIndex="2" Height="26" Width="26" Source="/Cobalt;component/Resources/loch_rotate_darker.png"/>
+        <Rectangle Name="Rectangle_Bg" StrokeThickness="2" Panel.ZIndex="1" Height="32" Width="32" RadiusY="6" RadiusX="6"/>
     </Grid>
 </UserControl>

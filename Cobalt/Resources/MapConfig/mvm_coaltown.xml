@@ -1,0 +1,32 @@
+<Coaltown>
+	<!--Coaltown v01-->
+	<Where>
+		<Where name="spawnbot"/>
+		<Where name="spawnbot_giant"/>
+		<Where name="spawnbot_mission_sniper"/>
+		<Where name="spawnbot_mission_spy"/>
+	</Where>
+	
+	<Relay>
+		<Wave>
+			<WaveStarted name="wave_start_relay"/>
+			<WaveDone name="wave_finished_relay"/>
+		</Wave>
+		<Spawn>
+			<FirstSpawn name="boss_spawn_relay"/>
+		</Spawn>
+		<Tank>
+			<Killed name="boss_dead_relay"/>
+			<BombDropped name="boss_deploy_relay"/>
+		</Tank>
+	</Relay>
+	
+	<TankPath>
+		<Path name="boss_path_a1"/>
+	</TankPath>
+	
+	<Tag>
+		<Prefer name="nav_prefer_flank_right"/>
+		<Prefer name="nav_prefer_flank_left"/>
+	</Tag>
+</Coaltown>

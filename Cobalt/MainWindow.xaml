@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Cobalt"
         xmlns:TFControl="clr-namespace:Cobalt.Controls"
+        xmlns:windows="clr-namespace:Cobalt.Windows"
         mc:Ignorable="d"
         Title="Cobalt"
         Height="350" Width="525"
@@ -43,6 +44,7 @@
                     <MenuItem Name="MenuView" Header="보기(V)"/>
                     <MenuItem Name="MenuWindow" Header="창 (W)">
                         <MenuItem Name="MenuWindow_Editor" Header="편집 창">
+                            <MenuItem Name="MenuWindow_Editor_Navigator" Header="네비게이터"/>
                             <MenuItem Name="MenuWindow_Editor_" Header="로봇 편집창"/>
                         </MenuItem>
                     </MenuItem>
@@ -79,9 +81,36 @@
 
         <!--각종 유틸-->
         <Grid Grid.Row="3">
-            <Expander x:Name="expander" Header="Attribute" HorizontalAlignment="Left" VerticalAlignment="Top">
-                <Grid Background="#FFE5E5E5"/>
-            </Expander>
+            <TabControl x:Name="tabControl" TabStripPlacement="Left">
+                <TabControl.Resources>
+                    <Style TargetType="{x:Type TabItem}">
+                        <Setter Property="HeaderTemplate">
+                            <Setter.Value>
+                                <DataTemplate>
+                                    <ContentPresenter Content="{TemplateBinding Content}">
+                                        <ContentPresenter.LayoutTransform>
+                                            <RotateTransform Angle="270" />
+                                        </ContentPresenter.LayoutTransform>
+                                    </ContentPresenter>
+                                </DataTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Setter Property="Padding" Value="3" />
+                    </Style>
+                </TabControl.Resources>
+                <TabItem Header="설정">
+                    <windows:TabSetting/>
+                </TabItem>
+                <TabItem Header="웨이브">
+                    <Grid Background="#FFE5E5E5"/>
+                </TabItem>
+                <TabItem Header="지원">
+                    <Grid Background="#FFE5E5E5"/>
+                </TabItem>
+                <TabItem Header="템플릿">
+                    <Grid Background="#FFE5E5E5"/>
+                </TabItem>
+            </TabControl>
         </Grid>
     </Grid>
 </Window>

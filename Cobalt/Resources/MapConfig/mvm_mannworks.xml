@@ -1,0 +1,27 @@
+<MannWorks>
+	<!--MannWorks v01-->
+	<Where>
+		<Where name="spawnbot"/>
+		<Where name="spawnbot_left"/>
+		<Where name="spawnbot_right"/>
+		<Where name="spawnbot_lower"/>
+		<Where name="spawnbot_mission_sniper"/>
+		<Where name="spawnbot_mission_spy"/>
+	</Where>
+	
+	<Relay>
+		<Wave>
+			<WaveStarted name="bombpath_arrows_clear_relay"/>
+			<WaveDone name="bombpath_wavefinished"/>
+		</Wave>
+		<Tank>
+			<Killed name="boss_dead_relay"/>
+			<BombDropped name="boss_deploy_relay"/>
+		</Tank>
+	</Relay>
+	
+	<TankPath>
+		<Path name="boss_path_1"/>
+		<Path name="boss_path2_1"/>
+	</TankPath>
+</MannWorks>

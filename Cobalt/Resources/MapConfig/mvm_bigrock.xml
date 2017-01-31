@@ -1,0 +1,37 @@
+<Bigrock>
+	<!--Bigrock v01-->
+	<Where>
+		<Where name="spawnbot"/>
+		<Where name="spawnbot_mission_sniper"/>
+		<Where name="spawnbot_mission_spy"/>
+	</Where>
+	
+	<Relay>
+		<Wave>
+			<WaveStarted name="wave_start_relay"/>
+			<WaveStarted name="wave_start_relay_boss"/>
+			
+			<WaveDone name="wave_finished_relay"/>
+			<WaveDone name="wave_finished_relay_boss"/>
+		</Wave>
+		<Spawn>
+			<FirstSpawn name="boss_spawn_relay"/>
+		</Spawn>
+		<Tank>
+			<Killed name="boss_dead_relay"/>
+			<BombDropped name="boss_deploy_relay"/>
+		</Tank>
+	</Relay>
+	
+	<TankPath>
+		<Path name="boss_path_a1"/>
+		<Path name="boss_path_1"/>
+	</TankPath>
+	
+	<Tag>
+		<Prefer name="nav_prefer_flank_right"/>
+		<Prefer name="nav_prefer_flank_left"/>
+		<Prefer name="special_main_right"/>
+		<Prefer name="special_main_left"/>
+	</Tag>
+</Bigrock>

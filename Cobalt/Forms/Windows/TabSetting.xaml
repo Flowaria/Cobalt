@@ -1,0 +1,17 @@
+﻿<UserControl x:Class="Cobalt.Windows.TabSetting"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Cobalt.Windows"
+             mc:Ignorable="d" 
+             d:DesignHeight="600" d:DesignWidth="600">
+    <Grid Background="#FF558DAE">
+        <ComboBox x:Name="comboBox" HorizontalAlignment="Left" Height="141" Margin="63,114,0,0" VerticalAlignment="Top" Width="216">
+            <ComboBoxItem x:Name="dd" Content="Decoy"/>
+            <ComboBoxItem x:Name="dd2" Content="Mannworks"/>
+            <ComboBoxItem x:Name="dd3" Content="Mannhattan"/>
+            <ComboBoxItem x:Name="dd4" Content="Coaltown"/>
+        </ComboBox>
+    </Grid>
+</UserControl>

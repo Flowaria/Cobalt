@@ -32,8 +32,11 @@ namespace Cobalt.Forms.Tools
 
         private void button_Click(object sender, RoutedEventArgs e)
         {
-            TFBotIcon icon = new TFBotIcon();
+            BitmapImage logo = new BitmapImage();
+            logo.BeginInit(); logo.UriSource = new Uri(@"/Image/Icon/demo_pirate.png", UriKind.Relative); logo.EndInit();
+            TFBotIcon icon = new TFBotIcon(logo);
             icon.IsGiant = true;
+            icon.IsCrit = false;
             AddIcon(icon);
         }
     }

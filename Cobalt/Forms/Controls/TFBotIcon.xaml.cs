@@ -1,5 +1,7 @@
-﻿using System.Windows.Controls;
+﻿using System;
+using System.Windows.Controls;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
 
 namespace Cobalt.Controls
 {
@@ -54,15 +56,16 @@ namespace Cobalt.Controls
             bgGiants = new SolidColorBrush(),
             stNormal = new SolidColorBrush(),
             stCrit = new SolidColorBrush();
-        public TFBotIcon()
+        public TFBotIcon(BitmapImage icon)
         {
             InitializeComponent();
 
             bgNormal.Color = Color.FromRgb(235, 228, 202); //#EBE4CA
             bgGiants.Color = Color.FromRgb(193, 21, 0); //#FF2424
-            stNormal.Color = Color.FromRgb(0, 0, 0); //Black
+            stNormal.Color = Color.FromArgb(0, 0, 0, 0); //Black
             stCrit.Color = Color.FromRgb(54, 138, 255); //#368AFF
-
+           
+            Image_Icon.Source = icon;
 
             Rectangle_Bg.Fill = bgNormal;
             Rectangle_Bg.Stroke = stCrit;
