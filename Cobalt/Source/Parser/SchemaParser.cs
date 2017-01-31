@@ -8,45 +8,6 @@ using System.Threading.Tasks;
 
 namespace Cobalt.Parser
 {
-    class Root
-    {
-        public Result result { get; set; }
-    }
-
-    class Result
-    {
-        public List<Items> items { get; set; }
-        public List<Attributes> attributes { get; set; }
-    }
-
-    class Items
-    {
-        public string name { get; set; } //Def Name
-        public int defindex { get; set; } //Def Index
-        public string item_class { get; set; } //Item Class
-        public string item_name { get; set; } //Local Name
-        public string item_slot { get; set; } //Item Slot Raw
-        public int item_quality { get; set; } //Item Quality
-        public string image_url { get; set; } //Image URL
-
-        public List<string> used_by_classes { get; set; }
-        public List<DefaultAttribute> attributes { get; set; }
-    }
-
-    class DefaultAttribute
-    {
-        public string name { get; set; }
-        public float value { get; set; }
-    }
-
-    class Attributes
-    {
-        public string name { get; set; }
-        public int defindex { get; set; }
-        public string description_format { get; set; }
-        public string effect_type { get; set; }
-    }
-
     public class SchemaParser
     {
         //API 주소
@@ -116,5 +77,45 @@ namespace Cobalt.Parser
                 ItemsData.Items.Add(iItem);
             }
         }
+    }
+
+    //JSON 파싱용
+    class Root
+    {
+        public Result result { get; set; }
+    }
+
+    class Result
+    {
+        public List<Items> items { get; set; }
+        public List<Attributes> attributes { get; set; }
+    }
+
+    class Items
+    {
+        public string name { get; set; } //Def Name
+        public int defindex { get; set; } //Def Index
+        public string item_class { get; set; } //Item Class
+        public string item_name { get; set; } //Local Name
+        public string item_slot { get; set; } //Item Slot Raw
+        public int item_quality { get; set; } //Item Quality
+        public string image_url { get; set; } //Image URL
+
+        public List<string> used_by_classes { get; set; }
+        public List<DefaultAttribute> attributes { get; set; }
+    }
+
+    class DefaultAttribute
+    {
+        public string name { get; set; }
+        public float value { get; set; }
+    }
+
+    class Attributes
+    {
+        public string name { get; set; }
+        public int defindex { get; set; }
+        public string description_format { get; set; }
+        public string effect_type { get; set; }
     }
 }

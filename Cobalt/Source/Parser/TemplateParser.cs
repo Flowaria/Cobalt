@@ -11,14 +11,7 @@ namespace Cobalt.Parser
 {
     public class TemplateParser
     {
-        //템플릿 보관
-        private List<TFBot> m_Templates;
-
-        //쿼리시 필터링
-        private TFClass filter_Class;
-        private string filter_ContainName;
-        private string filter_TemplateFile;
-        private bool filter_Gatebot;
+        
 
         public TemplateParser()
         {
@@ -75,13 +68,6 @@ namespace Cobalt.Parser
                 }
             }
         }
-
-        public TFBot[] querry()
-        {
-            return new TFBot[3];
-        }
-
-        public List<TFBot> querryAll(){return m_Templates;}
 
         private string getFilename(string url)
         {
