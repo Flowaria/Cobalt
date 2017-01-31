@@ -1,12 +1,8 @@
 ﻿using Cobalt.Enums;
 using Cobalt.MvM.Element;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Cobalt.Source.Data
+namespace Cobalt.Data
 {
     public static class TemplatesData
     {
@@ -19,9 +15,9 @@ namespace Cobalt.Source.Data
         public static string filter_TemplateFile;
         public static bool filter_Gatebot;
 
-        public static TFBot[] querry()
+        public static List<TFBot> querry()
         {
-            return new TFBot[3];
+            return new List<TFBot>();
         }
     }
 }

@@ -11,8 +11,6 @@ namespace Cobalt.Parser
 {
     public class TemplateParser
     {
-        
-
         public TemplateParser()
         {
             if (!Directory.Exists(Properties.Settings.Default.PATH_BASE))
