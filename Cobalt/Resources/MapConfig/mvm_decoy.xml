@@ -1,12 +1,12 @@
 <Decoy>
-	<!--Decoy v01-->
+	<!--Decoy v02-->
 	<Where>
 		<Where name="spawnbot"/>
 		<Where name="spawnbot_left"/>
 		<Where name="spawnbot_right"/>
+    <Where name="spawnbot_single_flag"/>
 		<Where name="spawnbot_invasion"/>
-		
-		<Where name="spawnbot_mission_sniper"/>
+    <Where name="spawnbot_mission_sniper"/>
 		<Where name="spawnbot_mission_spy"/>
 	</Where>
 	

@@ -1,5 +1,5 @@
 <MannHattan>
-	<!--Mannhattan v01-->
+	<!--Mannhattan v02-->
 	<Where>
 		<Where name="spawnbot_main0"/>
 		<Where name="spawnbot_main0_squad"/>
@@ -9,7 +9,11 @@
 		<Where name="spawnbot_upper0"/>
 		<Where name="spawnbot_upper1"/>
 		<Where name="spawnbot_upper2"/>
-	</Where>
+    <Where name="spawnbot_mission_sniper0"/>
+    <Where name="spawnbot_mission_sniper1"/>
+    <Where name="spawnbot_mission_spy"/>
+    
+  </Where>
 	
 	<Relay>
 		<WaveInit name="holograms_centerpath_relay"/>

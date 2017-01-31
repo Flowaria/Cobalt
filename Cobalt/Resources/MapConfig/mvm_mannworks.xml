@@ -1,5 +1,5 @@
 <MannWorks>
-	<!--MannWorks v01-->
+	<!--MannWorks v02-->
 	<Where>
 		<Where name="spawnbot"/>
 		<Where name="spawnbot_left"/>
@@ -12,7 +12,9 @@
 	<Relay>
 		<Wave>
 			<WaveStarted name="bombpath_arrows_clear_relay"/>
-			<WaveDone name="bombpath_wavefinished"/>
+      <WaveStarted name="bombpath_arrows_clear_relay_ironman"/>
+      
+      <WaveDone name="bombpath_wavefinished"/>
 		</Wave>
 		<Tank>
 			<Killed name="boss_dead_relay"/>

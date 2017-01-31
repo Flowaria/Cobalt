@@ -1,9 +1,10 @@
 <GhostTown>
-	<!--GhostTown v01-->
+	<!--GhostTown v02-->
 	<Where>
 		<Where name="spawnbot"/>
+    <Where name="spawnbot_invasion"/>
 		<Where name="spawnbot_scattered"/>
-		<Where name="spawnbot_giant"/>
+    <Where name="spawnbot_giant"/>
 		<Where name="spawnbot_mission_sniper"/>
 		<Where name="spawnbot_mission_spy"/>
 	</Where>
