@@ -1,4 +1,5 @@
-﻿using Cobalt.Enums;
+﻿using Cobalt.Data;
+using Cobalt.Enums;
 using Cobalt.TFItems;
 using Newtonsoft.Json;
 using System;
@@ -52,17 +53,12 @@ namespace Cobalt.Parser
         //추후 상수가 아닌 변수로 변경할것
         public string API_URL;
 
-        private List<TFItem> m_Items;
-        private List<TFAttribute> m_Attributes;
-
         //초기화
         public SchemaParser()
         {
             API_URL = String.Format(Properties.Settings.Default.Format_Schema,
                 Properties.Settings.Default.API_KEY,
                 Properties.Settings.Default.API_LANG);
-            m_Items = new List<TFItem>();
-            m_Attributes = new List<TFAttribute>();
         }
 
         //데이터 불러오기
@@ -82,7 +78,8 @@ namespace Cobalt.Parser
                 iAttribute.Name = attribute.name;
                 iAttribute.DefId = attribute.defindex;
                 iAttribute.Description = attribute.description_format;
-                m_Attributes.Add(iAttribute);
+                //Attributes 추가
+                ItemsData.Attributes.Add(iAttribute);
             }
 
             //아이템 DB 등록
@@ -112,40 +109,12 @@ namespace Cobalt.Parser
                     foreach (DefaultAttribute attribute in item.attributes)
                     {
                         //이름이 같은 Attributes 를 찾는다.
-                        iItem.addAttribute(m_Attributes.Find(x => x.Name.Equals(attribute.name)), attribute.value);
+                        iItem.addAttribute(ItemsData.Attributes.Find(x => x.Name.Equals(attribute.name)), attribute.value);
                     }
                 }
-                m_Items.Add(iItem);
+                //아이템 추가
+                ItemsData.Items.Add(iItem);
             }
-        }
-        public List<TFAttribute> querryAllAttribute()
-        {
-            return m_Attributes;
-        }
-
-        public List<TFAttribute> FindAttributesByName(string name)
-        {
-            return m_Attributes.FindAll(x => x.Name.Contains(name));
-        }
-
-        public TFAttribute FindAttributeById(int id)
-        {
-            return m_Attributes.Find(x => x.DefId == id);
-        }
-
-        public List<TFItem> querryAllItem()
-        {
-            return m_Items;
-        }
-
-        public List<TFItem> FindItemsByName(string name)
-        {
-            return m_Items.FindAll(x => x.DefName.Contains(name) || x.Name.Contains(name));
-        }
-
-        public TFItem FindItemById(int id)
-        {
-            return m_Items.Find(x => x.DefId == id);
         }
     }
 }

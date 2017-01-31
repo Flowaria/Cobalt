@@ -56,15 +56,16 @@ namespace Cobalt
         //URL 리스트로 다운로드
         public async Task downloadFiles(List<String> items)
         {
-            foreach (String item in items)
-                await downloadFile(item);
+            int Max = items.Count;
+            for (int i=0; i<Max; i++)
+                await downloadFile(items[i], Max, i);
 
             if(AutoDispose)
                 client.Dispose();
         }
 
         //URL로 단일 파일 다운로드
-        private async Task downloadFile(String item)
+        private async Task downloadFile(String item, int Max, int Index)
         {
             //파일 존재하면 걍 안받
             if (File.Exists(BaseDirectory + item))
@@ -85,7 +86,7 @@ namespace Cobalt
                 item = saveFormatFunction(item);
 
             //다운로드 시작 핸들 전달
-            OnDownloadStarted(new DownloaderEventArgs(BaseURL, BaseDirectory, item));
+            OnDownloadStarted(new DownloaderEventArgs(Max, Index, BaseURL, BaseDirectory, item));
 
             //다운로드 시작
             try
@@ -94,7 +95,7 @@ namespace Cobalt
             }
             catch
             {
-                OnDownloadError(new DownloaderEventArgs(BaseURL, BaseDirectory, item));
+                OnDownloadError(new DownloaderEventArgs(Max, Index, BaseURL, BaseDirectory, item));
                 return;
             }
         }
@@ -147,12 +148,16 @@ namespace Cobalt
         public String File { get; set; }
         public String Directory { get; set; }
         public String Url { get; set; }
+        public int Total { get; set; }
+        public int Current { get; set; }
 
-        public DownloaderEventArgs(String Url, String Directory, String File)
+        public DownloaderEventArgs(int Total, int Current, String Url, String Directory, String File)
         {
             this.Url = Url;
             this.Directory = Directory;
             this.File = File;
+            this.Total = Total;
+            this.Current = Current;
         }
     }
 }

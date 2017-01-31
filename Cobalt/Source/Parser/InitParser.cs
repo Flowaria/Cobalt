@@ -1,4 +1,5 @@
-﻿using Cobalt.Enums;
+﻿using Cobalt.Data;
+using Cobalt.Enums;
 using Cobalt.Parser;
 using Cobalt.TFItems;
 using System;
@@ -14,18 +15,14 @@ using System.Windows.Controls;
 
 namespace Cobalt.Src.Parser
 {
-    class InitParser
+    public class InitParser
     {
-        ProgressBar eBar;
-        Label eLabel;
-        public InitParser(ProgressBar bar, Label label)
-        {
-            eBar = bar;
-            eLabel = label;
-        }
+        public ProgressBar Progress;
+        public Label TextBox;
 
         int QuerryCountTotal;
         int QuerryCount;
+
         public async Task initSchema(SchemaParser db)
         {
             //난 초기화를 좋아하니까 ㅎ
@@ -36,7 +33,7 @@ namespace Cobalt.Src.Parser
                 Directory.CreateDirectory(Properties.Settings.Default.PATH_IMG_ITEMS);
 
             List<String> FileList = new List<String>();
-            foreach (TFItem item in db.querryAllItem())
+            foreach (TFItem item in ItemsData.Items)
             {
                 if (item.ImageURL != null)
                 {
@@ -52,7 +49,7 @@ namespace Cobalt.Src.Parser
             {
                 //설정
                 QuerryCountTotal = FileList.Count;
-                eBar.IsIndeterminate = false;
+                Progress.IsIndeterminate = false;
 
                 //다운로더 생성
                 Downloader dl = new Downloader();
@@ -100,7 +97,7 @@ namespace Cobalt.Src.Parser
         void c_DownloadFileStarted(object sender, DownloaderEventArgs e)
         {
             // 이미지 다운로드 중 . . . : filename.png 형식으로 라벨 변경
-            eLabel.Content = String.Format("{0} : {1}", Properties.Settings.Default.Load_Item_Image, e.File);
+            TextBox.Content = String.Format("{0} : {1}", Properties.Settings.Default.Load_Item_Image, e.File);
         }
 
         /*
@@ -110,13 +107,14 @@ namespace Cobalt.Src.Parser
         {
             QuerryCount++;
             double percentage = (double)QuerryCount / QuerryCountTotal * 100;
-            eBar.Value = percentage;
+            Progress.Value = percentage;
         }
 
-
+        /*
         public async Task initTemplate(TemplateParser db)
         {
 
         }
+        */
     }
 }

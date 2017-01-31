@@ -37,7 +37,9 @@ namespace Cobalt
 
         public async Task initResource()
         {
-            InitParser initP = new InitParser(w_Loading.eBar, w_Loading.eLabel);
+            InitParser initP = new InitParser();
+            initP.Progress = w_Loading.eBar;
+            initP.TextBox = w_Loading.eLabel;
             w_Loading.Show();
             await p_Schema.parse(); //스캐마 파싱
             await initP.initSchema(p_Schema);
