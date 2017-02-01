@@ -35,7 +35,7 @@ namespace Cobalt
              * 출력 포멧
              * wave_started:Trigger
         */
-        //파일이름 포멧
+        //릴레이 포멧
         public static string RelayOutputFormat(string relay, string action)
         {
             if (relay != null && action != null)

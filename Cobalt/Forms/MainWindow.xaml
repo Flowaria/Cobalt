@@ -3,16 +3,19 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Cobalt"
-        xmlns:TFControl="clr-namespace:Cobalt.Controls"
-        xmlns:Tab="clr-namespace:Cobalt.Windows"
+        xmlns:local="clr-namespace:Cobalt.Forms"
+        xmlns:TFControl="clr-namespace:Cobalt.Forms.Controls"
+        xmlns:Tab="clr-namespace:Cobalt.Forms.Tab"
         mc:Ignorable="d"
         Title="Cobalt"
         Height="350" Width="525"
-        Background="#FF2D2D2D"
         ResizeMode="CanResizeWithGrip"
         BorderThickness="0"
         WindowStartupLocation="CenterScreen" WindowState="Maximized"
+        Closing="Window_Closing"
+        Closed="Window_Closed"
+        Loaded="Window_Loaded"
+        Background="#FF2D2D2D"
         >
 
     <Grid>
@@ -20,9 +23,7 @@
             <!--메뉴바 영역-->
             <RowDefinition Height="18"/>
             <!--웨이브 선택 영역-->
-            <RowDefinition Height="24"/>
-            <!--웨이브 선택 스크롤-->
-            <RowDefinition Height="20"/>
+            <RowDefinition Height="32"/>
             <!--프로그램 창 영역-->
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
@@ -53,61 +54,73 @@
         </Grid>
 
         <!--웨이브 선택 영역-->
-        <Grid Grid.Row="1" Background="#FF2D2D2D">
+        <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <!--왼쪽으로-->
-                <ColumnDefinition Width="24"/>
+                <ColumnDefinition Width="32"/>
                 <!--목록-->
                 <ColumnDefinition Width="1*"/>
                 <!--오른쪽으로-->
-                <ColumnDefinition Width="24"/>
+                <ColumnDefinition Width="32"/>
             </Grid.ColumnDefinitions>
 
             <!--버튼들-->
-            <Button x:Name="buttonLeft" Grid.Column="0"  Content="《" Width="24"/>
-            <Button x:Name="buttonRight" Grid.Column="2" Content="》" Width="24"/>
+            <Button x:Name="buttonLeft" Grid.Column="0"  Content="《" Width="32"/>
+            <Button x:Name="buttonRight" Grid.Column="2" Content="》" Width="32"/>
 
             <!--가운데 영역-->
             <StackPanel Grid.Column="1" VerticalAlignment="Center" Orientation="Horizontal" HorizontalAlignment="Center">
-                <Button x:Name="button222" Content="Wave 1" Width="48" Style="{DynamicResource ButtonWave}"/>
+                <Button Content="Wave 1" Width="48" Style="{DynamicResource ButtonWave}"/>
+                <Button Content="Wave 2" Width="48" Style="{DynamicResource ButtonWave}"/>
+                <Button Content="Wave 3" Width="48" Style="{DynamicResource ButtonWave}"/>
+                <Button Content="Wave 4" Width="48" Style="{DynamicResource ButtonWave}"/>
+                <Button Content="Wave 5" Width="48" Style="{DynamicResource ButtonWave}"/>
+                <Button Content="Wave 6" Width="48" Style="{DynamicResource ButtonWave}"/>
+                <Button Content="Wave 7" Width="48" Style="{DynamicResource ButtonWave}"/>
+                <Button Content="Wave 8" Width="48" Style="{DynamicResource ButtonWave}"/>
+                <Button Content="Wave 9" Width="48" Style="{DynamicResource ButtonWave}"/>
             </StackPanel>
         </Grid>
 
-        <!--스크롤바-->
-        <Grid Grid.Row="2">
-            <Slider x:Name="waveSlider" Width="128" Maximum="2" Value="1" VerticalAlignment="Center" HorizontalAlignment="Center"
-                    PreviewMouseUp="waveSlider_MouseUp"/>
-        </Grid>
-
         <!--각종 유틸-->
-        <Grid Grid.Row="3">
-            <TabControl x:Name="tabControl" TabStripPlacement="Left">
+        <Grid Grid.Row="2">
+            <TabControl x:Name="tabControl" TabStripPlacement="Top">
                 <TabControl.Resources>
                     <Style TargetType="{x:Type TabItem}">
-                        <Setter Property="HeaderTemplate">
+                        <Setter Property="Width" Value="64" />
+                        <Setter Property="Padding" Value="3" />
+                        <Setter Property="Background" Value="White"/>
+                        <Setter Property="Template">
                             <Setter.Value>
-                                <DataTemplate>
-                                    <ContentPresenter Content="{TemplateBinding Content}">
-                                        <ContentPresenter.LayoutTransform>
-                                            <RotateTransform Angle="270" />
-                                        </ContentPresenter.LayoutTransform>
-                                    </ContentPresenter>
-                                </DataTemplate>
+                                <ControlTemplate TargetType="TabItem">
+                                    <Border Name="Border" BorderThickness="1,1,1,0" BorderBrush="Gainsboro" CornerRadius="4,50,0,0" Margin="0,0,-10,0" Padding="0,0,30,0">
+                                        <ContentPresenter x:Name="ContentSite"
+                                        VerticalAlignment="Center"
+                                        HorizontalAlignment="Center"
+                                        ContentSource="Header"
+                                        Margin="0,4"/>
+                                    </Border>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="IsSelected" Value="True">
+                                            <Setter TargetName="Border" Property="Background" Value="#FF97E287" />
+                                        </Trigger>
+                                        <Trigger Property="IsSelected" Value="False">
+                                            <Setter TargetName="Border" Property="Background" Value="GhostWhite" />
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
                             </Setter.Value>
                         </Setter>
-                        <Setter Property="Padding" Value="3" />
+
                     </Style>
                 </TabControl.Resources>
-                <TabItem Header="설정">
+                <TabItem Header="설정" >
                     <Tab:TabSetting/>
                 </TabItem>
                 <TabItem Header="웨이브">
-                    <Grid Background="#FFE5E5E5"/>
+                    <Tab:TabWave />
                 </TabItem>
                 <TabItem Header="지원">
-                    <Grid Background="#FFE5E5E5"/>
-                </TabItem>
-                <TabItem Header="템플릿">
                     <Grid Background="#FFE5E5E5"/>
                 </TabItem>
             </TabControl>

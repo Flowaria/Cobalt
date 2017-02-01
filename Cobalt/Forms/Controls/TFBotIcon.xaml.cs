@@ -3,7 +3,7 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
-namespace Cobalt.Controls
+namespace Cobalt.Forms.Controls
 {
     /// <summary>
     /// TFBotIcon.xaml에 대한 상호 작용 논리

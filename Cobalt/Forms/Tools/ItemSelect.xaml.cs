@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 
-namespace Cobalt.Forms
+namespace Cobalt.Forms.Tools
 {
     public partial class ItemSelect : Window
     {

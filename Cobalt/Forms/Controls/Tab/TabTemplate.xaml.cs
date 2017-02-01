@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Cobalt.Windows
+namespace Cobalt.Forms.Tab
 {
     /// <summary>
     /// TabTemplate.xaml에 대한 상호 작용 논리

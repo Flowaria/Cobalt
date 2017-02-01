@@ -77,6 +77,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Source\FileIO\Project\PopProject.cs" />
     <Compile Include="Forms\Controls\TFBotIcon.xaml.cs">
       <DependentUpon>TFBotIcon.xaml</DependentUpon>
     </Compile>
@@ -98,31 +99,30 @@
     <Compile Include="LoadingWindow.xaml.cs">
       <DependentUpon>LoadingWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Forms\MainWindowHandler.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Cobalt\Data\ItemsData.cs" />
-    <Compile Include="Cobalt\Data\TemplatesData.cs" />
-    <Compile Include="Cobalt\Enums\TFEnums.cs" />
-    <Compile Include="Cobalt\FileIO\Config\XmlConfig.cs" />
-    <Compile Include="Cobalt\FileIO\Downloader\Downloader.cs" />
-    <Compile Include="Cobalt\FileIO\FileFunction.cs" />
-    <Compile Include="Cobalt\MvM\Element\Child\Child.cs" />
-    <Compile Include="Cobalt\MvM\Element\Child\Tank.cs" />
-    <Compile Include="Cobalt\MvM\Element\Child\TFBot.cs" />
-    <Compile Include="Cobalt\MvM\Element\Container\Mission.cs" />
-    <Compile Include="Cobalt\MvM\Element\Container\WaveSpawn.cs" />
-    <Compile Include="Cobalt\FileIO\Downloader\IconDownloader.cs" />
-    <Compile Include="Cobalt\FileIO\Config\MapConfig.cs" />
-    <Compile Include="Cobalt\Parser\TemplateParser.cs" />
-    <Compile Include="Cobalt\Parser\SchemaParser.cs" />
-    <Compile Include="Cobalt\Format.cs" />
-    <Compile Include="Cobalt\TFItems\TFAttribute.cs" />
-    <Compile Include="Cobalt\TFItems\TFItemInstance.cs" />
-    <Compile Include="Cobalt\TFItems\TFItem.cs" />
+    <Compile Include="Source\Data\ItemsData.cs" />
+    <Compile Include="Source\Data\TemplatesData.cs" />
+    <Compile Include="Source\Enums\TFEnums.cs" />
+    <Compile Include="Source\FileIO\Config\XmlConfig.cs" />
+    <Compile Include="Source\FileIO\Downloader\Downloader.cs" />
+    <Compile Include="Source\FileIO\FileFunction.cs" />
+    <Compile Include="Source\MvM\Element\Child\Child.cs" />
+    <Compile Include="Source\MvM\Element\Child\Tank.cs" />
+    <Compile Include="Source\MvM\Element\Child\TFBot.cs" />
+    <Compile Include="Source\MvM\Element\Container\Mission.cs" />
+    <Compile Include="Source\MvM\Element\Container\WaveSpawn.cs" />
+    <Compile Include="Source\FileIO\Downloader\IconDownloader.cs" />
+    <Compile Include="Source\FileIO\Config\MapConfig.cs" />
+    <Compile Include="Source\Parser\TemplateParser.cs" />
+    <Compile Include="Source\Parser\SchemaParser.cs" />
+    <Compile Include="Source\Format.cs" />
+    <Compile Include="Source\TFItems\TFAttribute.cs" />
+    <Compile Include="Source\TFItems\TFItemInstance.cs" />
+    <Compile Include="Source\TFItems\TFItem.cs" />
     <Compile Include="Forms\Tools\ItemSelect.xaml.cs">
       <DependentUpon>ItemSelect.xaml</DependentUpon>
     </Compile>
@@ -194,9 +194,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Forms\Windows\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Resource Include="Resources\icon.ico" />
   </ItemGroup>
