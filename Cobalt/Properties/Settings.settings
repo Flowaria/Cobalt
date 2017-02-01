@@ -35,5 +35,8 @@
     <Setting Name="VERSION" Type="System.Double" Scope="Application">
       <Value Profile="(Default)">1</Value>
     </Setting>
+    <Setting Name="PATH_CFG_MAP" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Config/Maps/</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

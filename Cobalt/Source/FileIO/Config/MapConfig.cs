@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Cobalt.Properties;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,6 +11,18 @@ namespace Cobalt.FileIO.CFG
     public static class MapConfig
     {
         public static List<MapCFG> Maps;
+
+        static MapConfig()
+        {
+            FileFunction.ExportString(Resources.mvm_decoy, Settings.Default.PATH_CFG_MAP, "mvm_decoy.xml");
+            FileFunction.ExportString(Resources.mvm_coaltown, Settings.Default.PATH_CFG_MAP, "mvm_coaltown.xml");
+            FileFunction.ExportString(Resources.mvm_mannworks, Settings.Default.PATH_CFG_MAP, "mvm_mannworks.xml");
+            FileFunction.ExportString(Resources.mvm_ghost_town, Settings.Default.PATH_CFG_MAP, "mvm_ghost_town.xml");
+            FileFunction.ExportString(Resources.mvm_bigrock, Settings.Default.PATH_CFG_MAP, "mvm_bigrock.xml");
+            FileFunction.ExportString(Resources.mvm_rottenburg, Settings.Default.PATH_CFG_MAP, "mvm_rottenburg.xml");
+            FileFunction.ExportString(Resources.mvm_mannhattan, Settings.Default.PATH_CFG_MAP, "mvm_mannhattan.xml");
+        }
+
         public static void loadConfig(string name)
         {
             XmlDocument doc = new XmlDocument();

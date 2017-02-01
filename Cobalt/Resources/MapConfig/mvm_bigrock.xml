@@ -2,7 +2,7 @@
 	<!--Bigrock v02-->
 	<Where>
 		<Where name="spawnbot"/>
-    <Where name="spawnbot_giant"/>
+		<Where name="spawnbot_giant"/>
 		<Where name="spawnbot_mission_sniper"/>
 		<Where name="spawnbot_mission_spy"/>
 	</Where>

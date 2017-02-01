@@ -62,6 +62,7 @@ namespace Cobalt
 
             //파일 로드
             XmlConfig.loadConfig();
+            MapConfig.loadConfig("");
         }
     }
 }

@@ -101,6 +101,203 @@ namespace Cobalt.Properties {
         }
         
         /// <summary>
+        ///   &lt;Bigrock&gt;
+        ///	&lt;!--Bigrock v02--&gt;
+        ///	&lt;Where&gt;
+        ///		&lt;Where name=&quot;spawnbot&quot;/&gt;
+        ///    &lt;Where name=&quot;spawnbot_giant&quot;/&gt;
+        ///		&lt;Where name=&quot;spawnbot_mission_sniper&quot;/&gt;
+        ///		&lt;Where name=&quot;spawnbot_mission_spy&quot;/&gt;
+        ///	&lt;/Where&gt;
+        ///	
+        ///	&lt;Relay&gt;
+        ///		&lt;Wave&gt;
+        ///			&lt;WaveStarted name=&quot;wave_start_relay&quot;/&gt;
+        ///			&lt;WaveStarted name=&quot;wave_start_relay_boss&quot;/&gt;
+        ///      &lt;WaveStarted name=&quot;wave_start_relay_ironman&quot;/&gt;
+        ///      &lt;WaveDone name=&quot;wave_finished_relay&quot;/&gt;
+        ///			&lt;WaveDone name=&quot;wave_finished_relay_boss&quot;/&gt;
+        ///		&lt;/Wave&gt;
+        ///		&lt;Spawn&gt;
+        ///			&lt;FirstSpawn name=&quot;boss_sp[나머지 문자열은 잘림]&quot;;과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string mvm_bigrock {
+            get {
+                return ResourceManager.GetString("mvm_bigrock", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   &lt;Coaltown&gt;
+        ///	&lt;!--Coaltown v02--&gt;
+        ///	&lt;Where&gt;
+        ///		&lt;Where name=&quot;spawnbot&quot;/&gt;
+        ///		&lt;Where name=&quot;spawnbot_giant&quot;/&gt;
+        ///    &lt;Where name=&quot;spawnbot_invasion&quot;/&gt;
+        ///		&lt;Where name=&quot;spawnbot_mission_sniper&quot;/&gt;
+        ///		&lt;Where name=&quot;spawnbot_mission_spy&quot;/&gt;
+        ///	&lt;/Where&gt;
+        ///	
+        ///	&lt;Relay&gt;
+        ///		&lt;Wave&gt;
+        ///			&lt;WaveStarted name=&quot;wave_start_relay&quot;/&gt;
+        ///			&lt;WaveDone name=&quot;wave_finished_relay&quot;/&gt;
+        ///		&lt;/Wave&gt;
+        ///		&lt;Spawn&gt;
+        ///			&lt;FirstSpawn name=&quot;boss_spawn_relay&quot;/&gt;
+        ///		&lt;/Spawn&gt;
+        ///		&lt;Tank&gt;
+        ///			&lt;Killed name=&quot;boss_dead_relay&quot;/&gt;
+        ///			&lt;BombDropped name=&quot;boss_deploy_relay&quot;/[나머지 문자열은 잘림]&quot;;과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string mvm_coaltown {
+            get {
+                return ResourceManager.GetString("mvm_coaltown", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   &lt;Decoy&gt;
+        ///	&lt;!--Decoy v02--&gt;
+        ///	&lt;Where&gt;
+        ///		&lt;Where name=&quot;spawnbot&quot;/&gt;
+        ///		&lt;Where name=&quot;spawnbot_left&quot;/&gt;
+        ///		&lt;Where name=&quot;spawnbot_right&quot;/&gt;
+        ///    &lt;Where name=&quot;spawnbot_single_flag&quot;/&gt;
+        ///		&lt;Where name=&quot;spawnbot_invasion&quot;/&gt;
+        ///    &lt;Where name=&quot;spawnbot_mission_sniper&quot;/&gt;
+        ///		&lt;Where name=&quot;spawnbot_mission_spy&quot;/&gt;
+        ///	&lt;/Where&gt;
+        ///	
+        ///	&lt;Relay&gt;
+        ///		&lt;Wave&gt;
+        ///			&lt;WaveStarted name=&quot;wave_start_relay&quot;/&gt;
+        ///			&lt;WaveDone name=&quot;wave_finished_relay&quot;/&gt;
+        ///		&lt;/Wave&gt;
+        ///		&lt;Spawn&gt;
+        ///			&lt;FirstSpawn name=&quot;boss_spawn_relay&quot;/&gt;
+        ///		&lt;/Spawn&gt;
+        ///		&lt;Tank&gt;
+        ///			&lt;Kille[나머지 문자열은 잘림]&quot;;과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string mvm_decoy {
+            get {
+                return ResourceManager.GetString("mvm_decoy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   &lt;GhostTown&gt;
+        ///	&lt;!--GhostTown v02--&gt;
+        ///	&lt;Where&gt;
+        ///		&lt;Where name=&quot;spawnbot&quot;/&gt;
+        ///    &lt;Where name=&quot;spawnbot_invasion&quot;/&gt;
+        ///		&lt;Where name=&quot;spawnbot_scattered&quot;/&gt;
+        ///    &lt;Where name=&quot;spawnbot_giant&quot;/&gt;
+        ///		&lt;Where name=&quot;spawnbot_mission_sniper&quot;/&gt;
+        ///		&lt;Where name=&quot;spawnbot_mission_spy&quot;/&gt;
+        ///	&lt;/Where&gt;
+        ///	
+        ///	&lt;Relay&gt;
+        ///		&lt;Wave&gt;
+        ///			&lt;WaveStarted name=&quot;wave_start_relay&quot;/&gt;
+        ///			&lt;WaveStarted name=&quot;wave_start_relay_666&quot;/&gt;
+        ///		&lt;/Wave&gt;
+        ///		&lt;Tank&gt;
+        ///			&lt;Killed name=&quot;boss_dead_relay&quot;/&gt;
+        ///			&lt;BombDropped name=&quot;boss_deploy_relay&quot;/&gt;
+        ///		&lt;/Tank&gt;
+        ///	&lt;/Re[나머지 문자열은 잘림]&quot;;과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string mvm_ghost_town {
+            get {
+                return ResourceManager.GetString("mvm_ghost_town", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   &lt;MannHattan&gt;
+        ///	&lt;!--Mannhattan v02--&gt;
+        ///	&lt;Where&gt;
+        ///		&lt;Where name=&quot;spawnbot_main0&quot;/&gt;
+        ///		&lt;Where name=&quot;spawnbot_main0_squad&quot;/&gt;
+        ///		&lt;Where name=&quot;spawnbot_main1&quot;/&gt;
+        ///		&lt;Where name=&quot;spawnbot_main1_slow&quot;/&gt;
+        ///		&lt;Where name=&quot;spawnbot_main2&quot;/&gt;
+        ///		&lt;Where name=&quot;spawnbot_upper0&quot;/&gt;
+        ///		&lt;Where name=&quot;spawnbot_upper1&quot;/&gt;
+        ///		&lt;Where name=&quot;spawnbot_upper2&quot;/&gt;
+        ///    &lt;Where name=&quot;spawnbot_mission_sniper0&quot;/&gt;
+        ///    &lt;Where name=&quot;spawnbot_mission_sniper1&quot;/&gt;
+        ///    &lt;Where name=&quot;spawnbot_mission_spy&quot;/&gt;
+        ///    
+        ///  &lt;/Where&gt;
+        ///	
+        ///	&lt;Relay&gt;
+        ///		&lt;WaveInit n[나머지 문자열은 잘림]&quot;;과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string mvm_mannhattan {
+            get {
+                return ResourceManager.GetString("mvm_mannhattan", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   &lt;MannWorks&gt;
+        ///	&lt;!--MannWorks v02--&gt;
+        ///	&lt;Where&gt;
+        ///		&lt;Where name=&quot;spawnbot&quot;/&gt;
+        ///		&lt;Where name=&quot;spawnbot_left&quot;/&gt;
+        ///		&lt;Where name=&quot;spawnbot_right&quot;/&gt;
+        ///		&lt;Where name=&quot;spawnbot_lower&quot;/&gt;
+        ///		&lt;Where name=&quot;spawnbot_mission_sniper&quot;/&gt;
+        ///		&lt;Where name=&quot;spawnbot_mission_spy&quot;/&gt;
+        ///	&lt;/Where&gt;
+        ///	
+        ///	&lt;Relay&gt;
+        ///		&lt;Wave&gt;
+        ///			&lt;WaveStarted name=&quot;bombpath_arrows_clear_relay&quot;/&gt;
+        ///      &lt;WaveStarted name=&quot;bombpath_arrows_clear_relay_ironman&quot;/&gt;
+        ///      
+        ///      &lt;WaveDone name=&quot;bombpath_wavefinished&quot;/&gt;
+        ///		&lt;/Wave&gt;
+        ///		&lt;Tank&gt;
+        ///			&lt;Killed name=&quot;boss_de[나머지 문자열은 잘림]&quot;;과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string mvm_mannworks {
+            get {
+                return ResourceManager.GetString("mvm_mannworks", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   &lt;Rottenburg&gt;
+        ///	&lt;!--Rottenburg v02--&gt;
+        ///	&lt;Where&gt;
+        ///		&lt;Where name=&quot;spawnbot&quot;/&gt;
+        ///		&lt;Where name=&quot;flankers&quot;/&gt;
+        ///		&lt;Where name=&quot;spawnbot_chief&quot;/&gt;
+        ///		&lt;Where name=&quot;spawnbot_mission_sniper&quot;/&gt;
+        ///		&lt;Where name=&quot;spawnbot_mission_spy&quot;/&gt;
+        ///		&lt;Where name=&quot;spawnbot_mission_sentry_buster&quot;/&gt;
+        ///	&lt;/Where&gt;
+        ///	
+        ///	&lt;Relay&gt;
+        ///		&lt;Wave&gt;
+        ///			&lt;WaveStarted name=&quot;wave_start_relay_classic&quot;/&gt;
+        ///      &lt;WaveStarted name=&quot;wave_start_relay_ironman&quot;/&gt;
+        ///      &lt;WaveDone name=&quot;wave_finished_relay&quot;/&gt;
+        ///		&lt;/Wave&gt;
+        ///		&lt;Spawn&gt;
+        ///			&lt;FirstSpawn name=&quot;boss_spawn_re[나머지 문자열은 잘림]&quot;;과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string mvm_rottenburg {
+            get {
+                return ResourceManager.GetString("mvm_rottenburg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   WaveSchedule
         ///{
         ///	Templates

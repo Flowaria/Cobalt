@@ -160,4 +160,25 @@
   <data name="robot_standard" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\template\robot_standard.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;ks_c_5601-1987</value>
   </data>
+  <data name="mvm_bigrock" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\mapconfig\mvm_bigrock.xml;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;ks_c_5601-1987</value>
+  </data>
+  <data name="mvm_coaltown" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\mapconfig\mvm_coaltown.xml;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;ks_c_5601-1987</value>
+  </data>
+  <data name="mvm_decoy" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\mapconfig\mvm_decoy.xml;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;ks_c_5601-1987</value>
+  </data>
+  <data name="mvm_ghost_town" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\mapconfig\mvm_ghost_town.xml;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;ks_c_5601-1987</value>
+  </data>
+  <data name="mvm_mannhattan" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\mapconfig\mvm_mannhattan.xml;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;ks_c_5601-1987</value>
+  </data>
+  <data name="mvm_mannworks" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\mapconfig\mvm_mannworks.xml;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;ks_c_5601-1987</value>
+  </data>
+  <data name="mvm_rottenburg" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\mapconfig\mvm_rottenburg.xml;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;ks_c_5601-1987</value>
+  </data>
 </root>

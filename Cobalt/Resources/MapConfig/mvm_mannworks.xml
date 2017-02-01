@@ -12,9 +12,8 @@
 	<Relay>
 		<Wave>
 			<WaveStarted name="bombpath_arrows_clear_relay"/>
-      <WaveStarted name="bombpath_arrows_clear_relay_ironman"/>
-      
-      <WaveDone name="bombpath_wavefinished"/>
+			<WaveStarted name="bombpath_arrows_clear_relay_ironman"/>
+			<WaveDone name="bombpath_wavefinished"/>
 		</Wave>
 		<Tank>
 			<Killed name="boss_dead_relay"/>

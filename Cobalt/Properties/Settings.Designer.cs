@@ -139,5 +139,17 @@ namespace Cobalt.Properties {
                 return ((double)(this["VERSION"]));
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Config/Maps/")]
+        public string PATH_CFG_MAP {
+            get {
+                return ((string)(this["PATH_CFG_MAP"]));
+            }
+            set {
+                this["PATH_CFG_MAP"] = value;
+            }
+        }
     }
 }
