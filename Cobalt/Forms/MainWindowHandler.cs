@@ -1,7 +1,7 @@
 ﻿using System.Windows.Controls;
 using System.Windows.Input;
 
-namespace Cobalt
+namespace Cobalt.Forms
 {
     public partial class MainWindow
     {

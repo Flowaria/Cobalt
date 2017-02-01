@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Cobalt"
         mc:Ignorable="d"
-        Title="LoadingWindow" Height="600" Width="800" WindowStyle="None" WindowStartupLocation="CenterScreen" AllowsTransparency="True" Background="{x:Null}">
+        Title="LoadingWindow" Height="600" Width="800" WindowStyle="None" WindowStartupLocation="CenterScreen" AllowsTransparency="True" Background="{x:Null}"
+        ContentRendered="Window_ContentRendered">
     <Grid>
 
         <Grid.RowDefinitions>
