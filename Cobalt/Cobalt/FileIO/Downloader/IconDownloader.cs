@@ -18,8 +18,8 @@ namespace Cobalt.FileIO.DL
         public ProgressBar Progress;
         public Label TextBox;
 
-        int QuerryCountTotal;
-        int QuerryCount;
+        private int QuerryCountTotal;
+        private int QuerryCount;
 
         public async Task download()
         {

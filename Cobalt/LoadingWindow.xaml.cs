@@ -20,8 +20,6 @@ namespace Cobalt
         {  
             InitializeComponent();
 
-            
-
             mainWindow = new MainWindow();
             mainWindow.Hide();
 

@@ -1,4 +1,6 @@
-﻿namespace Cobalt
+﻿using System;
+
+namespace Cobalt
 {
     public class Format
     {
@@ -25,6 +27,22 @@
         public static string ItemImage(string str)
         {
             return str.Split('.')[0] + ".png";
+        }
+
+        /*포멧
+             * 입력 포멧
+             * wave_started / Trigger
+             * 출력 포멧
+             * wave_started:Trigger
+        */
+        //파일이름 포멧
+        public static string RelayOutputFormat(string relay, string action)
+        {
+            if (relay != null && action != null)
+            {
+                return String.Format("%s:%s", relay, action);
+            }
+            return null;
         }
     }
 }

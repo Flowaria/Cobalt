@@ -12,7 +12,7 @@ namespace Cobalt.Parser
     {
         //API 주소
         //추후 상수가 아닌 변수로 변경할것
-        public string API_URL;
+        private string API_URL;
 
         //초기화
         public SchemaParser()

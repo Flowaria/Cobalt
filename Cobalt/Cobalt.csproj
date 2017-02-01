@@ -123,8 +123,6 @@
     <Compile Include="Cobalt\TFItems\TFAttribute.cs" />
     <Compile Include="Cobalt\TFItems\TFItemInstance.cs" />
     <Compile Include="Cobalt\TFItems\TFItem.cs" />
-    <Compile Include="Cobalt\MvM\Function\BotList.cs" />
-    <Compile Include="Cobalt\MvM\Function\TFFunction.cs" />
     <Compile Include="Forms\Tools\ItemSelect.xaml.cs">
       <DependentUpon>ItemSelect.xaml</DependentUpon>
     </Compile>
