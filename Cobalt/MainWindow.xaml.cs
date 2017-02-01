@@ -1,13 +1,12 @@
-﻿using Cobalt.Config;
+﻿using Cobalt.FileIO;
+using Cobalt.FileIO.CFG;
+using Cobalt.FileIO.DL;
 using Cobalt.Forms.Tools;
 using Cobalt.Parser;
-using Cobalt.Src;
-using Cobalt.Src.Parser;
+using Cobalt.Properties;
 using System;
-using System.IO;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Xml;
 
 namespace Cobalt
 {
@@ -37,12 +36,12 @@ namespace Cobalt
 
         public async Task initResource()
         {
-            InitParser initP = new InitParser();
-            initP.Progress = w_Loading.eBar;
-            initP.TextBox = w_Loading.eLabel;
+            IconDownloader icodl = new IconDownloader();
+            icodl.Progress = w_Loading.eBar;
+            icodl.TextBox = w_Loading.eLabel;
             w_Loading.Show();
             await p_Schema.parse(); //스캐마 파싱
-            await initP.initSchema(p_Schema);
+            await icodl.download();
             //await p_Template.parse(); //템플릿 파싱
             //await initP.initTemplate(p_Template);
             w_Loading.Close();
@@ -52,18 +51,10 @@ namespace Cobalt
 
         public void initConfig()
         {
-            Properties.Settings Settings = Properties.Settings.Default;
-
             //콘피그 파일이 없으면 만들어라
-            if (!File.Exists(Settings.PATH_CFG + "config.xml"))
+            
+            if(FileFunction.ExportString(Properties.Resources.config, Settings.Default.PATH_CFG, "config.xml") == FileFunction.Status.Success)
             {
-                //디렉토리 생성
-                if (!Directory.Exists(Settings.PATH_CFG))
-                    Directory.CreateDirectory(Settings.PATH_CFG);
-
-                //파일 추출
-                File.WriteAllText(Settings.PATH_CFG + "config.xml", Properties.Resources.config);
-
                 MessageBox.Show("최초 실행입니다. config.xml 파일을 수정해주세요", "닫는중...",
                     MessageBoxButton.OK, MessageBoxImage.Warning);
                 Environment.Exit(-1);
@@ -71,8 +62,6 @@ namespace Cobalt
 
             //파일 로드
             XmlConfig.loadConfig();
-
-            //Properties.Settings.Default.Save();
         }
     }
 }

@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 
-namespace Cobalt.Config
+namespace Cobalt.FileIO.CFG
 {
     public static class MapConfig
     {

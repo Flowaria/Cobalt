@@ -9,7 +9,7 @@ namespace Cobalt.MvM.Element
         public string BaseTemplateFile = null;
 
         public TFClass Class = TFClass.None;
-        public TFBotAttribute[] Attributes;
+        public TFBotAttribute Attributes = TFBotAttribute.None;
         public TFBotSkill Skill = TFBotSkill.Normal;
         public TFBotWeaponRestrictions WeaponRestrict = TFBotWeaponRestrictions.None;
 

@@ -8,7 +8,7 @@ using System.Security.Cryptography;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace Cobalt
+namespace Cobalt.FileIO.DL
 {
     //DOWNLOADER
     public enum DownloaderOverrideMode
@@ -16,10 +16,12 @@ namespace Cobalt
         All, WhenNotEqual, Off
     };
 
-    public class Downloader
+    /*
+     * 파일 리스트의 파일을 비동기로 받아오는 클래스
+     */
+    public class Downloader : IDisposable
     {
         private WebClient client;
-        private MD5CryptoServiceProvider md5;
 
         public DownloaderOverrideMode Mode = DownloaderOverrideMode.Off;
         public string BaseURL; //다운로드시 중점 url
@@ -27,8 +29,6 @@ namespace Cobalt
 
         public Func<string, string> saveFormatFunction = null;
         public Func<string, string, bool> validateFunction = null;
-
-        public bool AutoDispose = false;
 
         public event EventHandler<DownloaderEventArgs> DownloadFileStarted = null;
         public event EventHandler<DownloaderEventArgs> DownloadFileError = null;
@@ -50,7 +50,6 @@ namespace Cobalt
         {
             client = new WebClient();
             client.Encoding = System.Text.Encoding.UTF8;
-            md5 = new MD5CryptoServiceProvider();
         }
 
         //URL 리스트로 다운로드
@@ -59,9 +58,6 @@ namespace Cobalt
             int Max = items.Count;
             for (int i=0; i<Max; i++)
                 await downloadFile(items[i], Max, i);
-
-            if(AutoDispose)
-                client.Dispose();
         }
 
         //URL로 단일 파일 다운로드
@@ -78,7 +74,6 @@ namespace Cobalt
                         return;
                 }
             }
-                
 
             //이름 수정
             String oItem = item;

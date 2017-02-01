@@ -19,14 +19,8 @@ namespace Cobalt.Controls
             }
             set
             {
-                if (value)
-                {
-                    Rectangle_Bg.Fill = bgGiants;
-                }
-                else
-                {
-                    Rectangle_Bg.Fill = bgNormal;
-                }
+                if (value) { Rectangle_Bg.Fill = Icons.bgGiants; }
+                else { Rectangle_Bg.Fill = Icons.bgNormal; }
                 m_IsGiant = value;
             }
         }
@@ -35,40 +29,41 @@ namespace Cobalt.Controls
         {
             get
             {
-                return m_IsGiant;
+                return m_IsCrit;
             }
             set
             {
-                if (value)
-                {
-                    Rectangle_Bg.Stroke = stCrit;
-                }
-                else
-                {
-                    Rectangle_Bg.Stroke = stNormal;
-                }
-                m_IsGiant = value;
+                if (value) { Rectangle_Bg.Stroke = Icons.stCrit; }
+                else { Rectangle_Bg.Stroke = Icons.stNormal; }
+                m_IsCrit = value;
             }
         }
 
-        private SolidColorBrush
-            bgNormal = new SolidColorBrush(),
-            bgGiants = new SolidColorBrush(),
-            stNormal = new SolidColorBrush(),
-            stCrit = new SolidColorBrush();
+        
         public TFBotIcon(BitmapImage icon)
         {
             InitializeComponent();
 
+            Image_Icon.Source = icon;
+
+            Rectangle_Bg.Fill = Icons.bgNormal;
+            Rectangle_Bg.Stroke = Icons.stNormal;
+        }
+    }
+    public static class Icons
+    {
+        public readonly static SolidColorBrush
+            bgNormal = new SolidColorBrush(),
+            bgGiants = new SolidColorBrush(),
+            stNormal = new SolidColorBrush(),
+            stCrit = new SolidColorBrush();
+
+        static Icons()
+        {
             bgNormal.Color = Color.FromRgb(235, 228, 202); //#EBE4CA
             bgGiants.Color = Color.FromRgb(193, 21, 0); //#FF2424
             stNormal.Color = Color.FromArgb(0, 0, 0, 0); //Black
             stCrit.Color = Color.FromRgb(54, 138, 255); //#368AFF
-           
-            Image_Icon.Source = icon;
-
-            Rectangle_Bg.Fill = bgNormal;
-            Rectangle_Bg.Stroke = stCrit;
         }
     }
 }

@@ -1,7 +1,5 @@
-﻿using Cobalt.Enums;
-using Cobalt.MvM.Element;
-using System;
-using System.Collections.Generic;
+﻿using Cobalt.FileIO;
+using Cobalt.Properties;
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
@@ -13,16 +11,9 @@ namespace Cobalt.Parser
     {
         public TemplateParser()
         {
-            if (!Directory.Exists(Properties.Settings.Default.PATH_BASE))
-            {
-                Directory.CreateDirectory(Properties.Settings.Default.PATH_BASE); //디렉토리 생성
-                File.WriteAllText(Properties.Settings.Default.PATH_BASE+"robot_standard.pop",
-                    Properties.Resources.robot_standard);
-                File.WriteAllText(Properties.Settings.Default.PATH_BASE + "robot_giant.pop",
-                    Properties.Resources.robot_giant);
-                File.WriteAllText(Properties.Settings.Default.PATH_BASE + "robot_gatebot.pop",
-                    Properties.Resources.robot_gatebot);
-            }
+            FileFunction.ExportString(Resources.robot_standard, Settings.Default.PATH_BASE, "robot_standard.pop");
+            FileFunction.ExportString(Resources.robot_giant, Settings.Default.PATH_BASE, "robot_giant.pop");
+            FileFunction.ExportString(Resources.robot_gatebot, Settings.Default.PATH_BASE, "robot_gatebot.pop");
         }
 
         public async Task parse()

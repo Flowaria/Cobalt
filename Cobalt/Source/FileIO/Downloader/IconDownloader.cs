@@ -1,21 +1,20 @@
 ﻿using Cobalt.Data;
-using Cobalt.Enums;
 using Cobalt.Parser;
 using Cobalt.TFItems;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Drawing.Imaging;
 using System.IO;
-using System.Linq;
-using System.Net;
-using System.Security.Cryptography;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 
-namespace Cobalt.Src.Parser
+namespace Cobalt.FileIO.DL
 {
-    public class InitParser
+    /*
+     * 아이템을 파싱해 읽어온 데이터를 이용해
+     * 아이콘 파일을 다운로드 해오는 클래스
+     */ 
+    public class IconDownloader
     {
         public ProgressBar Progress;
         public Label TextBox;
@@ -23,7 +22,7 @@ namespace Cobalt.Src.Parser
         int QuerryCountTotal;
         int QuerryCount;
 
-        public async Task initSchema(SchemaParser db)
+        public async Task download()
         {
             //난 초기화를 좋아하니까 ㅎ
             QuerryCountTotal = 0;
@@ -52,44 +51,19 @@ namespace Cobalt.Src.Parser
                 Progress.IsIndeterminate = false;
 
                 //다운로더 생성
-                Downloader dl = new Downloader();
-                dl.BaseURL = "http://media.steampowered.com/apps/440/icons/";
-                dl.BaseDirectory = Properties.Settings.Default.PATH_IMG_ITEMS;
-                dl.DownloadFileStarted += c_DownloadFileStarted;
-                dl.DownloadFileCompleted += c_DownloadFileCompleted;
-                dl.Mode = DownloaderOverrideMode.Off;
-                dl.saveFormatFunction = Format.ItemImage;
-                dl.AutoDispose = true;
-                await dl.downloadFiles(FileList);
+                using (Downloader dl = new Downloader())
+                {
+                    dl.BaseURL = "http://media.steampowered.com/apps/440/icons/";
+                    dl.BaseDirectory = Properties.Settings.Default.PATH_IMG_ITEMS;
+                    dl.DownloadFileStarted += c_DownloadFileStarted;
+                    dl.DownloadFileCompleted += c_DownloadFileCompleted;
+                    dl.Mode = DownloaderOverrideMode.Off;
+                    dl.saveFormatFunction = Format.ItemImage;
+                    await dl.downloadFiles(FileList);
+                }
             }
             return;
         }
-
-        /*
-        public bool isImageValid(string local, string web)
-        {
-            try
-            {
-                using (WebClient client = new WebClient())
-                {
-                    Console.WriteLine("Valid Check!");
-                    MD5CryptoServiceProvider md5 = new MD5CryptoServiceProvider();
-                    byte[] byte_web = client.DownloadData(web);
-                    byte[] byte_local = File.ReadAllBytes(local);
-                    if (byte_web.SequenceEqual(byte_local))
-                    {
-                        Console.WriteLine("Valid!");
-                        return true;
-                    }
-                }
-                return false;
-            }
-            catch
-            {
-                return false;
-            }
-        }
-        */
 
         /*
          * 파일 다운로드 시작시 이벤트
@@ -109,12 +83,5 @@ namespace Cobalt.Src.Parser
             double percentage = (double)QuerryCount / QuerryCountTotal * 100;
             Progress.Value = percentage;
         }
-
-        /*
-        public async Task initTemplate(TemplateParser db)
-        {
-
-        }
-        */
     }
 }

@@ -1,4 +1,6 @@
-﻿namespace Cobalt.Enums
+﻿using System;
+
+namespace Cobalt.Enums
 {
     //TF
     public enum TFClass
@@ -8,6 +10,7 @@
         Medic, Spy, Sniper
     }
 
+    [Flags]
     public enum TFBotAttribute //BOT ATTRIBUTE
     {
         None,
