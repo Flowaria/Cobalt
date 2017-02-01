@@ -1,9 +1,7 @@
-﻿using Cobalt.FileIO;
-using Cobalt.FileIO.CFG;
+﻿using Cobalt.FileIO.CFG;
 using Cobalt.FileIO.DL;
 using Cobalt.Forms.Tools;
 using Cobalt.Parser;
-using Cobalt.Properties;
 using System;
 using System.Threading.Tasks;
 using System.Windows;

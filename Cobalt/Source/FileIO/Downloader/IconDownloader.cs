@@ -1,5 +1,4 @@
 ﻿using Cobalt.Data;
-using Cobalt.Parser;
 using Cobalt.TFItems;
 using System;
 using System.Collections.Generic;
@@ -13,7 +12,7 @@ namespace Cobalt.FileIO.DL
     /*
      * 아이템을 파싱해 읽어온 데이터를 이용해
      * 아이콘 파일을 다운로드 해오는 클래스
-     */ 
+     */
     public class IconDownloader
     {
         public ProgressBar Progress;
