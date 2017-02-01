@@ -13,9 +13,6 @@ namespace Cobalt
     /// </summary>
     public partial class LoadingWindow : Window
     {
-        private SchemaParser p_Schema;
-        private TemplateParser p_Template;
-
         private MainWindow mainWindow;
 
 
@@ -23,8 +20,7 @@ namespace Cobalt
         {  
             InitializeComponent();
 
-            p_Schema = new SchemaParser();
-            p_Template = new TemplateParser();
+            
 
             mainWindow = new MainWindow();
             mainWindow.Hide();
@@ -42,12 +38,19 @@ namespace Cobalt
 
         private async void Window_ContentRendered(object sender, EventArgs e)
         {
+            //컨픽
             XmlConfig.loadConfig();
             MapConfig.loadConfig("");
+
+            //선언
+            SchemaParser Schema = new SchemaParser();
+            TemplateParser Template = new TemplateParser();
             IconDownloader icodl = new IconDownloader();
+
+            //다운로더 컨텐츠 대상 설정
             icodl.Progress = eBar;
             icodl.TextBox = eLabel;
-            await p_Schema.parse(); //스캐마 파싱
+            await Schema.parse(); //스캐마 파싱
             await icodl.download(); //아이콘 다운로드
             //await p_Template.parse(); //템플릿 파싱
             //await initP.initTemplate(p_Template);
