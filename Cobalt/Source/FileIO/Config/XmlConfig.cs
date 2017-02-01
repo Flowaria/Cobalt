@@ -1,4 +1,5 @@
 ﻿using Cobalt.FileIO.DL;
+using Cobalt.Properties;
 using System;
 using System.Threading.Tasks;
 using System.Windows;
@@ -11,6 +12,15 @@ namespace Cobalt.FileIO.CFG
         public static string API_KEY;
         public static string API_LANG;
         
+        static XmlConfig()
+        {
+            if (FileFunction.ExportString(Resources.config, Settings.Default.PATH_CFG, "config.xml") == FileFunction.Status.Success)
+            {
+                MessageBox.Show("최초 실행입니다. config.xml 파일을 수정해주세요", "닫는중...",
+                    MessageBoxButton.OK, MessageBoxImage.Warning);
+                Environment.Exit(-1);
+            }
+        }
 
         public static void loadConfig()
         {

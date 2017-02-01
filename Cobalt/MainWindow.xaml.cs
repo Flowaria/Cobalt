@@ -30,7 +30,8 @@ namespace Cobalt
             nav = new Navigator();
 
             //리소스 불러오기  
-            initConfig();
+            XmlConfig.loadConfig();
+            MapConfig.loadConfig("");
             initResource();   
         }
 
@@ -47,22 +48,6 @@ namespace Cobalt
             w_Loading.Close();
             this.Show();
             nav.Show();
-        }
-
-        public void initConfig()
-        {
-            //콘피그 파일이 없으면 만들어라
-            
-            if(FileFunction.ExportString(Properties.Resources.config, Settings.Default.PATH_CFG, "config.xml") == FileFunction.Status.Success)
-            {
-                MessageBox.Show("최초 실행입니다. config.xml 파일을 수정해주세요", "닫는중...",
-                    MessageBoxButton.OK, MessageBoxImage.Warning);
-                Environment.Exit(-1);
-            }
-
-            //파일 로드
-            XmlConfig.loadConfig();
-            MapConfig.loadConfig("");
         }
     }
 }
