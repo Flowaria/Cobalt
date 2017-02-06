@@ -22,8 +22,6 @@
         <Grid.RowDefinitions>
             <!--메뉴바 영역-->
             <RowDefinition Height="18"/>
-            <!--웨이브 선택 영역-->
-            <RowDefinition Height="32"/>
             <!--프로그램 창 영역-->
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
@@ -31,7 +29,7 @@
         <!--메뉴바 영역 0번째 줄칸-->
         <Grid Grid.Row="0" Background="#FF2D2D2D">
             <StackPanel Grid.Row="0" Orientation="Horizontal" Height="20" VerticalAlignment="Top">
-                <Menu Name="menuBar" VerticalAlignment="Top" FontSize="12" Background="#FF2D2D2D" Foreground="#FFC8C8C8">
+                <Menu Name="menuBar" VerticalAlignment="Top">
                     <MenuItem Name="MenuFile" Header="파일(F)">
                         <MenuItem Name="MenuFile_New" Header="새 프로젝트"/>
                         <MenuItem Name="MenuFile_Open" Header="열기">
@@ -53,74 +51,16 @@
             </StackPanel>
         </Grid>
 
-        <!--웨이브 선택 영역-->
-        <Grid Grid.Row="1">
-            <Grid.ColumnDefinitions>
-                <!--왼쪽으로-->
-                <ColumnDefinition Width="32"/>
-                <!--목록-->
-                <ColumnDefinition Width="1*"/>
-                <!--오른쪽으로-->
-                <ColumnDefinition Width="32"/>
-            </Grid.ColumnDefinitions>
-
-            <!--버튼들-->
-            <Button x:Name="buttonLeft" Grid.Column="0"  Content="《" Width="32"/>
-            <Button x:Name="buttonRight" Grid.Column="2" Content="》" Width="32"/>
-
-            <!--가운데 영역-->
-            <StackPanel Grid.Column="1" VerticalAlignment="Center" Orientation="Horizontal" HorizontalAlignment="Center">
-                <Button Content="Wave 1" Width="48" Style="{DynamicResource ButtonWave}"/>
-                <Button Content="Wave 2" Width="48" Style="{DynamicResource ButtonWave}"/>
-                <Button Content="Wave 3" Width="48" Style="{DynamicResource ButtonWave}"/>
-                <Button Content="Wave 4" Width="48" Style="{DynamicResource ButtonWave}"/>
-                <Button Content="Wave 5" Width="48" Style="{DynamicResource ButtonWave}"/>
-                <Button Content="Wave 6" Width="48" Style="{DynamicResource ButtonWave}"/>
-                <Button Content="Wave 7" Width="48" Style="{DynamicResource ButtonWave}"/>
-                <Button Content="Wave 8" Width="48" Style="{DynamicResource ButtonWave}"/>
-                <Button Content="Wave 9" Width="48" Style="{DynamicResource ButtonWave}"/>
-            </StackPanel>
-        </Grid>
-
         <!--각종 유틸-->
-        <Grid Grid.Row="2">
-            <TabControl x:Name="tabControl" TabStripPlacement="Top">
-                <TabControl.Resources>
-                    <Style TargetType="{x:Type TabItem}">
-                        <Setter Property="Width" Value="64" />
-                        <Setter Property="Padding" Value="3" />
-                        <Setter Property="Background" Value="White"/>
-                        <Setter Property="Template">
-                            <Setter.Value>
-                                <ControlTemplate TargetType="TabItem">
-                                    <Border Name="Border" BorderThickness="1,1,1,0" BorderBrush="Gainsboro" CornerRadius="4,50,0,0" Margin="0,0,-10,0" Padding="0,0,30,0">
-                                        <ContentPresenter x:Name="ContentSite"
-                                        VerticalAlignment="Center"
-                                        HorizontalAlignment="Center"
-                                        ContentSource="Header"
-                                        Margin="0,4"/>
-                                    </Border>
-                                    <ControlTemplate.Triggers>
-                                        <Trigger Property="IsSelected" Value="True">
-                                            <Setter TargetName="Border" Property="Background" Value="#FF97E287" />
-                                        </Trigger>
-                                        <Trigger Property="IsSelected" Value="False">
-                                            <Setter TargetName="Border" Property="Background" Value="GhostWhite" />
-                                        </Trigger>
-                                    </ControlTemplate.Triggers>
-                                </ControlTemplate>
-                            </Setter.Value>
-                        </Setter>
-
-                    </Style>
-                </TabControl.Resources>
-                <TabItem Header="설정" >
+        <Grid Grid.Row="1">
+            <TabControl x:Name="tabControl" Style="{StaticResource TabControl_Liner}">
+                <TabItem Header="설정" Background="{DynamicResource Color_Background_Main}" Width="128">
                     <Tab:TabSetting/>
                 </TabItem>
-                <TabItem Header="웨이브">
+                <TabItem Header="웨이브" Background="{DynamicResource Color_Background_Main}" Width="128">
                     <Tab:TabWave />
                 </TabItem>
-                <TabItem Header="지원">
+                <TabItem Header="지원" Background="{DynamicResource Color_Background_Main}" Width="128">
                     <Grid Background="#FFE5E5E5"/>
                 </TabItem>
             </TabControl>

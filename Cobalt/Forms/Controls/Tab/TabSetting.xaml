@@ -35,8 +35,9 @@
                     <StackPanel>
                         <Separator />
                         <DockPanel HorizontalAlignment="Left">
-                            <Label Content="시작 자금 :"/>
-                            <TextBox Width="96"/>
+                            <TextBlock Text="시작 자금 : "/>
+                            <TextBox VerticalContentAlignment="Center" Width="96"/>
+                            <TextBlock Text="$"/>
                         </DockPanel>
                     </StackPanel>
 
@@ -46,13 +47,39 @@
                         <CheckBox Content="좀비 로봇"/>
                         <CheckBox Content="로봇 스폰킬"/>
                     </StackPanel>
-
+                    <Separator />
+                    <GroupBox>
+                        <GroupBox.Header>
+                            <CheckBox Content="센트리 버스터 설정"/>
+                        </GroupBox.Header>
+                        <Grid>
+                            <StackPanel>
+                                <TextBlock Text="일정 조건마다 강제로 소환"/>
+                                <Separator />
+                                <DockPanel HorizontalAlignment="Left">
+                                    <TextBlock Text="센트리 딜량 : "/>
+                                    <TextBox VerticalContentAlignment="Center" Width="96"/>
+                                </DockPanel>
+                                <DockPanel HorizontalAlignment="Left">
+                                    <TextBlock Text="센트리 킬수 : "/>
+                                    <TextBox VerticalContentAlignment="Center" Width="96"/>
+                                </DockPanel>
+                            </StackPanel>
+                        </Grid>
+                    </GroupBox>
+                    <Separator />
                     <GroupBox>
                         <GroupBox.Header>
                             <CheckBox Content="리스폰 시간 설정"/>
                         </GroupBox.Header>
                         <Grid>
-                            <Separator />
+                            <StackPanel>
+                                <DockPanel HorizontalAlignment="Left">
+                                    <TextBlock Text="시간 (초) : "/>
+                                    <TextBox VerticalContentAlignment="Center" Width="96"/>
+                                </DockPanel>
+                                <CheckBox Content="무조건 이 리스폰 시간 사용"/>
+                            </StackPanel>
                         </Grid>
                     </GroupBox>
                 </StackPanel>
@@ -62,28 +89,18 @@
                     사용할 템플릿
                 </GroupBox.Header>
                 <StackPanel>
-                    <Label Content="공식"/>
+                    <TextBlock Text="공식"/>
                     <Separator />
                     <ListBox>
-                        <ListBoxItem>
-                            <CheckBox Content="Standard"/>
-                        </ListBoxItem>
-                        <ListBoxItem>
-                            <CheckBox Content="Giant"/>
-                        </ListBoxItem>
-                        <ListBoxItem>
-                            <CheckBox Content="GateBot"/>
-                        </ListBoxItem>
+                        <CheckBox Content="Standard"/>
+                        <CheckBox Content="Giant"/>
+                        <CheckBox Content="GateBot"/>
                     </ListBox>
-                    <Label Content="비공식"/>
+                    <TextBlock Text="비공식"/>
                     <Separator />
                     <ListBox>
-                        <ListBoxItem>
-                            <CheckBox Content="Click_Standard"/>
-                        </ListBoxItem>
-                        <ListBoxItem>
-                            <CheckBox Content="Click_Giant"/>
-                        </ListBoxItem>
+                        <CheckBox Content="Click_Standard"/>
+                        <CheckBox Content="Click_Giant"/>
                     </ListBox>
                 </StackPanel>
             </GroupBox>
@@ -92,7 +109,7 @@
                     기본 설정
                 </GroupBox.Header>
                 <StackPanel>
-                    <Label Content="웨이브 시작 릴레이"/>
+                    <TextBlock Text="공격 시작 릴레이"/>
                     <Separator />
                     <ListBox>
                         <RadioButton Content="사용하지 않음" GroupName="d" IsChecked="True"/>
@@ -101,13 +118,13 @@
                         <RadioButton Content="wave_started_relay_ironman" GroupName="d"/>
                     </ListBox>
 
-                    <Label Content="웨이브 종료 릴레이"/>
+                    <TextBlock Text="공격 종료 릴레이"/>
                     <Separator />
                     <ListBox>
                         <RadioButton Content="사용하지 않음" GroupName="dd" IsChecked="True"/>
                         <RadioButton Content="wave_finished_relay" GroupName="dd"/>
                     </ListBox>
-                    <Label Content="웨이브 초기화 릴레이"/>
+                    <TextBlock Text="공격 초기화 릴레이"/>
                     <Separator />
                     <ListBox>
                         <RadioButton Content="사용하지 않음" GroupName="ddd" IsChecked="True"/>

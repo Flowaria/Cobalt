@@ -8,10 +8,37 @@
              d:DesignHeight="400" d:DesignWidth="700">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="56"/>
+            <RowDefinition Height="32"/>
+            <RowDefinition Height="60"/>
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
-        <Grid VerticalAlignment="Center">
+
+        <!--웨이브 선택 영역-->
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <!--왼쪽으로-->
+                <ColumnDefinition Width="32"/>
+                <!--목록-->
+                <ColumnDefinition Width="1*"/>
+                <!--오른쪽으로-->
+                <ColumnDefinition Width="32"/>
+            </Grid.ColumnDefinitions>
+
+            <!--버튼들-->
+            <Button x:Name="buttonLeft" Grid.Column="0"  Content="《" Width="32"/>
+            <Button x:Name="buttonRight" Grid.Column="2" Content="》" Width="32"/>
+
+            <!--가운데 영역-->
+            <ScrollViewer x:Name="ScrollPanel" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled">
+                <StackPanel x:Name="ScrollPanel2" Orientation="Horizontal" CanHorizontallyScroll="True">
+                    <Button Content="Wave 2" Width="48"/>
+                    <Button Content="Wave 2" Width="48"/>
+                    <Button Content="Wave 2" Width="48" Style="{DynamicResource ButtonWave}"/>
+                </StackPanel>
+            </ScrollViewer>
+        </Grid>
+
+        <Grid VerticalAlignment="Center" Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*"/>
                 <ColumnDefinition Width="1*"/>
@@ -60,6 +87,60 @@
                     <TextBox/>
                 </DockPanel>
             </StackPanel>
+        </Grid>
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2.5*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <!--Tree-->
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="32"/>
+                </Grid.RowDefinitions>
+                <TabControl Grid.Row="0" Style="{StaticResource TabControl_Liner}">
+                    <!--ListView 방식-->
+                    <TabItem Header="Liner" Foreground="Black">
+                        
+                    </TabItem>
+
+                    <!--원클릭 TreeView 방식-->
+                    <TabItem Header="Auto" Foreground="Black">
+                        
+                    </TabItem>
+
+                    <!--상급 TreeView 방식-->
+                    <TabItem Header="Advanced" Foreground="Black">
+                        <TreeView AllowDrop="True">
+                            <TreeView.Resources>
+                                <Style TargetType="{x:Type TreeViewItem}">
+                                    <EventSetter Event="TreeViewItem.DragOver"  Handler="treeView_DragOver"/>
+                                    <EventSetter Event="TreeViewItem.Drop" Handler="treeView_Drop"/>
+                                    <EventSetter Event="TreeViewItem.MouseMove" Handler="treeView_MouseMove"/>
+                                    <EventSetter Event="TreeViewItem.MouseDown" Handler="treeView_MouseDown"/>
+                                </Style>
+                            </TreeView.Resources>
+                            <TreeViewItem Header="Group1">
+                                <Image/>
+                                <TreeViewItem Header="dd"/>
+                                <TreeViewItem Header="dd"/>
+                                <TreeViewItem Header="dd"/>
+                            </TreeViewItem>
+                        </TreeView>
+                    </TabItem>
+                </TabControl>
+
+                        
+                <StackPanel Grid.Row="1" Orientation="Horizontal">
+                    <StackPanel Orientation="Horizontal" Width="42">
+                        <Button Width="32" Content="+"/>
+                        <Button Width="10" Content="▽"/>
+                    </StackPanel>
+                    
+                    <Button Width="42" Content="제거"/>
+                </StackPanel>
+            </Grid>
         </Grid>
     </Grid>
 </UserControl>

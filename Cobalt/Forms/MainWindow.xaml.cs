@@ -16,6 +16,7 @@ namespace Cobalt.Forms
             InitializeComponent();
             this.MaxHeight = SystemParameters.MaximizedPrimaryScreenHeight;
             nav = new Navigator();
+            
         }
 
         //웨이브 버튼 창 슬라이더를 다시 돌려놓기

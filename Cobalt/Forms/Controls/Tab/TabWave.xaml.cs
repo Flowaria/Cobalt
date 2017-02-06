@@ -24,5 +24,23 @@ namespace Cobalt.Forms.Tab
         {
             InitializeComponent();
         }
+
+        private void treeView_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void treeView_MouseMove(object sender, MouseEventArgs e)
+        {
+
+        }
+        private void treeView_DragOver(object sender, DragEventArgs e)
+        {
+
+        }
+        private void treeView_Drop(object sender, DragEventArgs e)
+        {
+
+        }
     }
 }
