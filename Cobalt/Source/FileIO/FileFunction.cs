@@ -1,4 +1,8 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
+using System.Reflection;
+using System.Text;
+using System.Windows;
 
 namespace Cobalt.FileIO
 {
@@ -7,6 +11,14 @@ namespace Cobalt.FileIO
      */
     public static class FileFunction
     {
+        public static string RelativeURL(string baseurl)
+        {
+            StringBuilder builder = new StringBuilder();
+            builder.Append(AppDomain.CurrentDomain.BaseDirectory);
+            builder.Append(baseurl.Replace('/','\\'));
+            return builder.ToString();
+        }
+
         public enum Status
         {
             Success, Exist

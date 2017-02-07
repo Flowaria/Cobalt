@@ -22,11 +22,11 @@ namespace Cobalt.FileIO.CFG
         public static void loadConfig(string name)
         {
             XmlDocument doc = new XmlDocument();
-            doc.Load(Properties.Settings.Default.PATH_CFG + "config.xml");
+            //doc.Load(Properties.Settings.Default.PATH_CFG + "config.xml");
 
-            XmlElement rNode = doc.DocumentElement;
-            XmlNodeList NodeApi = rNode.GetElementsByTagName("API");
-            XmlNodeList NodeMessage = rNode.GetElementsByTagName("MESSAGE");
+            //XmlElement rNode = doc.DocumentElement;
+            //XmlNodeList NodeApi = rNode.GetElementsByTagName("API");
+            //XmlNodeList NodeMessage = rNode.GetElementsByTagName("MESSAGE");
         }
 
         public static MapCFG getMaps(string name)

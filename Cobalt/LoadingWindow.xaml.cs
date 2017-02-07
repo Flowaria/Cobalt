@@ -1,7 +1,7 @@
 ﻿using Cobalt.FileIO.CFG;
 using Cobalt.FileIO.DL;
-using Cobalt.Forms;
 using Cobalt.Parser;
+using Cobalt.Windows;
 using System;
 using System.Windows;
 using System.Windows.Media.Imaging;
@@ -37,7 +37,7 @@ namespace Cobalt
         private async void Window_ContentRendered(object sender, EventArgs e)
         {
             //컨픽
-            XmlConfig.loadConfig();
+            MainConfig.loadConfig();
             MapConfig.loadConfig("");
 
             //선언

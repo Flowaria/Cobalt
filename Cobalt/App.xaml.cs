@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 
 namespace Cobalt
 {
@@ -7,5 +8,11 @@ namespace Cobalt
     /// </summary>
     public partial class App : Application
     {
+        protected override void OnStartup(StartupEventArgs e)
+        {
+            Console.WriteLine(System.Threading.Thread.CurrentThread.CurrentUICulture);
+            System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("en-US");
+            Console.WriteLine(System.Threading.Thread.CurrentThread.CurrentUICulture);
+        } 
     }
 }

@@ -77,23 +77,35 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Source\FileIO\Project\PopProject.cs" />
-    <Compile Include="Forms\Controls\TFBotIcon.xaml.cs">
+    <Compile Include="Source\FileIO\Config\iniUtil.cs" />
+    <Compile Include="Source\Population\Element\Wave.cs" />
+    <Compile Include="Source\Population\PopProject.cs" />
+    <Compile Include="Source\Population\PopProject_Import.cs" />
+    <Compile Include="UserControl\TFBotIcon.xaml.cs">
       <DependentUpon>TFBotIcon.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Tools\Navigator.xaml.cs">
+    <Compile Include="Windows\EditTab\TabAdvanced.xaml.cs">
+      <DependentUpon>TabAdvanced.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\EditTab\TabAuto.xaml.cs">
+      <DependentUpon>TabAuto.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\EditTab\TabLiner.xaml.cs">
+      <DependentUpon>TabLiner.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Tools\Navigator.xaml.cs">
       <DependentUpon>Navigator.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Controls\Tab\TabMission.xaml.cs">
+    <Compile Include="Windows\MainTab\TabMission.xaml.cs">
       <DependentUpon>TabMission.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Controls\Tab\TabSetting.xaml.cs">
+    <Compile Include="Windows\MainTab\TabSetting.xaml.cs">
       <DependentUpon>TabSetting.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Controls\Tab\TabTemplate.xaml.cs">
+    <Compile Include="Windows\MainTab\TabTemplate.xaml.cs">
       <DependentUpon>TabTemplate.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Controls\Tab\TabWave.xaml.cs">
+    <Compile Include="Windows\MainTab\TabWave.xaml.cs">
       <DependentUpon>TabWave.xaml</DependentUpon>
     </Compile>
     <Compile Include="LoadingWindow.xaml.cs">
@@ -107,54 +119,68 @@
     <Compile Include="Source\Data\ItemsData.cs" />
     <Compile Include="Source\Data\TemplatesData.cs" />
     <Compile Include="Source\Enums\TFEnums.cs" />
-    <Compile Include="Source\FileIO\Config\XmlConfig.cs" />
+    <Compile Include="Source\FileIO\Config\MainConfig.cs" />
     <Compile Include="Source\FileIO\Downloader\Downloader.cs" />
     <Compile Include="Source\FileIO\FileFunction.cs" />
-    <Compile Include="Source\MvM\Element\Child\Child.cs" />
-    <Compile Include="Source\MvM\Element\Child\Tank.cs" />
-    <Compile Include="Source\MvM\Element\Child\TFBot.cs" />
-    <Compile Include="Source\MvM\Element\Container\Mission.cs" />
-    <Compile Include="Source\MvM\Element\Container\WaveSpawn.cs" />
+    <Compile Include="Source\Population\PopProject_Export.cs" />
+    <Compile Include="Source\Population\Element\Child\Child.cs" />
+    <Compile Include="Source\Population\Element\Child\Tank.cs" />
+    <Compile Include="Source\Population\Element\Child\TFBot.cs" />
+    <Compile Include="Source\Population\Element\Mission.cs" />
+    <Compile Include="Source\Population\Element\Child\WaveSpawn.cs" />
     <Compile Include="Source\FileIO\Downloader\IconDownloader.cs" />
     <Compile Include="Source\FileIO\Config\MapConfig.cs" />
+    <Compile Include="Source\Population\Element\WaveSchedule.cs" />
     <Compile Include="Source\Parser\TemplateParser.cs" />
     <Compile Include="Source\Parser\SchemaParser.cs" />
     <Compile Include="Source\Format.cs" />
     <Compile Include="Source\TFItems\TFAttribute.cs" />
     <Compile Include="Source\TFItems\TFItemInstance.cs" />
     <Compile Include="Source\TFItems\TFItem.cs" />
-    <Compile Include="Forms\Tools\ItemSelect.xaml.cs">
+    <Compile Include="Windows\Tools\ItemSelect.xaml.cs">
       <DependentUpon>ItemSelect.xaml</DependentUpon>
     </Compile>
-    <Page Include="Forms\Controls\TFBotIcon.xaml">
+    <Page Include="UserControl\TFBotIcon.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Forms\LookAndFeel.xaml">
+    <Page Include="Windows\Dictionary\LookAndFeel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Forms\StyleDictionary.xaml">
+    <Page Include="Windows\Dictionary\StyleDictionary.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Forms\Tools\Navigator.xaml">
+    <Page Include="Windows\EditTab\TabAdvanced.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Forms\Controls\Tab\TabMission.xaml">
+    <Page Include="Windows\EditTab\TabAuto.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Forms\Controls\Tab\TabSetting.xaml">
+    <Page Include="Windows\EditTab\TabLiner.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Forms\Controls\Tab\TabTemplate.xaml">
+    <Page Include="Windows\Tools\Navigator.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Forms\Controls\Tab\TabWave.xaml">
+    <Page Include="Windows\MainTab\TabMission.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\MainTab\TabSetting.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\MainTab\TabTemplate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\MainTab\TabWave.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -162,7 +188,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Forms\MainWindow.xaml">
+    <Page Include="Windows\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -170,11 +196,11 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Forms\MainWindow.xaml.cs">
+    <Compile Include="Windows\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Forms\Tools\ItemSelect.xaml">
+    <Page Include="Windows\Tools\ItemSelect.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -221,6 +247,7 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\config.ini" />
     <None Include="Resources\Template\robot_gatebot.txt" />
   </ItemGroup>
   <ItemGroup>
@@ -231,9 +258,6 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Splash\0.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\config.xml" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Splash\Mask01.png" />

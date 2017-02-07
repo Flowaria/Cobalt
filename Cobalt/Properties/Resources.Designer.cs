@@ -61,18 +61,17 @@ namespace Cobalt.Properties {
         }
         
         /// <summary>
-        ///   &lt;Config&gt;
-        ///  &lt;API&gt;
-        ///    &lt;!-- 반드시! http://steamcommunity.com/dev/apikey 에서 API 키를 받아 작성해주세요 --&gt;
-        ///    &lt;Key&gt;EDITPLEASE&lt;/Key&gt;
-        ///    &lt;BaseLang&gt;ko_KR&lt;/BaseLang&gt;
-        ///  &lt;/API&gt;
-        ///  &lt;MESSAGE&gt;
-        ///    &lt;ItemSchemaLoad&gt;아이템 스캐마 불러오는 중 . . .&lt;/ItemSchemaLoad&gt;
-        ///    &lt;ItemImageDownload&gt;이미지 다운로드 중 . . .&lt;/ItemImageDownload&gt;
-        ///    &lt;TemplateLoad&gt;템플릿 불러오는 중 . . .&lt;/TemplateLoad&gt;
-        ///  &lt;/MESSAGE&gt;
-        ///&lt;/Config&gt;과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   [API]
+        ///;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; 반드시 읽어주세요! ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+        ///;;; http://steamcommunity.com/dev/apikey 에서 API 키를 받은다음 키값을 적어주세요
+        ///;;; 도메인 이름 란에는 아무거나 적으셔도 상관 없습니다.
+        ///;;; 키를 발급받으면 아래 형식으로 발급 되는데 &quot;키: &quot;의 뒷부분에 오는 문자를 공백없이 적어주세요
+        ///;;;
+        ///;;; 키: XXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+        ///;;; 도메인 이름: Example
+        ///;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; 반드시 읽어주세요! ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+        ///
+        ///Key[나머지 문자열은 잘림]&quot;;과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string config {
             get {
@@ -105,7 +104,7 @@ namespace Cobalt.Properties {
         ///	&lt;!--Bigrock v02--&gt;
         ///	&lt;Where&gt;
         ///		&lt;Where name=&quot;spawnbot&quot;/&gt;
-        ///    &lt;Where name=&quot;spawnbot_giant&quot;/&gt;
+        ///		&lt;Where name=&quot;spawnbot_giant&quot;/&gt;
         ///		&lt;Where name=&quot;spawnbot_mission_sniper&quot;/&gt;
         ///		&lt;Where name=&quot;spawnbot_mission_spy&quot;/&gt;
         ///	&lt;/Where&gt;
@@ -119,7 +118,7 @@ namespace Cobalt.Properties {
         ///			&lt;WaveDone name=&quot;wave_finished_relay_boss&quot;/&gt;
         ///		&lt;/Wave&gt;
         ///		&lt;Spawn&gt;
-        ///			&lt;FirstSpawn name=&quot;boss_sp[나머지 문자열은 잘림]&quot;;과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///			&lt;FirstSpawn name=&quot;boss_spaw[나머지 문자열은 잘림]&quot;;과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string mvm_bigrock {
             get {
@@ -133,7 +132,7 @@ namespace Cobalt.Properties {
         ///	&lt;Where&gt;
         ///		&lt;Where name=&quot;spawnbot&quot;/&gt;
         ///		&lt;Where name=&quot;spawnbot_giant&quot;/&gt;
-        ///    &lt;Where name=&quot;spawnbot_invasion&quot;/&gt;
+        ///		&lt;Where name=&quot;spawnbot_invasion&quot;/&gt;
         ///		&lt;Where name=&quot;spawnbot_mission_sniper&quot;/&gt;
         ///		&lt;Where name=&quot;spawnbot_mission_spy&quot;/&gt;
         ///	&lt;/Where&gt;
@@ -148,7 +147,7 @@ namespace Cobalt.Properties {
         ///		&lt;/Spawn&gt;
         ///		&lt;Tank&gt;
         ///			&lt;Killed name=&quot;boss_dead_relay&quot;/&gt;
-        ///			&lt;BombDropped name=&quot;boss_deploy_relay&quot;/[나머지 문자열은 잘림]&quot;;과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///			&lt;BombDropped name=&quot;boss_deploy_relay&quot;/&gt;        ///[나머지 문자열은 잘림]&quot;;과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string mvm_coaltown {
             get {
@@ -163,9 +162,9 @@ namespace Cobalt.Properties {
         ///		&lt;Where name=&quot;spawnbot&quot;/&gt;
         ///		&lt;Where name=&quot;spawnbot_left&quot;/&gt;
         ///		&lt;Where name=&quot;spawnbot_right&quot;/&gt;
-        ///    &lt;Where name=&quot;spawnbot_single_flag&quot;/&gt;
+        ///		&lt;Where name=&quot;spawnbot_single_flag&quot;/&gt;
         ///		&lt;Where name=&quot;spawnbot_invasion&quot;/&gt;
-        ///    &lt;Where name=&quot;spawnbot_mission_sniper&quot;/&gt;
+        ///		&lt;Where name=&quot;spawnbot_mission_sniper&quot;/&gt;
         ///		&lt;Where name=&quot;spawnbot_mission_spy&quot;/&gt;
         ///	&lt;/Where&gt;
         ///	
@@ -178,7 +177,7 @@ namespace Cobalt.Properties {
         ///			&lt;FirstSpawn name=&quot;boss_spawn_relay&quot;/&gt;
         ///		&lt;/Spawn&gt;
         ///		&lt;Tank&gt;
-        ///			&lt;Kille[나머지 문자열은 잘림]&quot;;과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///			&lt;Killed na[나머지 문자열은 잘림]&quot;;과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string mvm_decoy {
             get {
@@ -191,9 +190,9 @@ namespace Cobalt.Properties {
         ///	&lt;!--GhostTown v02--&gt;
         ///	&lt;Where&gt;
         ///		&lt;Where name=&quot;spawnbot&quot;/&gt;
-        ///    &lt;Where name=&quot;spawnbot_invasion&quot;/&gt;
+        ///		&lt;Where name=&quot;spawnbot_invasion&quot;/&gt;
         ///		&lt;Where name=&quot;spawnbot_scattered&quot;/&gt;
-        ///    &lt;Where name=&quot;spawnbot_giant&quot;/&gt;
+        ///		&lt;Where name=&quot;spawnbot_giant&quot;/&gt;
         ///		&lt;Where name=&quot;spawnbot_mission_sniper&quot;/&gt;
         ///		&lt;Where name=&quot;spawnbot_mission_spy&quot;/&gt;
         ///	&lt;/Where&gt;
@@ -207,7 +206,7 @@ namespace Cobalt.Properties {
         ///			&lt;Killed name=&quot;boss_dead_relay&quot;/&gt;
         ///			&lt;BombDropped name=&quot;boss_deploy_relay&quot;/&gt;
         ///		&lt;/Tank&gt;
-        ///	&lt;/Re[나머지 문자열은 잘림]&quot;;과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///	&lt;/Relay&gt;[나머지 문자열은 잘림]&quot;;과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string mvm_ghost_town {
             get {
@@ -257,12 +256,12 @@ namespace Cobalt.Properties {
         ///	&lt;Relay&gt;
         ///		&lt;Wave&gt;
         ///			&lt;WaveStarted name=&quot;bombpath_arrows_clear_relay&quot;/&gt;
-        ///      &lt;WaveStarted name=&quot;bombpath_arrows_clear_relay_ironman&quot;/&gt;
-        ///      
-        ///      &lt;WaveDone name=&quot;bombpath_wavefinished&quot;/&gt;
+        ///			&lt;WaveStarted name=&quot;bombpath_arrows_clear_relay_ironman&quot;/&gt;
+        ///			&lt;WaveDone name=&quot;bombpath_wavefinished&quot;/&gt;
         ///		&lt;/Wave&gt;
         ///		&lt;Tank&gt;
-        ///			&lt;Killed name=&quot;boss_de[나머지 문자열은 잘림]&quot;;과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///			&lt;Killed name=&quot;boss_dead_relay&quot;/&gt;
+        ///	[나머지 문자열은 잘림]&quot;;과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string mvm_mannworks {
             get {
@@ -285,11 +284,11 @@ namespace Cobalt.Properties {
         ///	&lt;Relay&gt;
         ///		&lt;Wave&gt;
         ///			&lt;WaveStarted name=&quot;wave_start_relay_classic&quot;/&gt;
-        ///      &lt;WaveStarted name=&quot;wave_start_relay_ironman&quot;/&gt;
-        ///      &lt;WaveDone name=&quot;wave_finished_relay&quot;/&gt;
+        ///			&lt;WaveStarted name=&quot;wave_start_relay_ironman&quot;/&gt;
+        ///			&lt;WaveDone name=&quot;wave_finished_relay&quot;/&gt;
         ///		&lt;/Wave&gt;
         ///		&lt;Spawn&gt;
-        ///			&lt;FirstSpawn name=&quot;boss_spawn_re[나머지 문자열은 잘림]&quot;;과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///			&lt;FirstSpawn name=&quot;boss_spawn_relay&quot;/&gt;[나머지 문자열은 잘림]&quot;;과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string mvm_rottenburg {
             get {

@@ -6,8 +6,8 @@
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="Forms/LookAndFeel.xaml" />
-                <ResourceDictionary Source="Forms/StyleDictionary.xaml" />
+                <ResourceDictionary Source="Windows/Dictionary/LookAndFeel.xaml" />
+                <ResourceDictionary Source="Windows/Dictionary/StyleDictionary.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

@@ -1,0 +1,25 @@
+﻿<UserControl x:Class="Cobalt.Windows.EditTab.TabAdvanced"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Cobalt.Windows.EditTab"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <TreeView AllowDrop="True">
+        <TreeView.Resources>
+            <Style TargetType="{x:Type TreeViewItem}">
+                <EventSetter Event="TreeViewItem.DragOver"  Handler="treeView_DragOver"/>
+                <EventSetter Event="TreeViewItem.Drop" Handler="treeView_Drop"/>
+                <EventSetter Event="TreeViewItem.MouseMove" Handler="treeView_MouseMove"/>
+                <EventSetter Event="TreeViewItem.MouseDown" Handler="treeView_MouseDown"/>
+            </Style>
+        </TreeView.Resources>
+        <TreeViewItem Header="Group1">
+            <Image/>
+            <TreeViewItem Header="dd"/>
+            <TreeViewItem Header="dd"/>
+            <TreeViewItem Header="dd"/>
+        </TreeViewItem>
+    </TreeView>
+</UserControl>
