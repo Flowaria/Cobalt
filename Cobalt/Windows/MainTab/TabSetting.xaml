@@ -5,133 +5,143 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Cobalt.Windows.MainTab"
              mc:Ignorable="d" 
-             d:DesignHeight="400" d:DesignWidth="400">
+             d:DesignHeight="900" d:DesignWidth="1600">
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="9*"/>
-        </Grid.RowDefinitions>
-        <StackPanel Grid.Row="0" Orientation="Horizontal">
-            <Label Content="맵 선택 : " VerticalAlignment="Center" />
-            <ComboBox x:Name="comboBox" HorizontalAlignment="Left" Height="32" Width="216" VerticalAlignment="Center" VerticalContentAlignment="Center" FontSize="18" FontFamily="Consolas">
-                <ComboBoxItem x:Name="none" Content="Decoy"/>
-                <ComboBoxItem Content="Mannhattan"/>
-            </ComboBox>
-            <Label Content="난이도 이름 :" VerticalAlignment="Center"/>
-            <TextBox Height="32" Width="216" VerticalAlignment="Center" VerticalContentAlignment="Center"/>
-        </StackPanel>
-        <Grid Grid.Row="1">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="1*"/>
-                <ColumnDefinition Width="1*"/>
-                <ColumnDefinition Width="1*"/>
-                <ColumnDefinition Width="2*"/>
-            </Grid.ColumnDefinitions>
-            <GroupBox Grid.Column="0">
-                <GroupBox.Header>
-                    난이도 설정
-                </GroupBox.Header>
-                <StackPanel>
+        <Image x:Name="eImage" Stretch="Fill">
+            <Image.Source>
+                <BitmapImage  UriSource="/Resources/Splash/6.png" />
+            </Image.Source>
+            <Image.BitmapEffect>
+                <BlurBitmapEffect Radius="10" KernelType="Box" />
+            </Image.BitmapEffect>
+        </Image>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="9*"/>
+            </Grid.RowDefinitions>
+            <StackPanel Grid.Row="0" Orientation="Horizontal">
+                <Label Content="맵 선택 : " VerticalAlignment="Center" />
+                <ComboBox x:Name="comboBox" HorizontalAlignment="Left" Height="32" Width="216" VerticalAlignment="Center" VerticalContentAlignment="Center" FontSize="18" FontFamily="Consolas">
+                    <ComboBoxItem x:Name="none" Content="Decoy"/>
+                    <ComboBoxItem Content="Mannhattan"/>
+                </ComboBox>
+                <Label Content="난이도 이름 :" VerticalAlignment="Center"/>
+                <TextBox Height="32" Width="216" VerticalAlignment="Center" VerticalContentAlignment="Center"/>
+            </StackPanel>
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+                <GroupBox Grid.Column="0">
+                    <GroupBox.Header>
+                        난이도 설정
+                    </GroupBox.Header>
                     <StackPanel>
-                        <Separator />
-                        <DockPanel HorizontalAlignment="Left">
-                            <TextBlock Text="시작 자금 : "/>
-                            <TextBox VerticalContentAlignment="Center" Width="96"/>
-                            <TextBlock Text="$"/>
-                        </DockPanel>
-                    </StackPanel>
+                        <StackPanel>
+                            <Separator />
+                            <DockPanel HorizontalAlignment="Left">
+                                <TextBlock Text="시작 자금 : "/>
+                                <TextBox VerticalContentAlignment="Center" Width="96"/>
+                                <TextBlock Text="$"/>
+                            </DockPanel>
+                        </StackPanel>
 
+                        <StackPanel>
+                            <Separator />
+                            <CheckBox Content="상급 미션"/>
+                            <CheckBox Content="좀비 로봇"/>
+                            <CheckBox Content="로봇 스폰킬"/>
+                        </StackPanel>
+                        <Separator />
+                        <GroupBox>
+                            <GroupBox.Header>
+                                <CheckBox Content="센트리 버스터 설정"/>
+                            </GroupBox.Header>
+                            <Grid>
+                                <StackPanel>
+                                    <TextBlock Text="일정 조건마다 강제로 소환"/>
+                                    <Separator />
+                                    <DockPanel HorizontalAlignment="Left">
+                                        <TextBlock Text="센트리 딜량 : "/>
+                                        <TextBox VerticalContentAlignment="Center" Width="96"/>
+                                    </DockPanel>
+                                    <DockPanel HorizontalAlignment="Left">
+                                        <TextBlock Text="센트리 킬수 : "/>
+                                        <TextBox VerticalContentAlignment="Center" Width="96"/>
+                                    </DockPanel>
+                                </StackPanel>
+                            </Grid>
+                        </GroupBox>
+                        <Separator />
+                        <GroupBox>
+                            <GroupBox.Header>
+                                <CheckBox Content="리스폰 시간 설정"/>
+                            </GroupBox.Header>
+                            <Grid>
+                                <StackPanel>
+                                    <DockPanel HorizontalAlignment="Left">
+                                        <TextBlock Text="시간 (초) : "/>
+                                        <TextBox VerticalContentAlignment="Center" Width="96"/>
+                                    </DockPanel>
+                                    <CheckBox Content="무조건 이 리스폰 시간 사용"/>
+                                </StackPanel>
+                            </Grid>
+                        </GroupBox>
+                    </StackPanel>
+                </GroupBox>
+                <GroupBox Grid.Column="1">
+                    <GroupBox.Header>
+                        사용할 템플릿
+                    </GroupBox.Header>
                     <StackPanel>
+                        <TextBlock Text="공식"/>
                         <Separator />
-                        <CheckBox Content="상급 미션"/>
-                        <CheckBox Content="좀비 로봇"/>
-                        <CheckBox Content="로봇 스폰킬"/>
+                        <ListBox>
+                            <CheckBox Content="Standard"/>
+                            <CheckBox Content="Giant"/>
+                            <CheckBox Content="GateBot"/>
+                        </ListBox>
+                        <TextBlock Text="비공식"/>
+                        <Separator />
+                        <ListBox>
+                            <CheckBox Content="Click_Standard"/>
+                            <CheckBox Content="Click_Giant"/>
+                        </ListBox>
                     </StackPanel>
-                    <Separator />
-                    <GroupBox>
-                        <GroupBox.Header>
-                            <CheckBox Content="센트리 버스터 설정"/>
-                        </GroupBox.Header>
-                        <Grid>
-                            <StackPanel>
-                                <TextBlock Text="일정 조건마다 강제로 소환"/>
-                                <Separator />
-                                <DockPanel HorizontalAlignment="Left">
-                                    <TextBlock Text="센트리 딜량 : "/>
-                                    <TextBox VerticalContentAlignment="Center" Width="96"/>
-                                </DockPanel>
-                                <DockPanel HorizontalAlignment="Left">
-                                    <TextBlock Text="센트리 킬수 : "/>
-                                    <TextBox VerticalContentAlignment="Center" Width="96"/>
-                                </DockPanel>
-                            </StackPanel>
-                        </Grid>
-                    </GroupBox>
-                    <Separator />
-                    <GroupBox>
-                        <GroupBox.Header>
-                            <CheckBox Content="리스폰 시간 설정"/>
-                        </GroupBox.Header>
-                        <Grid>
-                            <StackPanel>
-                                <DockPanel HorizontalAlignment="Left">
-                                    <TextBlock Text="시간 (초) : "/>
-                                    <TextBox VerticalContentAlignment="Center" Width="96"/>
-                                </DockPanel>
-                                <CheckBox Content="무조건 이 리스폰 시간 사용"/>
-                            </StackPanel>
-                        </Grid>
-                    </GroupBox>
-                </StackPanel>
-            </GroupBox>
-            <GroupBox Grid.Column="1">
-                <GroupBox.Header>
-                    사용할 템플릿
-                </GroupBox.Header>
-                <StackPanel>
-                    <TextBlock Text="공식"/>
-                    <Separator />
-                    <ListBox>
-                        <CheckBox Content="Standard"/>
-                        <CheckBox Content="Giant"/>
-                        <CheckBox Content="GateBot"/>
-                    </ListBox>
-                    <TextBlock Text="비공식"/>
-                    <Separator />
-                    <ListBox>
-                        <CheckBox Content="Click_Standard"/>
-                        <CheckBox Content="Click_Giant"/>
-                    </ListBox>
-                </StackPanel>
-            </GroupBox>
-            <GroupBox Grid.Column="2">
-                <GroupBox.Header>
-                    기본 설정
-                </GroupBox.Header>
-                <StackPanel>
-                    <TextBlock Text="공격 시작 릴레이"/>
-                    <Separator />
-                    <ListBox>
-                        <RadioButton Content="사용하지 않음" GroupName="d" IsChecked="True"/>
-                        <RadioButton Content="wave_started_relay" GroupName="d"/>
-                        <RadioButton Content="wave_started_relay_666" GroupName="d"/>
-                        <RadioButton Content="wave_started_relay_ironman" GroupName="d"/>
-                    </ListBox>
+                </GroupBox>
+                <GroupBox Grid.Column="2">
+                    <GroupBox.Header>
+                        기본 설정
+                    </GroupBox.Header>
+                    <StackPanel>
+                        <TextBlock Text="공격 시작 릴레이"/>
+                        <Separator />
+                        <ListBox>
+                            <RadioButton Content="사용하지 않음" GroupName="d" IsChecked="True"/>
+                            <RadioButton Content="wave_started_relay" GroupName="d"/>
+                            <RadioButton Content="wave_started_relay_666" GroupName="d"/>
+                            <RadioButton Content="wave_started_relay_ironman" GroupName="d"/>
+                        </ListBox>
 
-                    <TextBlock Text="공격 종료 릴레이"/>
-                    <Separator />
-                    <ListBox>
-                        <RadioButton Content="사용하지 않음" GroupName="dd" IsChecked="True"/>
-                        <RadioButton Content="wave_finished_relay" GroupName="dd"/>
-                    </ListBox>
-                    <TextBlock Text="공격 초기화 릴레이"/>
-                    <Separator />
-                    <ListBox>
-                        <RadioButton Content="사용하지 않음" GroupName="ddd" IsChecked="True"/>
-                        <RadioButton Content="init_wave_relay" GroupName="ddd"/>
-                    </ListBox>
-                </StackPanel>
-            </GroupBox>
+                        <TextBlock Text="공격 종료 릴레이"/>
+                        <Separator />
+                        <ListBox>
+                            <RadioButton Content="사용하지 않음" GroupName="dd" IsChecked="True"/>
+                            <RadioButton Content="wave_finished_relay" GroupName="dd"/>
+                        </ListBox>
+                        <TextBlock Text="공격 초기화 릴레이"/>
+                        <Separator />
+                        <ListBox>
+                            <RadioButton Content="사용하지 않음" GroupName="ddd" IsChecked="True"/>
+                            <RadioButton Content="init_wave_relay" GroupName="ddd"/>
+                        </ListBox>
+                    </StackPanel>
+                </GroupBox>
+            </Grid>
         </Grid>
     </Grid>
 </UserControl>

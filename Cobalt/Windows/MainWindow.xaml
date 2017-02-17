@@ -15,7 +15,7 @@
         Closing="Window_Closing"
         Closed="Window_Closed"
         Loaded="Window_Loaded"
-        Background="#FF2D2D2D"
+        Background="{StaticResource Color_Background_Main}"
         >
 
     <Grid>
@@ -27,7 +27,7 @@
         </Grid.RowDefinitions>
 
         <!--메뉴바 영역 0번째 줄칸-->
-        <Grid Grid.Row="0" Background="#FF2D2D2D">
+        <Grid Grid.Row="0" Background="{StaticResource Color_Background_Main}">
             <StackPanel Grid.Row="0" Orientation="Horizontal" Height="20" VerticalAlignment="Top">
                 <Menu Name="menuBar" VerticalAlignment="Top">
                     <MenuItem Name="MenuFile" Header="파일(F)">
@@ -39,6 +39,7 @@
                         <MenuItem Name="MenuFile_Save" Header="저장"/>
                         <MenuItem Name="MenuFile_SaveCopy" Header="다른 이름으로 저장"/>
                         <MenuItem Name="MenuFile_Export" Header="내보내기"/>
+                        <MenuItem Name="MenuFile_Properties" Header="설정" Click="MenuFile_Properties_Click"/>
                     </MenuItem>
                     <MenuItem Name="MenuView" Header="보기(V)"/>
                 </Menu>
@@ -48,14 +49,17 @@
         <!--각종 유틸-->
         <Grid Grid.Row="1">
             <TabControl x:Name="tabControl" Style="{StaticResource TabControl_Liner}">
-                <TabItem Header="설정" Background="{DynamicResource Color_Background_Main}" Width="128">
+                <TabItem Header="설정" Background="{StaticResource Color_Background_Main}" Width="128">
                     <Tab:TabSetting/>
                 </TabItem>
-                <TabItem Header="웨이브" Background="{DynamicResource Color_Background_Main}" Width="128">
+                <TabItem Header="웨이브" Background="{StaticResource Color_Background_Main}" Width="128">
                     <Tab:TabWave />
                 </TabItem>
-                <TabItem Header="지원" Background="{DynamicResource Color_Background_Main}" Width="128">
-                    <Grid Background="#FFE5E5E5"/>
+                <TabItem Header="지원" Background="{StaticResource Color_Background_Main}" Width="128">
+                    <Tab:TabMission />
+                </TabItem>
+                <TabItem Header="견본" Background="{StaticResource Color_Background_Main}" Width="128">
+                    <Tab:TabTemplate />
                 </TabItem>
             </TabControl>
         </Grid>

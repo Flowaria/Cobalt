@@ -11,8 +11,8 @@
 		<Wave>
 			<WaveStarted name="wave_start_relay"/>
 			<WaveStarted name="wave_start_relay_boss"/>
-      <WaveStarted name="wave_start_relay_ironman"/>
-      <WaveDone name="wave_finished_relay"/>
+			<WaveStarted name="wave_start_relay_ironman"/>
+			<WaveDone name="wave_finished_relay"/>
 			<WaveDone name="wave_finished_relay_boss"/>
 		</Wave>
 		<Spawn>

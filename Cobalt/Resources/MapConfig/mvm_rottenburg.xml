@@ -17,7 +17,7 @@
 		</Wave>
 		<Spawn>
 			<FirstSpawn name="boss_spawn_relay"/>
-			<FirstSpawn name="w3_engie_hints"/>
+			<FirstSpawn name="w3_engie_hints"/> <!--엔지니어 건물위치 모두 활성화-->
 		</Spawn>
 		<Tank>
 			<Killed name="boss_dead_relay"/>

@@ -27,14 +27,18 @@ namespace Cobalt.FileIO
         //미리 다운로드 설정
         public static Status ExportString(string content, string dir, string file)
         {
-            if (!File.Exists(dir+file))
+            StringBuilder builder = new StringBuilder(128);
+            builder.AppendFormat("{0}{1}", dir, file);
+            string filepath = builder.ToString();
+
+            if (!File.Exists(filepath))
             {
                 //디렉토리 생성
                 if (!Directory.Exists(dir))
                     Directory.CreateDirectory(dir);
 
                 //파일 추출
-                File.WriteAllText(dir+file, content);
+                File.WriteAllText(filepath, content);
                 return Status.Success; //성공
             }
             return Status.Exist; //이미 파일이 존재함

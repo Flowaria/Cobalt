@@ -11,7 +11,6 @@ namespace Cobalt.Parser
     public class SchemaParser
     {
         //API 주소
-        //추후 상수가 아닌 변수로 변경할것
         private string API_URL;
 
         //초기화
@@ -23,12 +22,12 @@ namespace Cobalt.Parser
         }
 
         //데이터 불러오기
-        public async Task parse()
+        public async Task readFromURL(string url)
         {
             //JSON 파싱
             System.Net.WebClient wc = new System.Net.WebClient();
             wc.Encoding = System.Text.Encoding.UTF8;
-            String content = await wc.DownloadStringTaskAsync(API_URL);
+            String content = await wc.DownloadStringTaskAsync(url);
             Root root = await Task.Factory.StartNew(() => JsonConvert.DeserializeObject<Root>(content));
 
             //태그 DB 등록

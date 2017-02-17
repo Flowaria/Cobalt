@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,13 +8,13 @@ namespace Cobalt.Population
 {
     public partial class PopProjectFile
     {
-        public static PopProject readProjectFile(string filename)
+        public bool Save(PopProject proj, string filename)
         {
-            if (PopProject.Validate(filename))
-            {
-                
-            }
-            return null;
+            return true;
+        }
+        public bool Export(PopProject proj, string filename)
+        {
+            return false;
         }
     }
 }

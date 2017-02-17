@@ -10,13 +10,14 @@ namespace Cobalt.Windows
     {
         public Boolean projectOpened = false;
         private Navigator nav;
+        private PropertiesWindow propw;
 
         public MainWindow()
         {
             InitializeComponent();
             this.MaxHeight = SystemParameters.MaximizedPrimaryScreenHeight;
             nav = new Navigator();
-            
+            propw = new PropertiesWindow();
         }
 
         //웨이브 버튼 창 슬라이더를 다시 돌려놓기
@@ -45,11 +46,17 @@ namespace Cobalt.Windows
         private void Window_Closed(object sender, EventArgs e)
         {
             nav.Close();
+            propw.Close();
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            nav.Show();
+            //nav.Show();
+        }
+
+        private void MenuFile_Properties_Click(object sender, RoutedEventArgs e)
+        {
+            propw.Show();
         }
     }
 }

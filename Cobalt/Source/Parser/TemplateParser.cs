@@ -1,13 +1,12 @@
 ﻿using Cobalt.FileIO;
+using Cobalt.Population;
 using Cobalt.Properties;
 using System.IO;
-using System.Linq;
-using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace Cobalt.Parser
 {
-    public class TemplateParser
+    public class TemplateParser : KeyValueBase
     {
         public TemplateParser()
         {
@@ -36,26 +35,19 @@ namespace Cobalt.Parser
 
         }
 
-        public async Task Parse(string content)
+        public async Task Parse(string Content)
         {
-            foreach (string line in content.Split('\n'))
+            /*
+            StringBuilder builder = new StringBuilder();
+            int step = 0;
+            foreach (string[] e in ParseAsList(Content))
             {
-                //앞부분 탭과 주석 제거
-                string cut = Regex.Replace(line, @"^\s*|\/\/.*", "");
-                Match inString = Regex.Match(cut, @""".*""");
-                if (inString.Success) //스트링 내부일경우
-                {
-                    //공간을 § 문자로 변경하고 "를 공백으로 변경
-                    cut = cut.Replace(inString.Value, Regex.Replace(inString.Value, @"\s", "§").Replace(@"""", ""));
-                }
-
-                //공백 기준으로 Split
-                bool isValue = false;
-                foreach (string str in Regex.Split(cut, @"\s").Where(x => !string.IsNullOrEmpty(x)))
-                {
-                    string value = str.Replace("§", " ");
-                }
+                for (int i = 0; i < e.Length; i++)
+                    builder.Append(e[i] + " ");
+                builder.AppendLine();
             }
+            Console.WriteLine(builder.ToString());
+            */
         }
 
         private string getFilename(string url)

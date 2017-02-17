@@ -6,20 +6,37 @@
              xmlns:local="clr-namespace:Cobalt.Windows.EditTab"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
-    <TreeView AllowDrop="True">
-        <TreeView.Resources>
-            <Style TargetType="{x:Type TreeViewItem}">
-                <EventSetter Event="TreeViewItem.DragOver"  Handler="treeView_DragOver"/>
-                <EventSetter Event="TreeViewItem.Drop" Handler="treeView_Drop"/>
-                <EventSetter Event="TreeViewItem.MouseMove" Handler="treeView_MouseMove"/>
-                <EventSetter Event="TreeViewItem.MouseDown" Handler="treeView_MouseDown"/>
-            </Style>
-        </TreeView.Resources>
-        <TreeViewItem Header="Group1">
-            <Image/>
-            <TreeViewItem Header="dd"/>
-            <TreeViewItem Header="dd"/>
-            <TreeViewItem Header="dd"/>
-        </TreeViewItem>
-    </TreeView>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="32"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <Button Content="그룹 추가" Grid.Column="0"/>
+            <Button Content="그룹 제거" Grid.Column="2"/>
+        </Grid>
+        <TreeView AllowDrop="True" Grid.Row="1" Name="MainTree">
+            <TreeView.Resources>
+                <Style TargetType="{x:Type TreeViewItem}">
+                    <EventSetter Event="TreeViewItem.DragOver"  Handler="treeView_DragOver"/>
+                    <EventSetter Event="TreeViewItem.Drop" Handler="treeView_Drop"/>
+                    <EventSetter Event="TreeViewItem.MouseMove" Handler="treeView_MouseMove"/>
+                    <EventSetter Event="TreeViewItem.MouseDown" Handler="treeView_MouseDown"/>
+                    <EventSetter Event="TreeViewItem.MouseDoubleClick" Handler="treeView_DoubleClick" />
+                </Style>
+            </TreeView.Resources>
+            <TreeViewItem Header="Group1">
+                <Image/>
+                <TreeViewItem Header="Group1">
+                    <TreeViewItem Header="Group1"/>
+                    <TreeViewItem Header="Group1"/>
+                    <TreeViewItem Header="Group1"/>
+                </TreeViewItem>
+            </TreeViewItem>
+        </TreeView>
+    </Grid>
 </UserControl>

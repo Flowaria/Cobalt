@@ -1,4 +1,4 @@
-﻿<Window x:Class="Cobalt.LoadingWindow"
+﻿<Window x:Class="Cobalt.MainSplashScreen"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -29,7 +29,7 @@
                     <BitmapImage  UriSource="/Resources/Splash/3.png" />
                 </Image.Source>
                 <Image.OpacityMask>
-                    <ImageBrush ImageSource="/Resources/Splash/Mask01.png"/>
+                    <ImageBrush ImageSource="/Resources/Mask/Mask01.png"/>
                 </Image.OpacityMask>
             </Image>
         </Grid>

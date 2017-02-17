@@ -2,6 +2,14 @@
 
 namespace Cobalt
 {
+    public class StringFunction
+    {
+        public static bool IEqual(string x1, string x2)
+        {
+            return string.Equals(x1, x2, StringComparison.CurrentCultureIgnoreCase);
+        }
+    }
+
     public class Format
     {
         /*포멧

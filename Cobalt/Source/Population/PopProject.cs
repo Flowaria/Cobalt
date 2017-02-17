@@ -9,14 +9,10 @@ namespace Cobalt.Population
     {
         public string Map;
         public string Name;
-        public List<string> BaseFiles;
+        public List<string> BaseFiles = new List<string>();
         public WaveSchedule Population;
 
-        public void Cast()
-        {
-
-        }
-        public static bool Validate(string filename)
+        public static bool ValidateProjFile(string filename)
         {
             StringBuilder builder = new StringBuilder();
             using (FileStream stream = new FileStream(filename, FileMode.Open))

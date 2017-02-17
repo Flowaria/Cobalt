@@ -9,8 +9,6 @@ namespace Cobalt.FileIO.CFG
 {
     public static class MainConfig
     {
-        public static string API_KEY;
-        public static string API_LANG;
         static MainConfig()
         {
             if (FileFunction.ExportString(Resources.config, Settings.Default.PATH_CFG, "config.ini") == FileFunction.Status.Success)
@@ -37,15 +35,6 @@ namespace Cobalt.FileIO.CFG
                 Environment.Exit(-1);
             }
             Settings.Default.API_KEY = key;
-
-            /*
-            //Lang
-            GetPrivateProfileString("API", "BaseLang", "", builder, 32, url);
-            API_LANG = builder.ToString();
-
-            //Lang2
-            GetPrivateProfileString("CONFIG", "Language", "", builder, 32, url);
-            */
         }
     }
 }

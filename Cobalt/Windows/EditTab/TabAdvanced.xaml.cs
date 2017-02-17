@@ -20,9 +20,47 @@ namespace Cobalt.Windows.EditTab
     /// </summary>
     public partial class TabAdvanced : UserControl
     {
+        private TreeViewItem tree;
+        private TextBox box;
+        private bool tabEditing = false;
         public TabAdvanced()
         {
+            box = new TextBox();
+            box.LostFocus += (o, e) =>
+            {
+                tabEdited();
+            };
+            box.KeyDown += (o, e) =>
+            {
+                if (e.Key == Key.Return)
+                {
+                    tabEdited();
+                }
+            };
             InitializeComponent();
+        }
+
+        private void tabEdited()
+        {
+            if (box.Text.Length < 1)
+            {
+                int index = MainTree.Items.IndexOf(tree);
+                Console.WriteLine(index);
+                MainTree.Items.Remove(index);
+            }
+            tree.Header = box.Text;
+            tabEditing = false;
+        }
+
+        private void treeView_DoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            if(!tabEditing)
+            {
+                tree = e.Source as TreeViewItem;
+                box.Text = tree.Header.ToString();
+                tree.Header = box;
+                tabEditing = true;
+            }
         }
 
         private void treeView_MouseDown(object sender, MouseButtonEventArgs e)

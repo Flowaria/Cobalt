@@ -77,13 +77,16 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Source\Data\MapsData.cs" />
     <Compile Include="Source\FileIO\Config\iniUtil.cs" />
+    <Compile Include="Source\Parser\KeyValueParser.cs" />
     <Compile Include="Source\Population\Element\Wave.cs" />
     <Compile Include="Source\Population\PopProject.cs" />
-    <Compile Include="Source\Population\PopProject_Import.cs" />
+    <Compile Include="Source\Population\PopProjectFile_Import.cs" />
     <Compile Include="UserControl\TFBotIcon.xaml.cs">
       <DependentUpon>TFBotIcon.xaml</DependentUpon>
     </Compile>
+    <Compile Include="VTF\VTF.cs" />
     <Compile Include="Windows\EditTab\TabAdvanced.xaml.cs">
       <DependentUpon>TabAdvanced.xaml</DependentUpon>
     </Compile>
@@ -92,6 +95,9 @@
     </Compile>
     <Compile Include="Windows\EditTab\TabLiner.xaml.cs">
       <DependentUpon>TabLiner.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\PropertiesWindow.xaml.cs">
+      <DependentUpon>PropertiesWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\Tools\Navigator.xaml.cs">
       <DependentUpon>Navigator.xaml</DependentUpon>
@@ -108,8 +114,8 @@
     <Compile Include="Windows\MainTab\TabWave.xaml.cs">
       <DependentUpon>TabWave.xaml</DependentUpon>
     </Compile>
-    <Compile Include="LoadingWindow.xaml.cs">
-      <DependentUpon>LoadingWindow.xaml</DependentUpon>
+    <Compile Include="MainSplashScreen.xaml.cs">
+      <DependentUpon>MainSplashScreen.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -122,7 +128,7 @@
     <Compile Include="Source\FileIO\Config\MainConfig.cs" />
     <Compile Include="Source\FileIO\Downloader\Downloader.cs" />
     <Compile Include="Source\FileIO\FileFunction.cs" />
-    <Compile Include="Source\Population\PopProject_Export.cs" />
+    <Compile Include="Source\Population\PopProjectFile_Export.cs" />
     <Compile Include="Source\Population\Element\Child\Child.cs" />
     <Compile Include="Source\Population\Element\Child\Tank.cs" />
     <Compile Include="Source\Population\Element\Child\TFBot.cs" />
@@ -133,7 +139,7 @@
     <Compile Include="Source\Population\Element\WaveSchedule.cs" />
     <Compile Include="Source\Parser\TemplateParser.cs" />
     <Compile Include="Source\Parser\SchemaParser.cs" />
-    <Compile Include="Source\Format.cs" />
+    <Compile Include="Source\StringFunction.cs" />
     <Compile Include="Source\TFItems\TFAttribute.cs" />
     <Compile Include="Source\TFItems\TFItemInstance.cs" />
     <Compile Include="Source\TFItems\TFItem.cs" />
@@ -164,6 +170,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Windows\PropertiesWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Windows\Tools\Navigator.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -184,7 +194,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="LoadingWindow.xaml">
+    <Page Include="MainSplashScreen.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -228,9 +238,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Resources\Icons\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Resource Include="Resources\icon.ico" />
   </ItemGroup>
@@ -260,7 +268,7 @@
     <Resource Include="Resources\Splash\0.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Splash\Mask01.png" />
+    <Resource Include="Resources\Mask\Mask01.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Splash\1.png" />
@@ -288,9 +296,14 @@
     <EmbeddedResource Include="Resources\MapConfig\mvm_coaltown.xml" />
     <EmbeddedResource Include="Resources\MapConfig\mvm_decoy.xml" />
     <EmbeddedResource Include="Resources\MapConfig\mvm_ghost_town.xml" />
-    <EmbeddedResource Include="Resources\MapConfig\mvm_mannhattan.xml" />
+    <EmbeddedResource Include="Resources\MapConfig\mvm_mannhattan.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Resources\MapConfig\mvm_mannworks.xml" />
     <EmbeddedResource Include="Resources\MapConfig\mvm_rottenburg.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Mask\Mask02.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
