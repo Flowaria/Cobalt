@@ -21,15 +21,11 @@
 
         public bool Support = false;
         public SquadType SpawnerType = SquadType.TFBot;
-        public Child[] Spawner;
+        //public Child[] Spawner;
 
         public WaveSpawn()
         {
-            this.Spawner[0] = new Tank();
-            if(Spawner[0] is Tank)
-            {
 
-            }
         }
     }
 }

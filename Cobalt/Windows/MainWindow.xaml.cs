@@ -1,4 +1,5 @@
-﻿using Cobalt.Windows.Tools;
+﻿using Cobalt.Windows.MainTab;
+using Cobalt.Windows.Tools;
 using System;
 using System.Windows;
 using System.Windows.Controls;
@@ -9,15 +10,26 @@ namespace Cobalt.Windows
     public partial class MainWindow : Window
     {
         public Boolean projectOpened = false;
-        private Navigator nav;
-        private PropertiesWindow propw;
+        public static PropertiesWindow f_Setting;
+        public static TabSetting f_tabSetting;
+        public static TabWaveSchedule f_tabWave;
+        public static TabMission f_tabMission;
+        public static TabTemplate f_tabTemplate;
 
         public MainWindow()
         {
             InitializeComponent();
             this.MaxHeight = SystemParameters.MaximizedPrimaryScreenHeight;
-            nav = new Navigator();
-            propw = new PropertiesWindow();
+
+            //윈도우 초기화, 탭 초기화
+            f_Setting = new PropertiesWindow();
+            f_tabSetting = new TabSetting(); tab_setting.Content = f_tabSetting;
+            f_tabWave = new TabWaveSchedule(); tab_waves.Content = f_tabWave;
+            f_tabMission = new TabMission(); tab_mission.Content = f_tabMission;
+            f_tabTemplate = new TabTemplate(); tab_template.Content = f_tabTemplate;
+
+            for(int i = 0;i<8;i++)
+            f_tabWave.AddWave();
         }
 
         //웨이브 버튼 창 슬라이더를 다시 돌려놓기
@@ -45,8 +57,7 @@ namespace Cobalt.Windows
 
         private void Window_Closed(object sender, EventArgs e)
         {
-            nav.Close();
-            propw.Close();
+            f_Setting.Close();
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -56,7 +67,7 @@ namespace Cobalt.Windows
 
         private void MenuFile_Properties_Click(object sender, RoutedEventArgs e)
         {
-            propw.Show();
+            f_Setting.Show();
         }
     }
 }

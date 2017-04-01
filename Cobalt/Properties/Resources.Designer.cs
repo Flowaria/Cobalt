@@ -61,7 +61,7 @@ namespace Cobalt.Properties {
         }
         
         /// <summary>
-        ///   [API]
+        ///   &lt;!--
         ///;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; 반드시 읽어주세요! ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
         ///;;; http://steamcommunity.com/dev/apikey 에서 API 키를 받은다음 키값을 적어주세요
         ///;;; 도메인 이름 란에는 아무거나 적으셔도 상관 없습니다.
@@ -70,8 +70,8 @@ namespace Cobalt.Properties {
         ///;;; 키: XXXXXXXXXXXXXXXXXXXXXXXXXXXXX
         ///;;; 도메인 이름: Example
         ///;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; 반드시 읽어주세요! ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-        ///
-        ///Key[나머지 문자열은 잘림]&quot;;과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///--&gt;
+        ///        ///[나머지 문자열은 잘림]&quot;;과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string config {
             get {
@@ -123,12 +123,12 @@ namespace Cobalt.Properties {
         ///		&lt;Wave&gt;
         ///			&lt;WaveStarted name=&quot;wave_start_relay&quot;/&gt;
         ///			&lt;WaveStarted name=&quot;wave_start_relay_boss&quot;/&gt;
-        ///      &lt;WaveStarted name=&quot;wave_start_relay_ironman&quot;/&gt;
-        ///      &lt;WaveDone name=&quot;wave_finished_relay&quot;/&gt;
+        ///			&lt;WaveStarted name=&quot;wave_start_relay_ironman&quot;/&gt;
+        ///			&lt;WaveDone name=&quot;wave_finished_relay&quot;/&gt;
         ///			&lt;WaveDone name=&quot;wave_finished_relay_boss&quot;/&gt;
         ///		&lt;/Wave&gt;
         ///		&lt;Spawn&gt;
-        ///			&lt;FirstSpawn name=&quot;boss_spaw[나머지 문자열은 잘림]&quot;;과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///			&lt;FirstSpawn name=&quot;boss_spawn_rela[나머지 문자열은 잘림]&quot;;과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string mvm_bigrock {
             get {
@@ -236,14 +236,15 @@ namespace Cobalt.Properties {
         ///		&lt;Where name=&quot;spawnbot_upper0&quot;/&gt;
         ///		&lt;Where name=&quot;spawnbot_upper1&quot;/&gt;
         ///		&lt;Where name=&quot;spawnbot_upper2&quot;/&gt;
-        ///    &lt;Where name=&quot;spawnbot_mission_sniper0&quot;/&gt;
-        ///    &lt;Where name=&quot;spawnbot_mission_sniper1&quot;/&gt;
-        ///    &lt;Where name=&quot;spawnbot_mission_spy&quot;/&gt;
+        ///		&lt;Where name=&quot;spawnbot_mission_sniper0&quot;/&gt;
+        ///		&lt;Where name=&quot;spawnbot_mission_sniper1&quot;/&gt;
+        ///		&lt;Where name=&quot;spawnbot_mission_spy&quot;/&gt;
         ///    
-        ///  &lt;/Where&gt;
+        ///	&lt;/Where&gt;
         ///	
         ///	&lt;Relay&gt;
-        ///		&lt;WaveInit n[나머지 문자열은 잘림]&quot;;과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///		&lt;Wave&gt;
+        ///			&lt;WaveIn[나머지 문자열은 잘림]&quot;;과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string mvm_mannhattan {
             get {

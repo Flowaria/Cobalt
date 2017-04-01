@@ -1,7 +1,6 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:Cobalt.Windows">
-
     <!--Liner TabControl Parent-->
     <Style x:Key="TabControl_Liner" TargetType="TabControl">
         <Style.Resources>
@@ -36,7 +35,35 @@
             </Style>
         </Style.Resources>
     </Style>
-    
+
+    <Style x:Key="TabItem_Waves" TargetType="TabItem">
+        <Setter Property="Width" Value="64" />
+        <Setter Property="Foreground" Value="Black"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="TabItem">
+                    <Grid Background="{TemplateBinding Background}">
+                        <Border Name="Border" BorderThickness="0,0,0,3" BorderBrush="White">
+                            <ContentPresenter x:Name="ContentSite"
+                                        VerticalAlignment="Center"
+                                        HorizontalAlignment="Center"
+                                        ContentSource="Header"
+                                        Margin="5"
+                                        />
+                        </Border>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter TargetName="Border" Property="BorderBrush" Value="{StaticResource Color_UnderScore_Selected}" />
+                        </Trigger>
+                        <Trigger Property="IsSelected" Value="False">
+                            <Setter TargetName="Border" Property="BorderBrush" Value="{StaticResource Color_UnderScore}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
 
     <!--Style For WaveSpawn Tab Control-->
     <Style x:Key="Tab_WaveSpawn" TargetType="TabControl">

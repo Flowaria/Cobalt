@@ -22,40 +22,36 @@ namespace Cobalt
         public MainSplashScreen()
         {  
             InitializeComponent();
-
-            mainWindow = new MainWindow();
-            mainWindow.Hide();
-
+            eLabel.Content = Properties.Settings.Default.Load_Map_Config;
             showRandomSplash(6);
         }
 
         public void showRandomSplash(int max)
         {
             eLabelVersion.Content = String.Format("Cobalt v{0}", Properties.Settings.Default.VERSION_STRING);
-            eLabel.Content = Properties.Settings.Default.LOAD_ITEM;
             int r = new Random().Next(0, max);
             eImage.Source = new BitmapImage(new Uri(String.Format("/Resources/Splash/{0}.png", r), UriKind.Relative));
         }
 
         private async void Window_ContentRendered(object sender, EventArgs e)
         {
-            //컨픽
-            MainConfig.loadConfig();
-            
-            foreach (string file in Directory.GetFiles(Properties.Settings.Default.PATH_CFG_MAP))
-            {
-                MapConfig.loadConfig(file);
-            }
-            
-
             //선언
             var Schema = new SchemaParser();
             var Template = new TemplateParser();
             var icodl = new IconDownloader();
             var fff = new PopProjectFile();
+            var mCfg = new MapConfig();
 
-            fff.Import(FileFunction.RelativeURL("population/mvm_mannworks_expert1.pop"));
+            //컨픽
+            MainConfig.loadConfig();
 
+            foreach (string file in Directory.GetFiles(Properties.Settings.Default.PATH_CFG_MAP))
+            {
+                await mCfg.loadConfigAsync(file);
+            }
+            //fff.Import(FileFunction.RelativeURL("population/mvm_mannworks_expert1.pop"));
+
+            eLabel.Content = Properties.Settings.Default.LOAD_ITEM;
             //다운로더 컨텐츠 대상 설정
             icodl.Progress = eBar;
             icodl.TextBox = eLabel;
@@ -66,6 +62,9 @@ namespace Cobalt
             await icodl.download(); //아이콘 다운로드
             //await p_Template.parse(); //템플릿 파싱
             //await initP.initTemplate(p_Template);
+
+            //메인 윈도우 가동
+            mainWindow = new MainWindow();
             mainWindow.Show();
             Close();
         }

@@ -151,5 +151,17 @@ namespace Cobalt.Properties {
                 this["PATH_CFG_MAP"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("맵 설정파일 불러오는중 . . .")]
+        public string Load_Map_Config {
+            get {
+                return ((string)(this["Load_Map_Config"]));
+            }
+            set {
+                this["Load_Map_Config"] = value;
+            }
+        }
     }
 }

@@ -1,12 +1,16 @@
 ﻿namespace Cobalt.Population.Element
 {
-    public class Tank : Child
+    public class Tank
     {
+        public long Health;
+        public string Name;
+        public string ClassIcon;
+
         public bool Skin = false;
         public int Speed = 75;
-        public string StartingPathTrackNode = "boss_tank_path_a1_01";
-        public string OnKilledOutput = "boss_dead_relay:Trigger";
-        public string OnBombDroppedOutput = "boss_deploy_relay:Trigger";
+        public Relay StartingPathTrackNode;
+        public Relay OnKilledOutput;
+        public Relay OnBombDroppedOutput;
 
         public Tank()
         {

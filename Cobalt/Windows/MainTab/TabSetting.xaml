@@ -22,7 +22,8 @@
             </Grid.RowDefinitions>
             <StackPanel Grid.Row="0" Orientation="Horizontal">
                 <Label Content="맵 선택 : " VerticalAlignment="Center" />
-                <ComboBox x:Name="comboBox" HorizontalAlignment="Left" Height="32" Width="216" VerticalAlignment="Center" VerticalContentAlignment="Center" FontSize="18" FontFamily="Consolas">
+                <ComboBox x:Name="comboMaps" HorizontalAlignment="Left" Height="32" Width="216" VerticalAlignment="Center" VerticalContentAlignment="Center" FontSize="18" FontFamily="Consolas"
+                          SelectionChanged="comboMaps_SelectionChanged">
                     <ComboBoxItem x:Name="none" Content="Decoy"/>
                     <ComboBoxItem Content="Mannhattan"/>
                 </ComboBox>
@@ -30,66 +31,74 @@
                 <TextBox Height="32" Width="216" VerticalAlignment="Center" VerticalContentAlignment="Center"/>
             </StackPanel>
             <Grid Grid.Row="1">
+                <Grid.Style>
+                    <Style TargetType="Grid">
+                        <Style.Resources>
+                            <Style TargetType="CheckBox">
+                                <Setter Property="Foreground" Value="White"/>
+                            </Style>
+                        </Style.Resources>
+                    </Style>
+                </Grid.Style>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="1*"/>
                     <ColumnDefinition Width="1*"/>
                     <ColumnDefinition Width="1*"/>
-                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="3*"/>
                 </Grid.ColumnDefinitions>
-                <GroupBox Grid.Column="0">
+                <GroupBox Grid.Column="0" Foreground="White" >
                     <GroupBox.Header>
                         난이도 설정
                     </GroupBox.Header>
                     <StackPanel>
                         <StackPanel>
-                            <Separator />
                             <DockPanel HorizontalAlignment="Left">
                                 <TextBlock Text="시작 자금 : "/>
-                                <TextBox VerticalContentAlignment="Center" Width="96"/>
+                                <TextBox VerticalContentAlignment="Center" Width="96" PreviewTextInput="TextBox_PreviewTextInput_NumberOnly" DataObject.Pasting="TextBox_Pasting_NumberOnly"/>
                                 <TextBlock Text="$"/>
                             </DockPanel>
                         </StackPanel>
-
+                        <Separator Height="8"/>
                         <StackPanel>
-                            <Separator />
                             <CheckBox Content="상급 미션"/>
                             <CheckBox Content="좀비 로봇"/>
-                            <CheckBox Content="로봇 스폰킬"/>
                         </StackPanel>
-                        <Separator />
-                        <GroupBox>
-                            <GroupBox.Header>
-                                <CheckBox Content="센트리 버스터 설정"/>
-                            </GroupBox.Header>
-                            <Grid>
-                                <StackPanel>
-                                    <TextBlock Text="일정 조건마다 강제로 소환"/>
-                                    <Separator />
-                                    <DockPanel HorizontalAlignment="Left">
-                                        <TextBlock Text="센트리 딜량 : "/>
-                                        <TextBox VerticalContentAlignment="Center" Width="96"/>
-                                    </DockPanel>
-                                    <DockPanel HorizontalAlignment="Left">
-                                        <TextBlock Text="센트리 킬수 : "/>
-                                        <TextBox VerticalContentAlignment="Center" Width="96"/>
-                                    </DockPanel>
-                                </StackPanel>
-                            </Grid>
-                        </GroupBox>
-                        <Separator />
-                        <GroupBox>
-                            <GroupBox.Header>
-                                <CheckBox Content="리스폰 시간 설정"/>
-                            </GroupBox.Header>
-                            <Grid>
-                                <StackPanel>
-                                    <DockPanel HorizontalAlignment="Left">
-                                        <TextBlock Text="시간 (초) : "/>
-                                        <TextBox VerticalContentAlignment="Center" Width="96"/>
-                                    </DockPanel>
-                                    <CheckBox Content="무조건 이 리스폰 시간 사용"/>
-                                </StackPanel>
-                            </Grid>
+                        <Separator Height="8"/>
+                        <GroupBox Header="고급 설정">
+                            <StackPanel>
+                                <CheckBox Content="로봇이 기지 안에서 공격 가능"/>
+                                <CheckBox Content="센트리 버스터 설정 사용" x:Name="Group_Buster_Check"/>
+                                <CheckBox Content="리스폰 시간 설정 사용" x:Name="Group_Respawn_Check"/>
+                                <Separator Height="8"/>
+                                <GroupBox Header="센트리 버스터 설정" IsEnabled="{Binding ElementName=Group_Buster_Check, Path =IsChecked}">
+                                    <Grid>
+                                        <StackPanel>
+                                            <TextBlock Text="일정 조건마다 강제로 소환"/>
+                                            <Separator />
+                                            <DockPanel HorizontalAlignment="Left">
+                                                <TextBlock Text="센트리 딜량 : "/>
+                                                <TextBox VerticalContentAlignment="Center" Width="96" PreviewTextInput="TextBox_PreviewTextInput_NumberOnly" DataObject.Pasting="TextBox_Pasting_NumberOnly"/>
+                                            </DockPanel>
+                                            <DockPanel HorizontalAlignment="Left">
+                                                <TextBlock Text="센트리 킬수 : "/>
+                                                <TextBox VerticalContentAlignment="Center" Width="96" PreviewTextInput="TextBox_PreviewTextInput_NumberOnly" DataObject.Pasting="TextBox_Pasting_NumberOnly"/>
+                                            </DockPanel>
+                                        </StackPanel>
+                                    </Grid>
+                                </GroupBox>
+                                <Separator Height="8"/>
+                                <GroupBox Header="리스폰 시간 설정" IsEnabled="{Binding ElementName=Group_Respawn_Check, Path =IsChecked}">
+                                    <Grid>
+                                        <StackPanel>
+                                            <DockPanel HorizontalAlignment="Left">
+                                                <TextBlock Text="시간 (초) : "/>
+                                                <TextBox x:Name="Respawn_Time" VerticalContentAlignment="Center" Width="96" PreviewTextInput="TextBox_PreviewTextInput_NumberOnly" DataObject.Pasting="TextBox_Pasting_NumberOnly"/>
+                                            </DockPanel>
+                                            <CheckBox x:Name="Respawn_Force" Content="무조건 이 리스폰 시간 사용"/>
+                                        </StackPanel>
+                                    </Grid>
+                                </GroupBox>
+                            </StackPanel>
                         </GroupBox>
                     </StackPanel>
                 </GroupBox>
@@ -100,16 +109,11 @@
                     <StackPanel>
                         <TextBlock Text="공식"/>
                         <Separator />
-                        <ListBox>
-                            <CheckBox Content="Standard"/>
-                            <CheckBox Content="Giant"/>
-                            <CheckBox Content="GateBot"/>
+                        <ListBox x:Name="TemplateList">
                         </ListBox>
                         <TextBlock Text="비공식"/>
                         <Separator />
-                        <ListBox>
-                            <CheckBox Content="Click_Standard"/>
-                            <CheckBox Content="Click_Giant"/>
+                        <ListBox x:Name="TemplateListUnOfficial">
                         </ListBox>
                     </StackPanel>
                 </GroupBox>
@@ -120,26 +124,38 @@
                     <StackPanel>
                         <TextBlock Text="공격 시작 릴레이"/>
                         <Separator />
-                        <ListBox>
-                            <RadioButton Content="사용하지 않음" GroupName="d" IsChecked="True"/>
-                            <RadioButton Content="wave_started_relay" GroupName="d"/>
-                            <RadioButton Content="wave_started_relay_666" GroupName="d"/>
-                            <RadioButton Content="wave_started_relay_ironman" GroupName="d"/>
-                        </ListBox>
+                        <CheckBox x:Name="NotUse_BeginRelay" Content="사용함"/>
+                        <ListBox x:Name="WaveBeginRelay" IsEnabled="{Binding ElementName=NotUse_BeginRelay, Path =IsChecked}"/>
 
                         <TextBlock Text="공격 종료 릴레이"/>
                         <Separator />
-                        <ListBox>
-                            <RadioButton Content="사용하지 않음" GroupName="dd" IsChecked="True"/>
-                            <RadioButton Content="wave_finished_relay" GroupName="dd"/>
-                        </ListBox>
+                        <CheckBox x:Name="NotUse_EndRelay" Content="사용함"/>
+                        <ListBox x:Name="WaveEndRelay" IsEnabled="{Binding ElementName=NotUse_EndRelay, Path =IsChecked}"/>
+
                         <TextBlock Text="공격 초기화 릴레이"/>
                         <Separator />
-                        <ListBox>
-                            <RadioButton Content="사용하지 않음" GroupName="ddd" IsChecked="True"/>
-                            <RadioButton Content="init_wave_relay" GroupName="ddd"/>
-                        </ListBox>
+                        <CheckBox x:Name="NotUse_InitRelay" Content="사용함"/>
+                        <ListBox x:Name="WaveInitRelay" IsEnabled="{Binding ElementName=NotUse_InitRelay, Path =IsChecked}"/>
                     </StackPanel>
+                </GroupBox>
+
+                <GroupBox Grid.Column="3">
+                    <GroupBox.Header>
+                        맵 정보
+                    </GroupBox.Header>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+                        <ListBox x:Name="WaveSpawn" Grid.Column="0">
+                        </ListBox>
+                        <ListBox x:Name="WaveRelay" Grid.Column="1">
+                        </ListBox>
+                        <ListBox x:Name="WaveTag" Grid.Column="2">
+                        </ListBox>
+                    </Grid>
                 </GroupBox>
             </Grid>
         </Grid>

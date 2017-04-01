@@ -2,12 +2,13 @@
 using Cobalt.Properties;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Xml;
 
 namespace Cobalt.FileIO.CFG
 {
-    public static class MapConfig
+    public class MapConfig
     {
         static MapConfig()
         {
@@ -21,16 +22,20 @@ namespace Cobalt.FileIO.CFG
             FileFunction.ExportString(Resources.mvm_mannhattan, Settings.Default.PATH_CFG_MAP, "mvm_mannhattan.xml");
         }
 
-        public static void loadConfig(string name)
+        public async Task loadConfigAsync(string url)
+        {
+            await Task.Run(() => loadConfig(url));
+        }
+
+        public void loadConfig(string url)
         {
             XmlDocument doc = new XmlDocument();
             try
             {
-                doc.Load(name);
+                doc.Load(url);
 
                 //처음 노드 가져오기
                 XmlElement rNode = doc.DocumentElement;
-                Console.WriteLine(rNode.Name);
 
                 var map = new TFMap();
                 map.MapName = rNode.Name;
@@ -56,19 +61,16 @@ namespace Cobalt.FileIO.CFG
                 getAllNodesData(rNode, "Tag/Bot", map.TagBot);
                 getAllNodesData(rNode, "Tag/Prefer", map.TagPrefer);
 
-                foreach (string str in map.Where)
-                {
-                    Console.WriteLine(str);
-                }
+                TFMap.AddMap(map);
             }
             catch
             {
                 Console.WriteLine("Error");
             }
-           
+
         }
 
-        private static void getAllNodesData(XmlElement root, string path, List<string> handler)
+        private void getAllNodesData(XmlElement root, string path, List<string> handler)
         {
             foreach (XmlNode node in root.SelectNodes(path))
             {
@@ -79,7 +81,7 @@ namespace Cobalt.FileIO.CFG
             }
         }
 
-        private static bool vAttribute(XmlNode node, string attr)
+        private bool vAttribute(XmlNode node, string attr)
         {
             return (node.Attributes != null && node.Attributes[attr] != null);
         }

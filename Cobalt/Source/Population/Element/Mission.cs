@@ -14,7 +14,7 @@ namespace Cobalt.Population
         public short DesiredCount = 2;
         public string[] Where;
 
-        public Child Spawner;
+        public TFBot Spawner;
 
         public Mission()
         {

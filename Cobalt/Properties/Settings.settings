@@ -38,5 +38,8 @@
     <Setting Name="PATH_CFG_MAP" Type="System.String" Scope="User">
       <Value Profile="(Default)">Config/Maps/</Value>
     </Setting>
+    <Setting Name="Load_Map_Config" Type="System.String" Scope="User">
+      <Value Profile="(Default)">맵 설정파일 불러오는중 . . .</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

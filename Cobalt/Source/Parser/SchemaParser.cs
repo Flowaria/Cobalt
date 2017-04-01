@@ -35,11 +35,10 @@ namespace Cobalt.Parser
             foreach (Attributes attribute in root.result.attributes)
             {
                 iAttribute = new TFAttribute();
-                iAttribute.Name = attribute.name;
                 iAttribute.DefId = attribute.defindex;
-                iAttribute.Description = attribute.description_format;
+                iAttribute.DefName = attribute.name;
                 //Attributes 추가
-                ItemsData.Attributes.Add(iAttribute);
+                TFAttribute.AddAttribute(iAttribute);
             }
 
             //아이템 DB 등록
@@ -47,7 +46,7 @@ namespace Cobalt.Parser
             foreach (Items item in root.result.items)
             {
                 //유효성 검사
-                if((item.image_url == null || item.item_slot == null) //URL 없을시, Slot 없을시
+                if((item.item_slot == null) //Slot 없을시
                     || (!item.item_class.Contains("tf_weapon") && !item.item_class.Contains("tf_wearable") //무기와 의장이 아닐시
                     || item.item_slot.Contains("action"))) //액션 아이템일시
                     continue;
@@ -55,11 +54,13 @@ namespace Cobalt.Parser
                 //새 객체 생성
                 iItem = new TFItem();
                 iItem.Classname = item.item_class;
-                iItem.Name = item.item_name;
+                iItem.LocalName = item.item_name;
                 iItem.DefName = item.name;
                 iItem.DefId = item.defindex;
-                iItem.ImageURL = item.image_url;
-                iItem.Quality = (ItemQuality)Enum.Parse(typeof(ItemQuality), item.item_quality.ToString());
+
+                if(item.image_url != null)
+                    iItem.ImageURL = item.image_url;
+                //iItem.Quality = (ItemQuality)Enum.Parse(typeof(ItemQuality), item.item_quality.ToString());
                 //iItem.ItemSlot = (ItemSlot)Enum.Parse(typeof(ItemSlot), item.item_slot);
 
                 //Attributes 유효성 검사
@@ -69,11 +70,11 @@ namespace Cobalt.Parser
                     foreach (DefaultAttribute attribute in item.attributes)
                     {
                         //이름이 같은 Attributes 를 찾는다.
-                        iItem.addAttribute(ItemsData.Attributes.Find(x => x.Name.Equals(attribute.name)), attribute.value);
+                        iItem.addAttribute(TFAttribute.GetItembyName(attribute.name), attribute.value);
                     }
                 }
                 //아이템 추가
-                ItemsData.Items.Add(iItem);
+                TFItem.AddItem(iItem);
             }
         }
     }

@@ -31,7 +31,7 @@ namespace Cobalt.FileIO.DL
                 Directory.CreateDirectory(Properties.Settings.Default.PATH_IMG_ITEMS);
 
             List<String> FileList = new List<String>();
-            foreach (TFItem item in ItemsData.Items)
+            foreach (TFItem item in TFItem.ItemList())
             {
                 if (item.ImageURL != null)
                 {

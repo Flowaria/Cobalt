@@ -10,37 +10,11 @@
     <Grid>
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="32"/>
                 <RowDefinition Height="60"/>
                 <RowDefinition Height="1*"/>
             </Grid.RowDefinitions>
 
-            <!--웨이브 선택 영역-->
-            <Grid Grid.Row="0">
-                <Grid.ColumnDefinitions>
-                    <!--왼쪽으로-->
-                    <ColumnDefinition Width="32"/>
-                    <!--목록-->
-                    <ColumnDefinition Width="1*"/>
-                    <!--오른쪽으로-->
-                    <ColumnDefinition Width="32"/>
-                </Grid.ColumnDefinitions>
-
-                <!--버튼들-->
-                <Button x:Name="buttonLeft" Grid.Column="0"  Content="《" Width="32"/>
-                <Button x:Name="buttonRight" Grid.Column="2" Content="》" Width="32"/>
-
-                <!--가운데 영역-->
-                <ScrollViewer x:Name="ScrollPanel" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled">
-                    <StackPanel x:Name="ScrollPanel2" Orientation="Horizontal" CanHorizontallyScroll="True">
-                        <Button Content="Wave 2" Width="48"/>
-                        <Button Content="Wave 2" Width="48"/>
-                        <Button Content="Wave 2" Width="48" Style="{DynamicResource ButtonWave}"/>
-                    </StackPanel>
-                </ScrollViewer>
-            </Grid>
-
-            <Grid VerticalAlignment="Center" Grid.Row="1">
+            <Grid VerticalAlignment="Center" Grid.Row="0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="1*"/>
                     <ColumnDefinition Width="1*"/>
@@ -90,7 +64,7 @@
                     </DockPanel>
                 </StackPanel>
             </Grid>
-            <Grid Grid.Row="2">
+            <Grid Grid.Row="1">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="2.5*"/>
                     <ColumnDefinition Width="1*"/>

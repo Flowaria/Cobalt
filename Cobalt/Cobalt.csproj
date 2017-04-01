@@ -77,9 +77,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Source\Data\MapsData.cs" />
+    <Compile Include="Source\Data\TFMap.cs" />
     <Compile Include="Source\FileIO\Config\iniUtil.cs" />
     <Compile Include="Source\Parser\KeyValueParser.cs" />
+    <Compile Include="Source\Population\Element\Relay.cs" />
     <Compile Include="Source\Population\Element\Wave.cs" />
     <Compile Include="Source\Population\PopProject.cs" />
     <Compile Include="Source\Population\PopProjectFile_Import.cs" />
@@ -95,6 +96,10 @@
     </Compile>
     <Compile Include="Windows\EditTab\TabLiner.xaml.cs">
       <DependentUpon>TabLiner.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Element\TextFixElement.cs" />
+    <Compile Include="Windows\MainTab\TabWaveSchedule.xaml.cs">
+      <DependentUpon>TabWaveSchedule.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\PropertiesWindow.xaml.cs">
       <DependentUpon>PropertiesWindow.xaml</DependentUpon>
@@ -122,14 +127,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Source\Data\ItemsData.cs" />
-    <Compile Include="Source\Data\TemplatesData.cs" />
+    <Compile Include="Source\Data\TFTemplate.cs" />
     <Compile Include="Source\Enums\TFEnums.cs" />
     <Compile Include="Source\FileIO\Config\MainConfig.cs" />
     <Compile Include="Source\FileIO\Downloader\Downloader.cs" />
     <Compile Include="Source\FileIO\FileFunction.cs" />
     <Compile Include="Source\Population\PopProjectFile_Export.cs" />
-    <Compile Include="Source\Population\Element\Child\Child.cs" />
     <Compile Include="Source\Population\Element\Child\Tank.cs" />
     <Compile Include="Source\Population\Element\Child\TFBot.cs" />
     <Compile Include="Source\Population\Element\Mission.cs" />
@@ -141,7 +144,6 @@
     <Compile Include="Source\Parser\SchemaParser.cs" />
     <Compile Include="Source\StringFunction.cs" />
     <Compile Include="Source\TFItems\TFAttribute.cs" />
-    <Compile Include="Source\TFItems\TFItemInstance.cs" />
     <Compile Include="Source\TFItems\TFItem.cs" />
     <Compile Include="Windows\Tools\ItemSelect.xaml.cs">
       <DependentUpon>ItemSelect.xaml</DependentUpon>
@@ -167,6 +169,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\EditTab\TabLiner.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\MainTab\TabWaveSchedule.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -238,7 +244,9 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Resources\config.xml" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\icon.ico" />
   </ItemGroup>
@@ -255,7 +263,6 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\config.ini" />
     <None Include="Resources\Template\robot_gatebot.txt" />
   </ItemGroup>
   <ItemGroup>

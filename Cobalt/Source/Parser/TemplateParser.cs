@@ -1,4 +1,5 @@
-﻿using Cobalt.FileIO;
+﻿using Cobalt.Data;
+using Cobalt.FileIO;
 using Cobalt.Population;
 using Cobalt.Properties;
 using System.IO;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Cobalt.Parser
 {
-    public class TemplateParser : KeyValueBase
+    public class TemplateParser
     {
         public TemplateParser()
         {
@@ -30,6 +31,7 @@ namespace Cobalt.Parser
         //파일 추가
         public async Task parseFile(string name)
         {
+            TFTemplate.AddTemplate(new TFTemplate("robot_click.pop", false));
             if(true)
                 return;
 

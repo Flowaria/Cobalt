@@ -6,9 +6,11 @@ using System.Threading.Tasks;
 
 namespace Cobalt.Data
 {
-    public static class MapsData
+    public class TFMap
     {
-        private static List<TFMap> Maps;
+        public static event EventHandler<MapChangeEventArgs> MapChange = delegate { };
+
+        private static List<TFMap> Maps = new List<TFMap>();
         private static TFMap _Current;
         public static TFMap Current
         {
@@ -25,11 +27,26 @@ namespace Cobalt.Data
         {
             Maps.RemoveAll(x => x.MapName.Equals(name) || x.CompileName.Equals(name));
         }
-    }
 
-    //맵 데이터
-    public class TFMap
-    {
+        public static bool SetCurrentMap(string name)
+        {
+            var i = Maps.Find(x => x.MapName.Equals(name));
+            if (i != null && (_Current == null || !i.MapName.Equals(_Current.MapName)))
+            {
+                _Current = i;
+                MapChange(null, new MapChangeEventArgs(i));
+                return true;
+            }
+            return false;
+        }
+
+        public static TFMap[] GetMaps()
+        {
+            TFMap[] maps = new TFMap[Maps.Count];
+            Maps.CopyTo(maps);
+            return maps;
+        }
+
         public string MapName;
         public string CompileName;
         public List<string> Where = new List<string>();
@@ -46,5 +63,15 @@ namespace Cobalt.Data
         public List<string> PathTank = new List<string>();
         public List<string> TagBot = new List<string>();
         public List<string> TagPrefer = new List<string>();
+    }
+
+    public class MapChangeEventArgs : EventArgs
+    {
+        public TFMap Current { get; set; }
+
+        public MapChangeEventArgs(TFMap current)
+        {
+            Current = current;
+        }
     }
 }
