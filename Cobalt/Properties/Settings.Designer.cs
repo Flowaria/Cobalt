@@ -25,7 +25,7 @@ namespace Cobalt.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Image/Backpack-Icon/")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Items/")]
         public string PATH_IMG_ITEMS {
             get {
                 return ((string)(this["PATH_IMG_ITEMS"]));

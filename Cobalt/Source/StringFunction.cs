@@ -34,7 +34,9 @@ namespace Cobalt
         //파일이름 포멧
         public static string ItemImage(string str)
         {
-            return str.Split('.')[0] + ".png";
+            if(str.EndsWith(".png"))
+                return str.Split('.')[0] + ".png";
+            return null;
         }
 
         /*포멧

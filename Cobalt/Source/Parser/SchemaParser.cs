@@ -4,6 +4,7 @@ using Cobalt.TFItems;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Threading.Tasks;
 
 namespace Cobalt.Parser
@@ -24,57 +25,89 @@ namespace Cobalt.Parser
         //데이터 불러오기
         public async Task readFromURL(string url)
         {
-            //JSON 파싱
-            System.Net.WebClient wc = new System.Net.WebClient();
-            wc.Encoding = System.Text.Encoding.UTF8;
-            String content = await wc.DownloadStringTaskAsync(url);
-            Root root = await Task.Factory.StartNew(() => JsonConvert.DeserializeObject<Root>(content));
-
-            //태그 DB 등록
-            TFAttribute iAttribute;
-            foreach (Attributes attribute in root.result.attributes)
+            try
             {
-                iAttribute = new TFAttribute();
-                iAttribute.DefId = attribute.defindex;
-                iAttribute.DefName = attribute.name;
-                //Attributes 추가
-                TFAttribute.AddAttribute(iAttribute);
-            }
-
-            //아이템 DB 등록
-            TFItem iItem;
-            foreach (Items item in root.result.items)
-            {
-                //유효성 검사
-                if((item.item_slot == null) //Slot 없을시
-                    || (!item.item_class.Contains("tf_weapon") && !item.item_class.Contains("tf_wearable") //무기와 의장이 아닐시
-                    || item.item_slot.Contains("action"))) //액션 아이템일시
-                    continue;
-
-                //새 객체 생성
-                iItem = new TFItem();
-                iItem.Classname = item.item_class;
-                iItem.LocalName = item.item_name;
-                iItem.DefName = item.name;
-                iItem.DefId = item.defindex;
-
-                if(item.image_url != null)
-                    iItem.ImageURL = item.image_url;
-                //iItem.Quality = (ItemQuality)Enum.Parse(typeof(ItemQuality), item.item_quality.ToString());
-                //iItem.ItemSlot = (ItemSlot)Enum.Parse(typeof(ItemSlot), item.item_slot);
-
-                //Attributes 유효성 검사
-                if (item.attributes != null)
+                using (System.Net.WebClient wc = new System.Net.WebClient())
                 {
-                    //객체에 Attributes 집어넣기
-                    foreach (DefaultAttribute attribute in item.attributes)
-                    {
-                        //이름이 같은 Attributes 를 찾는다.
-                        iItem.addAttribute(TFAttribute.GetItembyName(attribute.name), attribute.value);
-                    }
+                    wc.Encoding = System.Text.Encoding.UTF8;
+                    String content = await wc.DownloadStringTaskAsync(url);
+                    await read(content);
                 }
-                //아이템 추가
-                TFItem.AddItem(iItem);
+            }
+            catch
+            {
+
+            }
+        }
+
+        public async Task readFromFile(string file)
+        {
+            try
+            {
+                await read(File.ReadAllText(file));
+            }
+            catch
+            {
+
+            }
+        }
+
+        public async Task read(string content)
+        {
+            try
+            {
+                Root root = await Task.Factory.StartNew(() => JsonConvert.DeserializeObject<Root>(content));
+
+                //태그 DB 등록
+                TFAttribute iAttribute;
+                foreach (Attributes attribute in root.result.attributes)
+                {
+                    iAttribute = new TFAttribute();
+                    iAttribute.DefId = attribute.defindex;
+                    iAttribute.DefName = attribute.name;
+                    //Attributes 추가
+                    TFAttribute.AddAttribute(iAttribute);
+                }
+
+                //아이템 DB 등록
+                TFItem iItem;
+                foreach (Items item in root.result.items)
+                {
+                    //유효성 검사
+                    if ((item.item_slot == null) //Slot 없을시
+                        || (!item.item_class.Contains("tf_weapon") && !item.item_class.Contains("tf_wearable") //무기와 의장이 아닐시
+                        || item.item_slot.Contains("action"))) //액션 아이템일시
+                        continue;
+
+                    //새 객체 생성
+                    iItem = new TFItem();
+                    iItem.Classname = item.item_class;
+                    iItem.LocalName = item.item_name;
+                    iItem.DefName = item.name;
+                    iItem.DefId = item.defindex;
+
+                    if (item.image_url != null)
+                        iItem.ImageURL = item.image_url;
+                    //iItem.Quality = (ItemQuality)Enum.Parse(typeof(ItemQuality), item.item_quality.ToString());
+                    //iItem.ItemSlot = (ItemSlot)Enum.Parse(typeof(ItemSlot), item.item_slot);
+
+                    //Attributes 유효성 검사
+                    if (item.attributes != null)
+                    {
+                        //객체에 Attributes 집어넣기
+                        foreach (DefaultAttribute attribute in item.attributes)
+                        {
+                            //이름이 같은 Attributes 를 찾는다.
+                            iItem.addAttribute(TFAttribute.GetItembyName(attribute.name), attribute.value);
+                        }
+                    }
+                    //아이템 추가
+                    TFItem.AddItem(iItem);
+                }
+            }
+            catch
+            {
+                throw new Exception();
             }
         }
     }

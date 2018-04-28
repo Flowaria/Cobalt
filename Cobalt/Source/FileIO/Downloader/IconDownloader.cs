@@ -36,7 +36,7 @@ namespace Cobalt.FileIO.DL
                 if (item.ImageURL != null)
                 {
                     string fileName = Format.UrlFile(item.ImageURL);
-                    if (!File.Exists(Properties.Settings.Default.PATH_IMG_ITEMS + Format.ItemImage(fileName)) && !FileList.Contains(fileName))
+                    if (fileName != null && !File.Exists(Properties.Settings.Default.PATH_IMG_ITEMS + Format.ItemImage(fileName)) && !FileList.Contains(fileName))
                         FileList.Add(fileName);
                     item.ImageURL = Format.ItemImage(fileName);
                 }

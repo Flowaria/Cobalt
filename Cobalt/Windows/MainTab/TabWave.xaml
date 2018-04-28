@@ -24,7 +24,7 @@
                 </Grid.ColumnDefinitions>
                 <StackPanel  Grid.Column="0" Width="128">
                     <Label Content="웨이브 시작 릴레이"/>
-                    <ComboBox>
+                    <ComboBox x:Name="ComboWaveStarted" SelectedIndex="0">
                         <TextBlock Text="사용하지 않음"/>
                         <TextBlock Text="기본으로"/>
                         <Separator />
@@ -34,7 +34,7 @@
                 </StackPanel>
                 <StackPanel  Grid.Column="1" Width="128">
                     <Label Content="웨이브 종료 릴레이" />
-                    <ComboBox>
+                    <ComboBox x:Name="ComboWaveDone" SelectedIndex="0">
                         <TextBlock Text="사용하지 않음"/>
                         <TextBlock Text="기본으로"/>
                         <Separator />
@@ -45,7 +45,7 @@
 
                 <StackPanel  Grid.Column="2" Width="128">
                     <Label Content="웨이브 초기화 릴레이"/>
-                    <ComboBox>
+                    <ComboBox x:Name="ComboWaveInit" SelectedIndex="0">
                         <TextBlock Text="사용하지 않음"/>
                         <TextBlock Text="기본으로"/>
                         <Separator />

@@ -3,7 +3,7 @@
   <Profiles />
   <Settings>
     <Setting Name="PATH_IMG_ITEMS" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">Image/Backpack-Icon/</Value>
+      <Value Profile="(Default)">Items/</Value>
     </Setting>
     <Setting Name="PATH_CFG" Type="System.String" Scope="Application">
       <Value Profile="(Default)">Config/</Value>
