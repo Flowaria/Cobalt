@@ -312,6 +312,16 @@
   <ItemGroup>
     <Resource Include="Resources\Mask\Mask02.png" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Cobalt.PopulationFile.Dll\Cobalt.PopulationFile.Dll.csproj">
+      <Project>{293a2d00-73be-4e78-896d-a99620bf02ee}</Project>
+      <Name>Cobalt.PopulationFile.Dll</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Cobalt.Translation.Dll\Cobalt.Translation.Dll.csproj">
+      <Project>{b77daf19-498a-4c14-af6d-978736c30170}</Project>
+      <Name>Cobalt.Translation.Dll</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

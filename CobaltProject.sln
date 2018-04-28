@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cobalt", "Cobalt\Cobalt.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cobalt.PopulationFile.Dll", "Cobalt.PopulationFile.Dll\Cobalt.PopulationFile.Dll.csproj", "{293A2D00-73BE-4E78-896D-A99620BF02EE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cobalt.Translation.Dll", "Cobalt.Translation.Dll\Cobalt.Translation.Dll.csproj", "{B77DAF19-498A-4C14-AF6D-978736C30170}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,22 @@ Global
 		{293A2D00-73BE-4E78-896D-A99620BF02EE}.Release|x64.Build.0 = Release|Any CPU
 		{293A2D00-73BE-4E78-896D-A99620BF02EE}.Release|x86.ActiveCfg = Release|Any CPU
 		{293A2D00-73BE-4E78-896D-A99620BF02EE}.Release|x86.Build.0 = Release|Any CPU
+		{B77DAF19-498A-4C14-AF6D-978736C30170}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B77DAF19-498A-4C14-AF6D-978736C30170}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B77DAF19-498A-4C14-AF6D-978736C30170}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{B77DAF19-498A-4C14-AF6D-978736C30170}.Debug|ARM.Build.0 = Debug|Any CPU
+		{B77DAF19-498A-4C14-AF6D-978736C30170}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{B77DAF19-498A-4C14-AF6D-978736C30170}.Debug|x64.Build.0 = Debug|Any CPU
+		{B77DAF19-498A-4C14-AF6D-978736C30170}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{B77DAF19-498A-4C14-AF6D-978736C30170}.Debug|x86.Build.0 = Debug|Any CPU
+		{B77DAF19-498A-4C14-AF6D-978736C30170}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B77DAF19-498A-4C14-AF6D-978736C30170}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B77DAF19-498A-4C14-AF6D-978736C30170}.Release|ARM.ActiveCfg = Release|Any CPU
+		{B77DAF19-498A-4C14-AF6D-978736C30170}.Release|ARM.Build.0 = Release|Any CPU
+		{B77DAF19-498A-4C14-AF6D-978736C30170}.Release|x64.ActiveCfg = Release|Any CPU
+		{B77DAF19-498A-4C14-AF6D-978736C30170}.Release|x64.Build.0 = Release|Any CPU
+		{B77DAF19-498A-4C14-AF6D-978736C30170}.Release|x86.ActiveCfg = Release|Any CPU
+		{B77DAF19-498A-4C14-AF6D-978736C30170}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

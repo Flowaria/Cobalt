@@ -1,5 +1,6 @@
 ﻿using Cobalt.Data;
 using Cobalt.TFItems;
+using Flowaria.Translation;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -70,7 +71,7 @@ namespace Cobalt.FileIO.DL
         void c_DownloadFileStarted(object sender, DownloaderEventArgs e)
         {
             // 이미지 다운로드 중 . . . : filename.png 형식으로 라벨 변경
-            TextBox.Content = String.Format("{0} : {1}", Properties.Settings.Default.Load_Item_Image, e.File);
+            TextBox.Content = String.Format("{0} : {1}", Translation.Get("download_itemimage"), e.File);
         }
 
         /*

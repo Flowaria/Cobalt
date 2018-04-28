@@ -4,6 +4,7 @@ using Cobalt.FileIO.DL;
 using Cobalt.Parser;
 using Cobalt.Population;
 using Cobalt.Windows;
+using Flowaria.Translation;
 using System;
 using System.IO;
 using System.Windows;
@@ -20,15 +21,15 @@ namespace Cobalt
 
 
         public MainSplashScreen()
-        {  
+        {
             InitializeComponent();
-            eLabel.Content = Properties.Settings.Default.Load_Map_Config;
+            Translation.LoadDefaultFile("translation/ko.xml");
+            eLabel.Content = Translation.Get("loading_maPsetting");
             showRandomSplash(6);
         }
 
         public void showRandomSplash(int max)
         {
-            eLabelVersion.Content = String.Format("Cobalt v{0}", Properties.Settings.Default.VERSION_STRING);
             int r = new Random().Next(0, max);
             eImage.Source = new BitmapImage(new Uri(String.Format("/Resources/Splash/{0}.png", r), UriKind.Relative));
         }
@@ -51,7 +52,8 @@ namespace Cobalt
             }
             //fff.Import(FileFunction.RelativeURL("population/mvm_mannworks_expert1.pop"));
 
-            eLabel.Content = Properties.Settings.Default.LOAD_ITEM;
+            eLabel.Content = Translation.Get("loading_schema");
+            
             //다운로더 컨텐츠 대상 설정
             icodl.Progress = eBar;
             icodl.TextBox = eLabel;

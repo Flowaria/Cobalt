@@ -6,7 +6,12 @@ using System.Threading.Tasks;
 
 namespace Flowaria.Population.Element
 {
-    public class Mission
+    public enum PropTank
     {
+        Health,
+    }
+    public class Tank
+    {
+        public Properties<int> TankProperties;
     }
 }

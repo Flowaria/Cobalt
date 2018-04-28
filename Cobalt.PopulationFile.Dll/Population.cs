@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Flowaria.PopulationFile
+namespace Flowaria.Population
 {
     public enum PropInt
     {
@@ -24,8 +24,8 @@ namespace Flowaria.PopulationFile
     public class Population
     {
         private int wavelength = 0;
-        private int[] PropertiesInt;
-        private bool[] PropertiesBool;
+        private Properties<int> PropertiesInt;
+        private Properties<bool> PropertiesBool;
         public int WaveLength
         {
             get
@@ -36,8 +36,8 @@ namespace Flowaria.PopulationFile
 
         Population(int wave_length)
         {
-            PropertiesInt = new int[4] {400,8,2000,15};
-            PropertiesBool = new bool[4] { false,false,false,false };
+            PropertiesInt = new Properties<int>(4, 400, 8, 2000, 15);
+            PropertiesBool = new Properties<bool>(4, false, false, false, false);
             wavelength = wave_length;
         }
 
@@ -45,23 +45,6 @@ namespace Flowaria.PopulationFile
         {
             int wave_length = 3;
             return new Population(wave_length);
-        }
-
-        public int GetPropertiesInt(PropInt prop)
-        {
-            return PropertiesInt[(int)prop];
-        }
-        public bool GetPropertiesBool(PropBool prop)
-        {
-            return PropertiesBool[(int)prop];
-        }
-        public void SetPropertiesInt(PropInt prop, int value)
-        {
-            PropertiesInt[(int)prop] = value;
-        }
-        public void SetPropertiesBool(PropBool prop, bool value)
-        {
-            PropertiesBool[(int)prop] = value;
         }
     }
 }

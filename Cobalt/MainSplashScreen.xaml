@@ -14,23 +14,15 @@
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
         <Grid Grid.Row="0">
-            <Label x:Name="eLabelVersion" Panel.ZIndex="1" Content="Cobalt" Height="36"
-                   HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontFamily="Malgun Gothic" Margin="10,490,10,10" Width="780" FontWeight="Bold">
-                <Label.Foreground>
-                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                        <GradientStop Color="#FF2E3AB0" Offset="0.468"/>
-                        <GradientStop Color="#FF0DF4FF" Offset="1"/>
-                        <GradientStop Color="#FF0303FF"/>
-                    </LinearGradientBrush>
-                </Label.Foreground>
-            </Label>
             <Image x:Name="eImage" HorizontalAlignment="Left" Height="536" VerticalAlignment="Top" Width="800">
                 <Image.Source>
                     <BitmapImage  UriSource="/Resources/Splash/3.png" />
                 </Image.Source>
+                <!--
                 <Image.OpacityMask>
                     <ImageBrush ImageSource="/Resources/Mask/Mask01.png"/>
                 </Image.OpacityMask>
+                -->
             </Image>
         </Grid>
         <Grid Grid.Row="1" VerticalAlignment="Center" Width="800">

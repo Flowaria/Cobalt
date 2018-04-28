@@ -25,7 +25,7 @@ namespace Cobalt.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Items/")]
+        [global::System.Configuration.DefaultSettingValueAttribute("resource/items/")]
         public string PATH_IMG_ITEMS {
             get {
                 return ((string)(this["PATH_IMG_ITEMS"]));
@@ -34,7 +34,7 @@ namespace Cobalt.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Config/")]
+        [global::System.Configuration.DefaultSettingValueAttribute("config/")]
         public string PATH_CFG {
             get {
                 return ((string)(this["PATH_CFG"]));
@@ -43,7 +43,7 @@ namespace Cobalt.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Templates/")]
+        [global::System.Configuration.DefaultSettingValueAttribute("resource/templates/")]
         public string PATH_BASE {
             get {
                 return ((string)(this["PATH_BASE"]));
@@ -76,42 +76,6 @@ namespace Cobalt.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("아이템 스캐마 불러오는 중 . . .")]
-        public string LOAD_ITEM {
-            get {
-                return ((string)(this["LOAD_ITEM"]));
-            }
-            set {
-                this["LOAD_ITEM"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("템플릿 불러오는 중 . . .")]
-        public string LOAD_TEMPLATE {
-            get {
-                return ((string)(this["LOAD_TEMPLATE"]));
-            }
-            set {
-                this["LOAD_TEMPLATE"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("아이템 이미지 다운로드 중 . . .")]
-        public string Load_Item_Image {
-            get {
-                return ((string)(this["Load_Item_Image"]));
-            }
-            set {
-                this["Load_Item_Image"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("http://api.steampowered.com/IEconItems_440/GetSchema/v0001/?key={0}&language={1}")]
         public string Format_Schema {
             get {
@@ -122,27 +86,9 @@ namespace Cobalt.Properties {
             }
         }
         
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0.0 PreBuild")]
-        public string VERSION_STRING {
-            get {
-                return ((string)(this["VERSION_STRING"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("1")]
-        public double VERSION {
-            get {
-                return ((double)(this["VERSION"]));
-            }
-        }
-        
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Config/Maps/")]
+        [global::System.Configuration.DefaultSettingValueAttribute("config/maps/")]
         public string PATH_CFG_MAP {
             get {
                 return ((string)(this["PATH_CFG_MAP"]));
@@ -161,6 +107,18 @@ namespace Cobalt.Properties {
             }
             set {
                 this["Load_Map_Config"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://api.steampowered.com/IEconItems_440/GetSchemaURL/v1/?key={0}")]
+        public string Format_Schema_URL {
+            get {
+                return ((string)(this["Format_Schema_URL"]));
+            }
+            set {
+                this["Format_Schema_URL"] = value;
             }
         }
     }
