@@ -24,7 +24,6 @@ namespace Cobalt
         public MainSplashScreen()
         {
             InitializeComponent();
-            Translation.LoadDefaultFile("translation/ko.xml");
             eLabel.Content = Translation.Get("loading_maPsetting");
             showRandomSplash(6);
         }
@@ -45,28 +44,27 @@ namespace Cobalt
             var mCfg = new MapConfig();
 
             //컨픽
-            MainConfig.loadConfig();
-
+            eLabel.Content = Translation.Get("loading_mapsetting");
             foreach (string file in Directory.GetFiles(Properties.Settings.Default.PATH_CFG_MAP))
             {
                 await mCfg.loadConfigAsync(file);
             }
             //fff.Import(FileFunction.RelativeURL("population/mvm_mannworks_expert1.pop"));
 
-            eLabel.Content = Translation.Get("loading_schema");
-            
+            eLabel.Content = Translation.Get("version_schema");
+
             //다운로더 컨텐츠 대상 설정
             icodl.Progress = eBar;
             icodl.TextBox = eLabel;
-            //await Schema.readFromURL(String.Format(Properties.Settings.Default.Format_Schema,
-            //Properties.Settings.Default.API_KEY,
-            //Properties.Settings.Default.API_LANG)); //스캐마 파싱
-            await ItemsInfo.InitSchema("resource/items_game.xml");
-            await ItemsInfo.RefreshTranslate("korean");
 
-            await icodl.download(); //아이콘 다운로드
-            //await p_Template.parse(); //템플릿 파싱
-            //await initP.initTemplate(p_Template);
+            await ItemsInfo.RefreshSchemaFile("resource/items_game.xml");
+
+            eLabel.Content = Translation.Get("loading_schema");
+            await ItemsInfo.InitSchema("resource/items_game.xml");
+
+            eLabel.Content = Translation.Get("download_itemimage");
+            await ItemsInfo.InitItemImage("resource/items/");
+            await ItemsInfo.RefreshTranslate("korean");
 
             //메인 윈도우 가동
             mainWindow = new MainWindow();

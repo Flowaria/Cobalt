@@ -15,7 +15,7 @@ namespace Flowaria.ItemSchema
         private static string Key;
         private static List<TFItem> items;
         private static List<TFAttribute> attributes;
-        public static async Task<bool> InitSchema(string saveurl)
+        public static async Task<bool> RefreshSchemaFile(string saveurl)
         {
             items = new List<TFItem>();
             if(File.Exists(saveurl))
@@ -36,6 +36,7 @@ namespace Flowaria.ItemSchema
                         }
                     });
                     File.Delete(tempfile);
+                    return true;
                 }
                 catch
                 {
@@ -47,62 +48,57 @@ namespace Flowaria.ItemSchema
                 try
                 {
                     await DownloadNew(saveurl);
+                    return true;
                 }
                 catch
                 {
                     return false;
                 }
             }
-
-            try
+        }
+        public static async Task InitSchema(string saveurl)
+        {
+            await Task.Factory.StartNew(delegate
             {
-                await Task.Factory.StartNew(delegate
+                Console.Out.WriteLine(saveurl);
+                XmlDocument schema = new XmlDocument();
+                schema.Load(saveurl);
+                foreach (XmlNode node in schema.DocumentElement)
                 {
-                    Console.Out.WriteLine(saveurl);
-                    XmlDocument schema = new XmlDocument();
-                    schema.Load(saveurl);
-                    foreach (XmlNode node in schema.DocumentElement)
+                    if (node.Name.ToLower().Equals("items"))
                     {
-                        if (node.Name.ToLower().Equals("items"))
+                        if (node["item_class"] != null && node["defindex"] != null &&
+                            node["name"] != null && node["item_slot"] != null && node["image_url"] != null && node["item_name"] != null)
                         {
-                            if(node["item_class"] != null && node["defindex"] != null &&
-                                node["name"] != null && node["item_slot"] != null && node["image_url"] != null && node["item_name"] != null)
+                            TFItem item = null;
+                            if (node["used_by_classes"] != null)
                             {
-                                TFItem item = null;
-                                if(node["used_by_classes"] != null)
+                                item = new TFItem(node["item_class"].InnerText, int.Parse(node["defindex"].InnerText), node["name"].InnerText, TFSlotFunction.StringToSlot(node["item_slot"].InnerText), FormatImageURL(node["image_url"].InnerText), node["item_name"].InnerText, false);
+                                foreach (XmlNode node2 in node.SelectNodes("used_by_classes"))
                                 {
-                                    item = new TFItem(node["item_class"].InnerText, int.Parse(node["defindex"].InnerText), node["name"].InnerText, TFSlotFunction.StringToSlot(node["item_slot"].InnerText), FormatImageURL(node["image_url"].InnerText), node["item_name"].InnerText, false);
-                                    foreach (XmlNode node2 in node.SelectNodes("used_by_classes"))
+                                    TFClass cls = TFClassFunction.StringToClass(node2.InnerText);
+                                    if (cls != TFClass.Null)
                                     {
-                                        TFClass cls = TFClassFunction.StringToClass(node2.InnerText);
-                                        if(cls != TFClass.Null)
-                                        {
-                                            Console.Out.WriteLine(cls);
-                                            item.UsedByClassToggle(cls);
-                                        }
+                                        //Console.Out.WriteLine(cls);
+                                        item.UsedByClassToggle(cls);
                                     }
                                 }
-                                else
-                                {
-                                    item = new TFItem(node["item_class"].InnerText, int.Parse(node["defindex"].InnerText), node["name"].InnerText, TFSlotFunction.StringToSlot(node["item_slot"].InnerText), FormatImageURL(node["image_url"].InnerText), node["item_name"].InnerText, true);
-                                }
-                                
-                                //item.Debug();
-                                items.Add(item);
                             }
-                        }
-                        else if (node.Name.ToLower().Equals("attributes"))
-                        {
+                            else
+                            {
+                                item = new TFItem(node["item_class"].InnerText, int.Parse(node["defindex"].InnerText), node["name"].InnerText, TFSlotFunction.StringToSlot(node["item_slot"].InnerText), FormatImageURL(node["image_url"].InnerText), node["item_name"].InnerText, true);
+                            }
 
+                            //item.Debug();
+                            items.Add(item);
                         }
                     }
-                });
-            }
-            catch
-            {
-                return false;
-            }
-            return false;
+                    else if (node.Name.ToLower().Equals("attributes"))
+                    {
+
+                    }
+                }
+            });
         }
         public static async Task InitItemImage(string saveurl)
         {

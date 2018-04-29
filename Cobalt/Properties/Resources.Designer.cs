@@ -61,17 +61,14 @@ namespace Cobalt.Properties {
         }
         
         /// <summary>
-        ///   &lt;!--
-        ///;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; 반드시 읽어주세요! ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-        ///;;; http://steamcommunity.com/dev/apikey 에서 API 키를 받은다음 키값을 적어주세요
-        ///;;; 도메인 이름 란에는 아무거나 적으셔도 상관 없습니다.
-        ///;;; 키를 발급받으면 아래 형식으로 발급 되는데 &quot;키: &quot;의 뒷부분에 오는 문자를 공백없이 적어주세요
-        ///;;;
-        ///;;; 키: XXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-        ///;;; 도메인 이름: Example
-        ///;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; 반드시 읽어주세요! ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-        ///--&gt;
-        ///        ///[나머지 문자열은 잘림]&quot;;과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   &lt;!--;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; 반드시 읽어주세요! ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;--&gt;
+        ///&lt;!--;;; http://steamcommunity.com/dev/apikey 에서 API 키를 받은다음 키값을 적어주세요--&gt;
+        ///&lt;!--;;; 도메인 이름 란에는 아무거나 적으셔도 상관 없습니다.--&gt;
+        ///&lt;!--;;; 키를 발급받으면 아래 형식으로 발급 되는데 &quot;키: &quot;의 뒷부분에 오는 문자를 공백없이 적어주세요--&gt;
+        ///&lt;!--;;;--&gt;
+        ///&lt;!--;;; 키: XXXXXXXXXXXXXXXXXXXXXXXXXXXXX--&gt;
+        ///&lt;!--;;; 도메인 이름: Example--&gt;
+        ///&lt;!--;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; 반드시 읽어주세요! ;;;;;;;;;;;;;;;;;;;;;;[나머지 문자열은 잘림]&quot;;과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string config {
             get {
@@ -86,26 +83,6 @@ namespace Cobalt.Properties {
             get {
                 object obj = ResourceManager.GetObject("icon", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
-        /// </summary>
-        internal static System.Drawing.Bitmap Mask01 {
-            get {
-                object obj = ResourceManager.GetObject("Mask01", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
-        /// </summary>
-        internal static System.Drawing.Bitmap Mask02 {
-            get {
-                object obj = ResourceManager.GetObject("Mask02", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
             }
         }
         

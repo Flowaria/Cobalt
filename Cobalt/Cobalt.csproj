@@ -78,7 +78,6 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Source\Data\TFMap.cs" />
-    <Compile Include="Source\FileIO\Config\iniUtil.cs" />
     <Compile Include="Source\Parser\KeyValueParser.cs" />
     <Compile Include="Source\Population\Element\Relay.cs" />
     <Compile Include="Source\Population\Element\Wave.cs" />
@@ -129,7 +128,6 @@
     </Compile>
     <Compile Include="Source\Data\TFTemplate.cs" />
     <Compile Include="Source\Enums\TFEnums.cs" />
-    <Compile Include="Source\FileIO\Config\MainConfig.cs" />
     <Compile Include="Source\FileIO\Downloader\Downloader.cs" />
     <Compile Include="Source\FileIO\FileFunction.cs" />
     <Compile Include="Source\Population\PopProjectFile_Export.cs" />
@@ -275,9 +273,6 @@
     <Resource Include="Resources\Splash\0.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Mask\Mask01.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Resources\Splash\1.png" />
   </ItemGroup>
   <ItemGroup>
@@ -308,9 +303,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\MapConfig\mvm_mannworks.xml" />
     <EmbeddedResource Include="Resources\MapConfig\mvm_rottenburg.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Mask\Mask02.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Cobalt.ItemSchema.Dll\Cobalt.TF2Items.csproj">
