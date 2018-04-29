@@ -313,13 +313,17 @@
     <Resource Include="Resources\Mask\Mask02.png" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Cobalt.PopulationFile.Dll\Cobalt.PopulationFile.Dll.csproj">
-      <Project>{293a2d00-73be-4e78-896d-a99620bf02ee}</Project>
-      <Name>Cobalt.PopulationFile.Dll</Name>
+    <ProjectReference Include="..\Cobalt.ItemSchema.Dll\Cobalt.TF2Items.csproj">
+      <Project>{E762D8F4-DAC2-45FB-8877-0C1D6698A176}</Project>
+      <Name>Cobalt.TF2Items</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Cobalt.Translation.Dll\Cobalt.Translation.Dll.csproj">
+    <ProjectReference Include="..\Cobalt.PopulationFile.Dll\Cobalt.Core.PopulationFile.Dll.csproj">
+      <Project>{293a2d00-73be-4e78-896d-a99620bf02ee}</Project>
+      <Name>Cobalt.Core.PopulationFile.Dll</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Cobalt.Translation.Dll\Cobalt.Core.Translation.Dll.csproj">
       <Project>{b77daf19-498a-4c14-af6d-978736c30170}</Project>
-      <Name>Cobalt.Translation.Dll</Name>
+      <Name>Cobalt.Core.Translation.Dll</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -8,12 +8,6 @@ namespace Flowaria.Population.Element
 {
     public class TFBot
     {
-        public enum TFClass
-        {
-            None, Scout, Soldier, Pyro,
-            Demoman, Engineer, HeavyWeapons,
-            Medic, Spy, Sniper
-        }
 
         [Flags]
         public enum TFBotAttribute //BOT ATTRIBUTE

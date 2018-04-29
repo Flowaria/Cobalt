@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{B77DAF19-498A-4C14-AF6D-978736C30170}</ProjectGuid>
+    <ProjectGuid>{BB0EEF20-A25E-499A-B360-0C80E0F651A4}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Flowaria.Translation</RootNamespace>
-    <AssemblyName>flowaria.translation</AssemblyName>
+    <RootNamespace>TF2.Info</RootNamespace>
+    <AssemblyName>tf2.info</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -41,7 +41,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Translation.cs" />
+    <Compile Include="TFClass.cs" />
+    <Compile Include="TFSlot.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -4,6 +4,7 @@ using Cobalt.FileIO.DL;
 using Cobalt.Parser;
 using Cobalt.Population;
 using Cobalt.Windows;
+using Flowaria.ItemSchema;
 using Flowaria.Translation;
 using System;
 using System.IO;
@@ -57,9 +58,11 @@ namespace Cobalt
             //다운로더 컨텐츠 대상 설정
             icodl.Progress = eBar;
             icodl.TextBox = eLabel;
-            await Schema.readFromURL(String.Format(Properties.Settings.Default.Format_Schema,
-                Properties.Settings.Default.API_KEY,
-                Properties.Settings.Default.API_LANG)); //스캐마 파싱
+            //await Schema.readFromURL(String.Format(Properties.Settings.Default.Format_Schema,
+            //Properties.Settings.Default.API_KEY,
+            //Properties.Settings.Default.API_LANG)); //스캐마 파싱
+            await ItemsInfo.InitSchema("resource/items_game.xml");
+            await ItemsInfo.RefreshTranslate("korean");
 
             await icodl.download(); //아이콘 다운로드
             //await p_Template.parse(); //템플릿 파싱

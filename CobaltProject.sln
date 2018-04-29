@@ -5,9 +5,13 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cobalt", "Cobalt\Cobalt.csproj", "{93963650-2CED-46AC-9296-F31F3D497AD5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cobalt.PopulationFile.Dll", "Cobalt.PopulationFile.Dll\Cobalt.PopulationFile.Dll.csproj", "{293A2D00-73BE-4E78-896D-A99620BF02EE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cobalt.Core.PopulationFile.Dll", "Cobalt.PopulationFile.Dll\Cobalt.Core.PopulationFile.Dll.csproj", "{293A2D00-73BE-4E78-896D-A99620BF02EE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cobalt.Translation.Dll", "Cobalt.Translation.Dll\Cobalt.Translation.Dll.csproj", "{B77DAF19-498A-4C14-AF6D-978736C30170}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cobalt.Core.Translation.Dll", "Cobalt.Translation.Dll\Cobalt.Core.Translation.Dll.csproj", "{B77DAF19-498A-4C14-AF6D-978736C30170}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cobalt.TF2Items", "Cobalt.ItemSchema.Dll\Cobalt.TF2Items.csproj", "{E762D8F4-DAC2-45FB-8877-0C1D6698A176}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cobalt.TF2Info", "Cobalt.TF2Info\Cobalt.TF2Info.csproj", "{BB0EEF20-A25E-499A-B360-0C80E0F651A4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -69,6 +73,38 @@ Global
 		{B77DAF19-498A-4C14-AF6D-978736C30170}.Release|x64.Build.0 = Release|Any CPU
 		{B77DAF19-498A-4C14-AF6D-978736C30170}.Release|x86.ActiveCfg = Release|Any CPU
 		{B77DAF19-498A-4C14-AF6D-978736C30170}.Release|x86.Build.0 = Release|Any CPU
+		{E762D8F4-DAC2-45FB-8877-0C1D6698A176}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E762D8F4-DAC2-45FB-8877-0C1D6698A176}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E762D8F4-DAC2-45FB-8877-0C1D6698A176}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{E762D8F4-DAC2-45FB-8877-0C1D6698A176}.Debug|ARM.Build.0 = Debug|Any CPU
+		{E762D8F4-DAC2-45FB-8877-0C1D6698A176}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{E762D8F4-DAC2-45FB-8877-0C1D6698A176}.Debug|x64.Build.0 = Debug|Any CPU
+		{E762D8F4-DAC2-45FB-8877-0C1D6698A176}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{E762D8F4-DAC2-45FB-8877-0C1D6698A176}.Debug|x86.Build.0 = Debug|Any CPU
+		{E762D8F4-DAC2-45FB-8877-0C1D6698A176}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E762D8F4-DAC2-45FB-8877-0C1D6698A176}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E762D8F4-DAC2-45FB-8877-0C1D6698A176}.Release|ARM.ActiveCfg = Release|Any CPU
+		{E762D8F4-DAC2-45FB-8877-0C1D6698A176}.Release|ARM.Build.0 = Release|Any CPU
+		{E762D8F4-DAC2-45FB-8877-0C1D6698A176}.Release|x64.ActiveCfg = Release|Any CPU
+		{E762D8F4-DAC2-45FB-8877-0C1D6698A176}.Release|x64.Build.0 = Release|Any CPU
+		{E762D8F4-DAC2-45FB-8877-0C1D6698A176}.Release|x86.ActiveCfg = Release|Any CPU
+		{E762D8F4-DAC2-45FB-8877-0C1D6698A176}.Release|x86.Build.0 = Release|Any CPU
+		{BB0EEF20-A25E-499A-B360-0C80E0F651A4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BB0EEF20-A25E-499A-B360-0C80E0F651A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BB0EEF20-A25E-499A-B360-0C80E0F651A4}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{BB0EEF20-A25E-499A-B360-0C80E0F651A4}.Debug|ARM.Build.0 = Debug|Any CPU
+		{BB0EEF20-A25E-499A-B360-0C80E0F651A4}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{BB0EEF20-A25E-499A-B360-0C80E0F651A4}.Debug|x64.Build.0 = Debug|Any CPU
+		{BB0EEF20-A25E-499A-B360-0C80E0F651A4}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{BB0EEF20-A25E-499A-B360-0C80E0F651A4}.Debug|x86.Build.0 = Debug|Any CPU
+		{BB0EEF20-A25E-499A-B360-0C80E0F651A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BB0EEF20-A25E-499A-B360-0C80E0F651A4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BB0EEF20-A25E-499A-B360-0C80E0F651A4}.Release|ARM.ActiveCfg = Release|Any CPU
+		{BB0EEF20-A25E-499A-B360-0C80E0F651A4}.Release|ARM.Build.0 = Release|Any CPU
+		{BB0EEF20-A25E-499A-B360-0C80E0F651A4}.Release|x64.ActiveCfg = Release|Any CPU
+		{BB0EEF20-A25E-499A-B360-0C80E0F651A4}.Release|x64.Build.0 = Release|Any CPU
+		{BB0EEF20-A25E-499A-B360-0C80E0F651A4}.Release|x86.ActiveCfg = Release|Any CPU
+		{BB0EEF20-A25E-499A-B360-0C80E0F651A4}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
