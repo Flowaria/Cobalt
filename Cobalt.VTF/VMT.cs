@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Flowaria.Style
+namespace Valve.VTF
 {
-    public class Style
+    class VMT
     {
-        
     }
 }
