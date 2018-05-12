@@ -13,7 +13,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cobalt.TF2Items.Dll", "Coba
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cobalt.TF2Info.Dll", "Cobalt.TF2Info\Cobalt.TF2Info.Dll.csproj", "{BB0EEF20-A25E-499A-B360-0C80E0F651A4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cobalt.VTF", "Cobalt.VTF\Cobalt.VTF.csproj", "{F1FD06B9-DF2F-4336-83F4-6A1C6372AADF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Valve.VTF", "Valve.VTF\Valve.VTF.csproj", "{F1FD06B9-DF2F-4336-83F4-6A1C6372AADF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Valve.KeyValue", "Valve.KeyValue\Valve.KeyValue.csproj", "{66A8409E-243D-462B-A6D0-DE782B6FABA7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -123,6 +125,22 @@ Global
 		{F1FD06B9-DF2F-4336-83F4-6A1C6372AADF}.Release|x64.Build.0 = Release|Any CPU
 		{F1FD06B9-DF2F-4336-83F4-6A1C6372AADF}.Release|x86.ActiveCfg = Release|Any CPU
 		{F1FD06B9-DF2F-4336-83F4-6A1C6372AADF}.Release|x86.Build.0 = Release|Any CPU
+		{66A8409E-243D-462B-A6D0-DE782B6FABA7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{66A8409E-243D-462B-A6D0-DE782B6FABA7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{66A8409E-243D-462B-A6D0-DE782B6FABA7}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{66A8409E-243D-462B-A6D0-DE782B6FABA7}.Debug|ARM.Build.0 = Debug|Any CPU
+		{66A8409E-243D-462B-A6D0-DE782B6FABA7}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{66A8409E-243D-462B-A6D0-DE782B6FABA7}.Debug|x64.Build.0 = Debug|Any CPU
+		{66A8409E-243D-462B-A6D0-DE782B6FABA7}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{66A8409E-243D-462B-A6D0-DE782B6FABA7}.Debug|x86.Build.0 = Debug|Any CPU
+		{66A8409E-243D-462B-A6D0-DE782B6FABA7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{66A8409E-243D-462B-A6D0-DE782B6FABA7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{66A8409E-243D-462B-A6D0-DE782B6FABA7}.Release|ARM.ActiveCfg = Release|Any CPU
+		{66A8409E-243D-462B-A6D0-DE782B6FABA7}.Release|ARM.Build.0 = Release|Any CPU
+		{66A8409E-243D-462B-A6D0-DE782B6FABA7}.Release|x64.ActiveCfg = Release|Any CPU
+		{66A8409E-243D-462B-A6D0-DE782B6FABA7}.Release|x64.Build.0 = Release|Any CPU
+		{66A8409E-243D-462B-A6D0-DE782B6FABA7}.Release|x86.ActiveCfg = Release|Any CPU
+		{66A8409E-243D-462B-A6D0-DE782B6FABA7}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
