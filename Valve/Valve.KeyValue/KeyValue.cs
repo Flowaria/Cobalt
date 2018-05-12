@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Valve.Keyvalue
+namespace Valve.KeyValue
 {
     public class KeyValue
     {
@@ -14,30 +14,6 @@ namespace Valve.Keyvalue
         public KeyValue(string root)
         {
             Root = new KVNode(root);
-        }
-
-        public void ExportToFile(string outputdir)
-        {
-            KVNode[] Waves = Root.FindNodes("Wave");
-        }
-
-        public string ExportToString(string outputdir)
-        {
-
-        }
-
-        public static KeyValue LoadFromFile(string file)
-        {
-            if (File.Exists(file))
-            {
-                return Load(File.ReadAllText(file));
-            }
-            return null;
-        }
-
-        private static KeyValue Load(string content)
-        {
-
         }
 
         public void AddBaseFile(string filename)

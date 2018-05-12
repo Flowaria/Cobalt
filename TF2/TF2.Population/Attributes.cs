@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Flowaria.Population
+namespace TF2.Population
 {
     public class Attributes
     {

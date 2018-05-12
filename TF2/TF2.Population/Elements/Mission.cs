@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Flowaria.Population.Element
+namespace TF2.Population.Element
 {
-    public class WaveSpawn
+    public class Mission
     {
+        public int 
     }
 }

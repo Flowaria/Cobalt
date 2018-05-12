@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{E762D8F4-DAC2-45FB-8877-0C1D6698A176}</ProjectGuid>
+    <ProjectGuid>{BB0EEF20-A25E-499A-B360-0C80E0F651A4}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TF2.Items</RootNamespace>
-    <AssemblyName>tf2.schema</AssemblyName>
+    <RootNamespace>TF2.Item.Schema</RootNamespace>
+    <AssemblyName>tf2</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -44,12 +44,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TFAttribute.cs" />
     <Compile Include="TFItem.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Cobalt.TF2Info\Cobalt.TF2Info.Dll.csproj">
-      <Project>{BB0EEF20-A25E-499A-B360-0C80E0F651A4}</Project>
-      <Name>Cobalt.TF2Info.Dll</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

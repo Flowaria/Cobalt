@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Valve.Keyvalue
+namespace Valve.KeyValue
 {
     public class KVNode
     {
@@ -77,7 +77,17 @@ namespace Valve.Keyvalue
             if(type != KVNodeType.Root)
                 type = KVNodeType.Parent;
             node.Parent = this;
-            Child.Add(node);
+            if(node.Type != KVNodeType.Root && node.Type != KVNodeType.Parent)
+            {
+                if (!Child.Exists(x=>x.KeyName.Equals(node.KeyName)))
+                {
+                    Child.Add(node);
+                }
+            }
+            else
+            {
+                Child.Add(node);
+            }
         }
 
         public bool SetValue(int value, string key = null, bool create = true)

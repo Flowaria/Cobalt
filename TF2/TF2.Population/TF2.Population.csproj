@@ -7,8 +7,8 @@
     <ProjectGuid>{293A2D00-73BE-4E78-896D-A99620BF02EE}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Flowaria.Population</RootNamespace>
-    <AssemblyName>cobalt.core</AssemblyName>
+    <RootNamespace>TF2.Population</RootNamespace>
+    <AssemblyName>tf2</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -46,9 +46,14 @@
     <Compile Include="Elements\TFBot.cs" />
     <Compile Include="Elements\WaveSpawn.cs" />
     <Compile Include="Population.cs" />
-    <Compile Include="Properties.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Elements\Wave.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Valve\Valve.KeyValue\Valve.KeyValue.csproj">
+      <Project>{66a8409e-243d-462b-a6d0-de782b6faba7}</Project>
+      <Name>Valve.KeyValue</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
