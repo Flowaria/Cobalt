@@ -1,0 +1,12 @@
+<translation>
+	<msg_error_title value="Critical Error"/>
+	<msg_warn_title value="Warning"/>
+	<msg_ui_translation_call_fail value="Error occurred while opening translation file in config.xml\nIt will load default translation file"/>
+	<msg_config_call_fail value="Error occurred during Open config.xml"/>
+	<msg_config_apikey_fail value="Please Check the ApiKey in config.xml"/>
+	<version_schema value="Checking Schema Version . . ."/>
+	<loading_schema value="Loading Item Schema . . ."/>
+	<loading_template value="Loading Template Files . . ."/>
+	<loading_mapsetting value="Loading Map Setting Files . . ."/>
+	<download_itemimage value="Downloading Image From Server . . ."/>
+</translation>

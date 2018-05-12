@@ -1,6 +1,4 @@
-﻿using Cobalt.Data;
-using Cobalt.FileIO;
-using Cobalt.Population;
+﻿using Cobalt.FileIO;
 using Cobalt.Properties;
 using System.IO;
 using System.Threading.Tasks;
@@ -9,12 +7,6 @@ namespace Cobalt.Parser
 {
     public class TemplateParser
     {
-        public TemplateParser()
-        {
-            FileFunction.ExportString(Resources.robot_standard, Settings.Default.PATH_BASE, "robot_standard.pop");
-            FileFunction.ExportString(Resources.robot_giant, Settings.Default.PATH_BASE, "robot_giant.pop");
-            FileFunction.ExportString(Resources.robot_gatebot, Settings.Default.PATH_BASE, "robot_gatebot.pop");
-        }
 
         public async Task parse()
         {
@@ -31,7 +23,7 @@ namespace Cobalt.Parser
         //파일 추가
         public async Task parseFile(string name)
         {
-            TFTemplate.AddTemplate(new TFTemplate("robot_click.pop", false));
+            //TFTemplate.AddTemplate(new TFTemplate("robot_click.pop", false));
             if(true)
                 return;
 

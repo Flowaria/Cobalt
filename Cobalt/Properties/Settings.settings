@@ -17,17 +17,8 @@
     <Setting Name="API_LANG" Type="System.String" Scope="User">
       <Value Profile="(Default)">ko_KR</Value>
     </Setting>
-    <Setting Name="Format_Schema" Type="System.String" Scope="User">
-      <Value Profile="(Default)">http://api.steampowered.com/IEconItems_440/GetSchema/v0001/?key={0}&amp;language={1}</Value>
-    </Setting>
     <Setting Name="PATH_CFG_MAP" Type="System.String" Scope="User">
       <Value Profile="(Default)">config/maps/</Value>
-    </Setting>
-    <Setting Name="Load_Map_Config" Type="System.String" Scope="User">
-      <Value Profile="(Default)">맵 설정파일 불러오는중 . . .</Value>
-    </Setting>
-    <Setting Name="Format_Schema_URL" Type="System.String" Scope="User">
-      <Value Profile="(Default)">https://api.steampowered.com/IEconItems_440/GetSchemaURL/v1/?key={0}</Value>
     </Setting>
   </Settings>
 </SettingsFile>

@@ -1,8 +1,8 @@
-﻿using Cobalt.TFItems;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
+using TF2.Items;
 
 namespace Cobalt.Windows.Tools
 {
@@ -16,7 +16,7 @@ namespace Cobalt.Windows.Tools
             foreach(TFItem item in items)
             {
                 t_Button = new Button();
-                t_Button.Content = item.DefId;
+                t_Button.Content = item.GetDefID();
                 t_Button.Width = 96; t_Button.Height = 96;
                 t_Button.Click += handler;
 

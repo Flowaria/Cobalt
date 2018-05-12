@@ -1,0 +1,11 @@
+<translation>
+	<msg_error_title value="문제 발생"/>
+	<msg_warn_title value="경고"/>
+	<msg_ui_translation_call_fail value="Ui 언어 설정에 해당하는 언어 파일을 읽어오는데 문제가 발생했습니다.\n기본 언어 파일로 계속 진행합니다."/>
+	<msg_config_call_fail value="config.xml 파일을 불러오는중 문제가 발생하였습니다."/>
+	<version_schema value="아이템 스캐마 버전 확인 중 . . ."/>
+	<loading_schema value="아이템 스캐마 불러오는 중 . . ."/>
+	<loading_template value="템플릿 불러오는 중 . . ."/>
+	<loading_mapsetting value="맵 설정파일 불러오는중 . . ."/>
+	<download_itemimage value="아이템 이미지 다운로드 중 . . ."/>
+</translation>

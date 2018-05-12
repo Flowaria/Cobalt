@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TF2.Info;
 
-namespace Flowaria.ItemSchema
+namespace TF2.Items
 {
     public class TFItem
     {

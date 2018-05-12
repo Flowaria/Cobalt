@@ -1,20 +1,10 @@
-﻿using Cobalt.Data;
-using Cobalt.Windows.Element;
+﻿using Cobalt.Windows.Element;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Cobalt.Windows.MainTab
 {
@@ -28,17 +18,20 @@ namespace Cobalt.Windows.MainTab
             InitializeComponent();
 
             //맵 선택 이벤트 후크
-            TFMap.MapChange += c_MapChanged;
+            //TFMap.MapChange += c_MapChanged;
 
             //맵파일
             comboMaps.Items.Clear();
+            /*
             foreach (TFMap map in TFMap.GetMaps())
             {
                 var item = new ComboBoxItem();
                 item.Content = map.MapName;
                 comboMaps.Items.Add(item);
             }
+            */
         }
+        /*
 
         void RefreshRadioList(ListBox list, TFMap map, string fieldname, string group)
         {
@@ -60,6 +53,7 @@ namespace Cobalt.Windows.MainTab
             RefreshRadioList(WaveEndRelay, e.Current, "RelayWaveDone", "dd");
             RefreshRadioList(WaveInitRelay, e.Current, "RelayWaveInit", "ddd");
         }
+        */
 
         //HEAVY
         private void comboMaps_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -69,7 +63,7 @@ namespace Cobalt.Windows.MainTab
                 string select = (e.AddedItems[0] as ComboBoxItem).Content as string;
                 if (!String.IsNullOrEmpty(select))
                 {
-                    TFMap.SetCurrentMap(select);
+                    //TFMap.SetCurrentMap(select);
                 }
             }
         }

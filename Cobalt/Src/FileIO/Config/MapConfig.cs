@@ -1,5 +1,4 @@
-﻿using Cobalt.Data;
-using Cobalt.Properties;
+﻿using Cobalt.Properties;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -10,18 +9,6 @@ namespace Cobalt.FileIO.CFG
 {
     public class MapConfig
     {
-        static MapConfig()
-        {
-            //기본맵 콘피그 추출
-            FileFunction.ExportString(Resources.mvm_decoy, Settings.Default.PATH_CFG_MAP, "mvm_decoy.xml");
-            FileFunction.ExportString(Resources.mvm_coaltown, Settings.Default.PATH_CFG_MAP, "mvm_coaltown.xml");
-            FileFunction.ExportString(Resources.mvm_mannworks, Settings.Default.PATH_CFG_MAP, "mvm_mannworks.xml");
-            FileFunction.ExportString(Resources.mvm_ghost_town, Settings.Default.PATH_CFG_MAP, "mvm_ghost_town.xml");
-            FileFunction.ExportString(Resources.mvm_bigrock, Settings.Default.PATH_CFG_MAP, "mvm_bigrock.xml");
-            FileFunction.ExportString(Resources.mvm_rottenburg, Settings.Default.PATH_CFG_MAP, "mvm_rottenburg.xml");
-            FileFunction.ExportString(Resources.mvm_mannhattan, Settings.Default.PATH_CFG_MAP, "mvm_mannhattan.xml");
-        }
-
         public async Task loadConfigAsync(string url)
         {
             await Task.Run(() => loadConfig(url));
@@ -37,8 +24,9 @@ namespace Cobalt.FileIO.CFG
                 //처음 노드 가져오기
                 XmlElement rNode = doc.DocumentElement;
 
-                var map = new TFMap();
-                map.MapName = rNode.Name;
+                /*
+                //var map = new TFMap();
+                //map.MapName = rNode.Name;
 
                 //Where List
                 getAllNodesData(rNode, "Where/Where", map.Where);
@@ -61,7 +49,8 @@ namespace Cobalt.FileIO.CFG
                 getAllNodesData(rNode, "Tag/Bot", map.TagBot);
                 getAllNodesData(rNode, "Tag/Prefer", map.TagPrefer);
 
-                TFMap.AddMap(map);
+                //TFMap.AddMap(map);
+                */
             }
             catch
             {

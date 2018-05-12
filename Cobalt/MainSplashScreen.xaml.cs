@@ -1,10 +1,7 @@
-﻿using Cobalt.FileIO;
-using Cobalt.FileIO.CFG;
+﻿using Cobalt.FileIO.CFG;
 using Cobalt.FileIO.DL;
 using Cobalt.Parser;
-using Cobalt.Population;
 using Cobalt.Windows;
-using Flowaria.ItemSchema;
 using Flowaria.Translation;
 using System;
 using System.IO;
@@ -37,10 +34,8 @@ namespace Cobalt
         private async void Window_ContentRendered(object sender, EventArgs e)
         {
             //선언
-            var Schema = new SchemaParser();
             var Template = new TemplateParser();
             var icodl = new IconDownloader();
-            var fff = new PopProjectFile();
             var mCfg = new MapConfig();
 
             //컨픽
@@ -57,14 +52,14 @@ namespace Cobalt
             icodl.Progress = eBar;
             icodl.TextBox = eLabel;
 
-            await ItemsInfo.RefreshSchemaFile("resource/items_game.xml");
+            //await ItemsInfo.FetchSchema("resource/items_game.xml");
 
             eLabel.Content = Translation.Get("loading_schema");
-            await ItemsInfo.InitSchema("resource/items_game.xml");
+            //await ItemsInfo.InitSchema("resource/items_game.xml");
 
             eLabel.Content = Translation.Get("download_itemimage");
-            await ItemsInfo.InitItemImage("resource/items/");
-            await ItemsInfo.RefreshTranslate("korean");
+            //await ItemsInfo.InitItemImage("resource/items/");
+            //await ItemsInfo.RefreshTranslate("korean");
 
             //메인 윈도우 가동
             mainWindow = new MainWindow();

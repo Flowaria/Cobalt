@@ -76,18 +76,6 @@ namespace Cobalt.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://api.steampowered.com/IEconItems_440/GetSchema/v0001/?key={0}&language={1}")]
-        public string Format_Schema {
-            get {
-                return ((string)(this["Format_Schema"]));
-            }
-            set {
-                this["Format_Schema"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("config/maps/")]
         public string PATH_CFG_MAP {
             get {
@@ -95,30 +83,6 @@ namespace Cobalt.Properties {
             }
             set {
                 this["PATH_CFG_MAP"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("맵 설정파일 불러오는중 . . .")]
-        public string Load_Map_Config {
-            get {
-                return ((string)(this["Load_Map_Config"]));
-            }
-            set {
-                this["Load_Map_Config"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("https://api.steampowered.com/IEconItems_440/GetSchemaURL/v1/?key={0}")]
-        public string Format_Schema_URL {
-            get {
-                return ((string)(this["Format_Schema_URL"]));
-            }
-            set {
-                this["Format_Schema_URL"] = value;
             }
         }
     }

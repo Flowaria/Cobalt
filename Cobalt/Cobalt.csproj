@@ -53,9 +53,6 @@
     <ApplicationIcon>Resources\icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>.\Newtonsoft.Json.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -77,16 +74,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Source\Data\TFMap.cs" />
-    <Compile Include="Source\Parser\KeyValueParser.cs" />
-    <Compile Include="Source\Population\Element\Relay.cs" />
-    <Compile Include="Source\Population\Element\Wave.cs" />
-    <Compile Include="Source\Population\PopProject.cs" />
-    <Compile Include="Source\Population\PopProjectFile_Import.cs" />
-    <Compile Include="UserControl\TFBotIcon.xaml.cs">
+    <Compile Include="Src\Parser\KeyValueParser.cs" />
+    <Compile Include="Src\UserControl\TFBotIcon.xaml.cs">
       <DependentUpon>TFBotIcon.xaml</DependentUpon>
     </Compile>
-    <Compile Include="VTF\VTF.cs" />
     <Compile Include="Windows\EditTab\TabAdvanced.xaml.cs">
       <DependentUpon>TabAdvanced.xaml</DependentUpon>
     </Compile>
@@ -126,27 +117,17 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Source\Data\TFTemplate.cs" />
-    <Compile Include="Source\Enums\TFEnums.cs" />
-    <Compile Include="Source\FileIO\Downloader\Downloader.cs" />
-    <Compile Include="Source\FileIO\FileFunction.cs" />
-    <Compile Include="Source\Population\PopProjectFile_Export.cs" />
-    <Compile Include="Source\Population\Element\Child\Tank.cs" />
-    <Compile Include="Source\Population\Element\Child\TFBot.cs" />
-    <Compile Include="Source\Population\Element\Mission.cs" />
-    <Compile Include="Source\Population\Element\Child\WaveSpawn.cs" />
-    <Compile Include="Source\FileIO\Downloader\IconDownloader.cs" />
-    <Compile Include="Source\FileIO\Config\MapConfig.cs" />
-    <Compile Include="Source\Population\Element\WaveSchedule.cs" />
-    <Compile Include="Source\Parser\TemplateParser.cs" />
-    <Compile Include="Source\Parser\SchemaParser.cs" />
-    <Compile Include="Source\StringFunction.cs" />
-    <Compile Include="Source\TFItems\TFAttribute.cs" />
-    <Compile Include="Source\TFItems\TFItem.cs" />
+    <Compile Include="Src\Enums\TFEnums.cs" />
+    <Compile Include="Src\FileIO\Downloader\Downloader.cs" />
+    <Compile Include="Src\FileIO\FileFunction.cs" />
+    <Compile Include="Src\FileIO\Downloader\IconDownloader.cs" />
+    <Compile Include="Src\FileIO\Config\MapConfig.cs" />
+    <Compile Include="Src\Parser\TemplateParser.cs" />
+    <Compile Include="Src\StringFunction.cs" />
     <Compile Include="Windows\Tools\ItemSelect.xaml.cs">
       <DependentUpon>ItemSelect.xaml</DependentUpon>
     </Compile>
-    <Page Include="UserControl\TFBotIcon.xaml">
+    <Page Include="Src\UserControl\TFBotIcon.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -243,7 +224,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\config.xml" />
+    <EmbeddedResource Include="Resources\Export\config\config.xml" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\icon.ico" />
@@ -261,13 +242,13 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Template\robot_gatebot.txt" />
+    <EmbeddedResource Include="Resources\Export\resource\templates\robot_gatebot.pop" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Template\robot_giant.txt" />
+    <EmbeddedResource Include="Resources\Export\resource\templates\robot_giant.pop" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Template\robot_standard.txt" />
+    <EmbeddedResource Include="Resources\Export\resource\templates\robot_standard.pop" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Splash\0.png" />
@@ -294,20 +275,20 @@
     <Resource Include="Resources\loch_rotate_darker.png" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\MapConfig\mvm_bigrock.xml" />
-    <EmbeddedResource Include="Resources\MapConfig\mvm_coaltown.xml" />
-    <EmbeddedResource Include="Resources\MapConfig\mvm_decoy.xml" />
-    <EmbeddedResource Include="Resources\MapConfig\mvm_ghost_town.xml" />
-    <EmbeddedResource Include="Resources\MapConfig\mvm_mannhattan.xml">
+    <EmbeddedResource Include="Resources\Export\config\maps\mvm_bigrock.xml" />
+    <EmbeddedResource Include="Resources\Export\config\maps\mvm_coaltown.xml" />
+    <EmbeddedResource Include="Resources\Export\config\maps\mvm_decoy.xml" />
+    <EmbeddedResource Include="Resources\Export\config\maps\mvm_ghost_town.xml" />
+    <EmbeddedResource Include="Resources\Export\config\maps\mvm_mannhattan.xml">
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Resources\MapConfig\mvm_mannworks.xml" />
-    <EmbeddedResource Include="Resources\MapConfig\mvm_rottenburg.xml" />
+    <EmbeddedResource Include="Resources\Export\config\maps\mvm_mannworks.xml" />
+    <EmbeddedResource Include="Resources\Export\config\maps\mvm_rottenburg.xml" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Cobalt.ItemSchema.Dll\Cobalt.TF2Items.csproj">
+    <ProjectReference Include="..\Cobalt.ItemSchema.Dll\Cobalt.TF2Items.Dll.csproj">
       <Project>{E762D8F4-DAC2-45FB-8877-0C1D6698A176}</Project>
-      <Name>Cobalt.TF2Items</Name>
+      <Name>Cobalt.TF2Items.Dll</Name>
     </ProjectReference>
     <ProjectReference Include="..\Cobalt.PopulationFile.Dll\Cobalt.Core.PopulationFile.Dll.csproj">
       <Project>{293a2d00-73be-4e78-896d-a99620bf02ee}</Project>
@@ -317,6 +298,9 @@
       <Project>{b77daf19-498a-4c14-af6d-978736c30170}</Project>
       <Name>Cobalt.Core.Translation.Dll</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Export\translation\default.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

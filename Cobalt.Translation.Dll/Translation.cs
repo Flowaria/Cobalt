@@ -10,9 +10,9 @@ namespace Flowaria.Translation
     public static class Translation
     {
         private static XmlDocument doc = new XmlDocument();
-        private static List<String> list;
-        private static Dictionary<String,String> dict;
-        private static Dictionary<String, String> def;
+        private static List<String> list; //string key list
+        private static Dictionary<String, String> def; //default string
+        private static Dictionary<String, String> dict; //translated string
         private static bool alternative_loaded;
         static Translation()
         {
@@ -31,7 +31,7 @@ namespace Flowaria.Translation
                 {
                     if (node.Attributes != null && node.Attributes["value"] != null)
                     {
-                        def.Add(node.Name.ToLower(), node.Attributes["value"].Value.ToLower());
+                        def.Add(node.Name.ToLower(), node.Attributes["value"].Value);
                         list.Add(node.Name.ToLower());
                     }
                 }
@@ -53,7 +53,7 @@ namespace Flowaria.Translation
                 {
                     if (node.Attributes != null && node.Attributes["value"] != null && list.Exists(x=>x.ToLower() == node.Name.ToLower()))
                     {
-                        dict.Add(node.Name.ToLower(), node.Attributes["value"].Value.ToLower());
+                        dict.Add(node.Name.ToLower(), node.Attributes["value"].Value);
                     }
                 }
                 alternative_loaded = true;

@@ -1,4 +1,5 @@
 ﻿<Config>
+  <ApiKey></ApiKey>
   <UiLang>ko</UiLang>
   <ItemLang>tf_korean</ItemLang>
 </Config>

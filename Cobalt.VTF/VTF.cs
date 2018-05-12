@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Cobalt.VTF
+namespace Valve.VTF
 {
     public enum IMAGE_FORMAT
     {
@@ -76,10 +76,21 @@ namespace Cobalt.VTF
         BORDER = 0x20000000
     }
 
-    class VTF
+    public class VTF
     {
-        
+        public VTF()
+        {
+
+        }
+
+        public static bool ExportVTFtoPng(VTF vtf, string outputdir)
+        {
+
+        }
+
+        public static bool IsVTFFile(string dir)
+        {
+            if()
+        }
     }
-
-
 }

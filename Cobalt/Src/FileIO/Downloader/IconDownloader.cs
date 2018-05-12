@@ -1,6 +1,4 @@
-﻿using Cobalt.Data;
-using Cobalt.TFItems;
-using Flowaria.Translation;
+﻿using Flowaria.Translation;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -32,7 +30,7 @@ namespace Cobalt.FileIO.DL
                 Directory.CreateDirectory(Properties.Settings.Default.PATH_IMG_ITEMS);
 
             List<String> FileList = new List<String>();
-            foreach (TFItem item in TFItem.ItemList())
+            /*foreach (TFItem item in TFItem.ItemList())
             {
                 if (item.ImageURL != null)
                 {
@@ -41,7 +39,7 @@ namespace Cobalt.FileIO.DL
                         FileList.Add(fileName);
                     item.ImageURL = Format.ItemImage(fileName);
                 }
-            }
+            }*/
 
             //파일 리스트가 비어있지 않으면
             if (FileList.Count > 0)

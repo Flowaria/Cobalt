@@ -1,18 +1,5 @@
-﻿using Cobalt.Data;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Cobalt.Windows.MainTab
 {
@@ -25,9 +12,10 @@ namespace Cobalt.Windows.MainTab
         {
             InitializeComponent();
 
-            TFMap.MapChange += c_MapChanged;
+            //TFMap.MapChange += c_MapChanged;
         }
 
+        /*
         void c_MapChanged(object sender, MapChangeEventArgs e)
         {
             Console.WriteLine(e.Current.MapName);
@@ -36,6 +24,7 @@ namespace Cobalt.Windows.MainTab
 
 
         }
+        */
 
         void clearWaveRelayCombo()
         {

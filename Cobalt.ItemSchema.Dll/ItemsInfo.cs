@@ -1,5 +1,4 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -8,56 +7,42 @@ using System.Threading.Tasks;
 using System.Xml;
 using TF2.Info;
 
-namespace Flowaria.ItemSchema
+namespace TF2.Items
 {
     public static class ItemsInfo
     {
-        private static string Key;
+        private const string SCHEMA_ITEMS_URL = "https://api.steampowered.com/IEconItems_440/GetSchemaItems/v1/?key={0}&language={1}&format=xml";
+        private const string SCHEMA_ATTRIBUTES_URL = "https://api.steampowered.com/IEconItems_440/GetSchemaOverview/v1/?key={0}&language={1}&format=xml";
         private static List<TFItem> items;
         private static List<TFAttribute> attributes;
-        public static async Task<bool> RefreshSchemaFile(string saveurl)
+        private static string version_string;
+        private static string schema_items_dir;
+        private static string schema_attributes_dir;
+
+        public static async Task FetchSchema(string directory, string key, string lang = "en", string current_version = "empty")
         {
-            items = new List<TFItem>();
-            if(File.Exists(saveurl))
-            {
-                try
-                {
-                    string tempfile = String.Format("{0}.temp", saveurl);
-                    await DownloadNew(tempfile);
-                    await Task.Factory.StartNew(async delegate
-                    {
-                        XmlDocument odoc = new XmlDocument();
-                        XmlDocument doc = new XmlDocument();
-                        odoc.Load(saveurl);
-                        doc.Load(tempfile);
-                        if (odoc.DocumentElement["items_game_url"].Value != doc.DocumentElement["items_game_url"].Value)
-                        {
-                            await DownloadNew(saveurl);
-                        }
-                    });
-                    File.Delete(tempfile);
-                    return true;
-                }
-                catch
-                {
-                    return false;
-                }
-            }
+            string schemaurl = String.Format(SCHEMA_ITEMS_URL, key, lang);
+            string schamadir;
+            if (directory.EndsWith("/"))
+                schamadir = directory + lang + ".schama.xml";
             else
+                schamadir = directory + "/" + lang + ".schama.xml";
+
+            if(File.Exists(schamadir))
             {
-                try
+                using (System.Net.WebClient wc = new System.Net.WebClient())
                 {
-                    await DownloadNew(saveurl);
-                    return true;
-                }
-                catch
-                {
-                    return false;
+                    wc.Encoding = System.Text.Encoding.UTF8;
+
+                    string content = await wc.DownloadStringTaskAsync(String.Format(SCHEMA_ITEMS_URL, key, lang));
+                    XmlDocument schema = new XmlDocument();
                 }
             }
         }
-        public static async Task InitSchema(string saveurl)
+
+        public static async Task ReadSchema(string directory)
         {
+            /*
             await Task.Factory.StartNew(delegate
             {
                 Console.Out.WriteLine(saveurl);
@@ -79,7 +64,6 @@ namespace Flowaria.ItemSchema
                                     TFClass cls = TFClassFunction.StringToClass(node2.InnerText);
                                     if (cls != TFClass.Null)
                                     {
-                                        //Console.Out.WriteLine(cls);
                                         item.UsedByClassToggle(cls);
                                     }
                                 }
@@ -88,8 +72,6 @@ namespace Flowaria.ItemSchema
                             {
                                 item = new TFItem(node["item_class"].InnerText, int.Parse(node["defindex"].InnerText), node["name"].InnerText, TFSlotFunction.StringToSlot(node["item_slot"].InnerText), FormatImageURL(node["image_url"].InnerText), node["item_name"].InnerText, true);
                             }
-
-                            //item.Debug();
                             items.Add(item);
                         }
                     }
@@ -99,29 +81,16 @@ namespace Flowaria.ItemSchema
                     }
                 }
             });
+            */
         }
-        public static async Task InitItemImage(string saveurl)
-        {
 
-        }
-        public static async Task RefreshTranslate(string lang)
+        public static string UrlToVersionString(string url)
         {
+            string[] splited = url.Split('/');
+            return splited[splited.Length - 1].Split('.')[1];
+            //http://media.steampowered.com/apps/440/scripts/items/items_game.9219e13469eb57d1a2513dc5124786b5df20cf6c.txt
+        }
 
-        }
-        private static async Task DownloadNew(string saveurl)
-        {
-            await Task.Factory.StartNew(delegate
-            {
-                using (System.Net.WebClient wc = new System.Net.WebClient())
-                {
-                    wc.Encoding = System.Text.Encoding.UTF8;
-                    
-                    string content = wc.DownloadString("http://git.optf2.com/schema-tracking/plain/Team%20Fortress%202%20Schema?h=teamfortress2");
-                    XmlDocument doc = JsonConvert.DeserializeXmlNode(content);
-                    doc.Save(saveurl);
-                }
-            });
-        }
         private static string FormatImageURL(string fullurl)
         {
             string[] splited = fullurl.Split('/');
