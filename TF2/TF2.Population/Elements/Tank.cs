@@ -6,12 +6,8 @@ using System.Threading.Tasks;
 
 namespace TF2.Population.Element
 {
-    public enum PropTank
-    {
-        Health,
-    }
     public class Tank
     {
-        public Properties<int> TankProperties;
+        
     }
 }

@@ -1,4 +1,4 @@
-﻿using Flowaria.Translation;
+﻿using Cobalt.Extension;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

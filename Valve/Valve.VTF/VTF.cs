@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Valve.VTF
+namespace Valve.TextureFormat
 {
     public enum IMAGE_FORMAT
     {
@@ -85,12 +85,12 @@ namespace Valve.VTF
 
         public static bool ExportVTFtoPng(VTF vtf, string outputdir)
         {
-
+            return true;
         }
 
         public static bool IsVTFFile(string dir)
         {
-            if()
+            return true;
         }
     }
 }

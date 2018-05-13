@@ -1,5 +1,4 @@
-﻿using Cobalt.FileIO.CFG;
-using Flowaria.Translation;
+﻿using Cobalt.Extension;
 using System;
 using System.Drawing;
 using System.IO;
@@ -8,6 +7,8 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
 using System.Xml;
+using TF2.Items;
+using Valve.KeyValue;
 
 namespace Cobalt
 {
@@ -18,23 +19,19 @@ namespace Cobalt
     {
         protected override void OnStartup(StartupEventArgs e)
         {
-            TextElement.FontFamilyProperty.OverrideMetadata(
-                typeof(TextElement),
-                new FrameworkPropertyMetadata(
-                new FontFamily("TF2 Build")));
-                TextBlock.FontFamilyProperty.OverrideMetadata(
-                typeof(TextBlock),
-                new FrameworkPropertyMetadata(
-            new FontFamily("TF2 Build")));
             InitResource();
             InitConfig();
+            KeyValues kv = KVFile.ImportKeyValue(File.ReadAllText("resource/templates/mvm_bigrock_flow_expert1.pop"));
+            if(kv != null)
+            {
+                kv.Debug(kv.Root);
+            }
         }
 
         public void InitResource()
         {
-            Console.WriteLine("res");
-            var files = System.Reflection.Assembly.GetExecutingAssembly().GetManifestResourceNames();
-            foreach(var file in files)
+            //Export Included Resource
+            foreach(var file in System.Reflection.Assembly.GetExecutingAssembly().GetManifestResourceNames())
             {
 
                 if(file.StartsWith("Cobalt.Resources.Export."))
@@ -54,7 +51,6 @@ namespace Cobalt
                     }
                 }
             }
-            Console.WriteLine("====");
         }
 
         public void InitConfig()
@@ -73,9 +69,13 @@ namespace Cobalt
                         MessageBox.Show(Translation.Get("msg_ui_translation_call_fail").Replace("\n", Environment.NewLine), Translation.Get("msg_warn_title"), MessageBoxButton.OK, MessageBoxImage.Warning);
                     }
                 }
-                if (node["ApiKey"] != null)
+                if (node["ApiKey"] != null && node["ApiKey"].InnerText != null && node["ItemLang"] != null)
                 {
-
+                    if(!ItemsInfo.Register(node["ApiKey"].InnerText, node["ItemLang"].InnerText))
+                    {
+                        MessageBox.Show(Translation.Get("msg_config_apikey_fail"), Translation.Get("msg_error_title"), MessageBoxButton.OK, MessageBoxImage.Error);
+                        Environment.Exit(-1);
+                    }
                 }
                 else
                 {

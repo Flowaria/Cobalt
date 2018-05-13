@@ -24,7 +24,7 @@ namespace TF2.Population
             WaveLength = wave_length;
         }
 
-        public static Population FromKeyValue(KeyValue kv)
+        public static Population FromKeyValue(KeyValues kv)
         {
             return null;
         }

@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27004.2006
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cobalt", "Cobalt\Cobalt.csproj", "{93963650-2CED-46AC-9296-F31F3D497AD5}"
 	ProjectSection(ProjectDependencies) = postProject
@@ -13,8 +13,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cobalt", "Cobalt\Cobalt.csp
 		{F1FD06B9-DF2F-4336-83F4-6A1C6372AADF} = {F1FD06B9-DF2F-4336-83F4-6A1C6372AADF}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cobalt.Core.Translation.Dll", "Cobalt.Translation.Dll\Cobalt.Core.Translation.Dll.csproj", "{B77DAF19-498A-4C14-AF6D-978736C30170}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TF2.Info", "TF2\TF2.Info\TF2.Info.csproj", "{F5669172-7996-4525-82DF-D1EA104C79EB}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TF2.ItemSchema", "TF2\TF2.ItemSchema\TF2.ItemSchema.csproj", "{BB0EEF20-A25E-499A-B360-0C80E0F651A4}"
@@ -24,6 +22,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Valve.KeyValue", "Valve\Valve.KeyValue\Valve.KeyValue.csproj", "{66A8409E-243D-462B-A6D0-DE782B6FABA7}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Valve.VTF", "Valve\Valve.VTF\Valve.VTF.csproj", "{F1FD06B9-DF2F-4336-83F4-6A1C6372AADF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cobalt.Extension", "Cobalt.Extension\Cobalt.Extension.csproj", "{B77DAF19-498A-4C14-AF6D-978736C30170}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -53,22 +53,6 @@ Global
 		{93963650-2CED-46AC-9296-F31F3D497AD5}.Release|x64.Build.0 = Release|Any CPU
 		{93963650-2CED-46AC-9296-F31F3D497AD5}.Release|x86.ActiveCfg = Release|Any CPU
 		{93963650-2CED-46AC-9296-F31F3D497AD5}.Release|x86.Build.0 = Release|Any CPU
-		{B77DAF19-498A-4C14-AF6D-978736C30170}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B77DAF19-498A-4C14-AF6D-978736C30170}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B77DAF19-498A-4C14-AF6D-978736C30170}.Debug|ARM.ActiveCfg = Debug|Any CPU
-		{B77DAF19-498A-4C14-AF6D-978736C30170}.Debug|ARM.Build.0 = Debug|Any CPU
-		{B77DAF19-498A-4C14-AF6D-978736C30170}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{B77DAF19-498A-4C14-AF6D-978736C30170}.Debug|x64.Build.0 = Debug|Any CPU
-		{B77DAF19-498A-4C14-AF6D-978736C30170}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{B77DAF19-498A-4C14-AF6D-978736C30170}.Debug|x86.Build.0 = Debug|Any CPU
-		{B77DAF19-498A-4C14-AF6D-978736C30170}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B77DAF19-498A-4C14-AF6D-978736C30170}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B77DAF19-498A-4C14-AF6D-978736C30170}.Release|ARM.ActiveCfg = Release|Any CPU
-		{B77DAF19-498A-4C14-AF6D-978736C30170}.Release|ARM.Build.0 = Release|Any CPU
-		{B77DAF19-498A-4C14-AF6D-978736C30170}.Release|x64.ActiveCfg = Release|Any CPU
-		{B77DAF19-498A-4C14-AF6D-978736C30170}.Release|x64.Build.0 = Release|Any CPU
-		{B77DAF19-498A-4C14-AF6D-978736C30170}.Release|x86.ActiveCfg = Release|Any CPU
-		{B77DAF19-498A-4C14-AF6D-978736C30170}.Release|x86.Build.0 = Release|Any CPU
 		{F5669172-7996-4525-82DF-D1EA104C79EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F5669172-7996-4525-82DF-D1EA104C79EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F5669172-7996-4525-82DF-D1EA104C79EB}.Debug|ARM.ActiveCfg = Debug|Any CPU
@@ -149,6 +133,22 @@ Global
 		{F1FD06B9-DF2F-4336-83F4-6A1C6372AADF}.Release|x64.Build.0 = Release|Any CPU
 		{F1FD06B9-DF2F-4336-83F4-6A1C6372AADF}.Release|x86.ActiveCfg = Release|Any CPU
 		{F1FD06B9-DF2F-4336-83F4-6A1C6372AADF}.Release|x86.Build.0 = Release|Any CPU
+		{B77DAF19-498A-4C14-AF6D-978736C30170}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B77DAF19-498A-4C14-AF6D-978736C30170}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B77DAF19-498A-4C14-AF6D-978736C30170}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{B77DAF19-498A-4C14-AF6D-978736C30170}.Debug|ARM.Build.0 = Debug|Any CPU
+		{B77DAF19-498A-4C14-AF6D-978736C30170}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{B77DAF19-498A-4C14-AF6D-978736C30170}.Debug|x64.Build.0 = Debug|Any CPU
+		{B77DAF19-498A-4C14-AF6D-978736C30170}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{B77DAF19-498A-4C14-AF6D-978736C30170}.Debug|x86.Build.0 = Debug|Any CPU
+		{B77DAF19-498A-4C14-AF6D-978736C30170}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B77DAF19-498A-4C14-AF6D-978736C30170}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B77DAF19-498A-4C14-AF6D-978736C30170}.Release|ARM.ActiveCfg = Release|Any CPU
+		{B77DAF19-498A-4C14-AF6D-978736C30170}.Release|ARM.Build.0 = Release|Any CPU
+		{B77DAF19-498A-4C14-AF6D-978736C30170}.Release|x64.ActiveCfg = Release|Any CPU
+		{B77DAF19-498A-4C14-AF6D-978736C30170}.Release|x64.Build.0 = Release|Any CPU
+		{B77DAF19-498A-4C14-AF6D-978736C30170}.Release|x86.ActiveCfg = Release|Any CPU
+		{B77DAF19-498A-4C14-AF6D-978736C30170}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

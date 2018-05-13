@@ -7,12 +7,13 @@ using System.Threading.Tasks;
 
 namespace Valve.KeyValue
 {
-    public class KeyValue
+    public class KeyValues
     {
         private List<string> basefile;
         public KVNode Root { get; }
-        public KeyValue(string root)
+        public KeyValues(string root)
         {
+            basefile = new List<string>();
             Root = new KVNode(root);
         }
 
@@ -29,6 +30,26 @@ namespace Valve.KeyValue
             if (basefile.Exists(x => x.Equals(filename)))
             {
                 basefile.Remove(filename);
+            }
+        }
+
+        public void Debug(KVNode start, int depth = 0)
+        {
+            foreach(KVNode node in start.FindNodes())
+            {
+                for (int i = 0;i<depth;i++)
+                {
+                    Console.Write("=");
+                }
+                if (node.Type == KVNode.KVNodeType.Parent)
+                {
+                    Console.WriteLine(node.KeyName);
+                    Debug(node, depth+1);
+                }
+                else
+                {
+                    Console.WriteLine(String.Format("{0} {1}",node.KeyName, node.GetValue()));
+                }
             }
         }
     }

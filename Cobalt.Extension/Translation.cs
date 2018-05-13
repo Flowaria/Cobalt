@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 
-namespace Flowaria.Translation
+namespace Cobalt.Extension
 {
     public static class Translation
     {
@@ -14,6 +14,7 @@ namespace Flowaria.Translation
         private static Dictionary<String, String> def; //default string
         private static Dictionary<String, String> dict; //translated string
         private static bool alternative_loaded;
+
         static Translation()
         {
             list = new List<String>();
@@ -21,6 +22,7 @@ namespace Flowaria.Translation
             def = new Dictionary<String, String>();
             alternative_loaded = false;
         }
+
         public static bool LoadDefaultFile(string filedir)
         {
             try

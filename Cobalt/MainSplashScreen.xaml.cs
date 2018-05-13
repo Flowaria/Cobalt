@@ -1,12 +1,13 @@
-﻿using Cobalt.FileIO.CFG;
+﻿using Cobalt.Extension;
+using Cobalt.FileIO.CFG;
 using Cobalt.FileIO.DL;
 using Cobalt.Parser;
 using Cobalt.Windows;
-using Flowaria.Translation;
 using System;
 using System.IO;
 using System.Windows;
 using System.Windows.Media.Imaging;
+using TF2.Items;
 
 namespace Cobalt
 {
@@ -15,9 +16,6 @@ namespace Cobalt
     /// </summary>
     public partial class MainSplashScreen : Window
     {
-        private MainWindow mainWindow;
-
-
         public MainSplashScreen()
         {
             InitializeComponent();
@@ -46,23 +44,22 @@ namespace Cobalt
             }
             //fff.Import(FileFunction.RelativeURL("population/mvm_mannworks_expert1.pop"));
 
+            
             eLabel.Content = Translation.Get("version_schema");
+            await ItemsInfo.FetchSchema("resource/schema");
 
             //다운로더 컨텐츠 대상 설정
             icodl.Progress = eBar;
             icodl.TextBox = eLabel;
 
-            //await ItemsInfo.FetchSchema("resource/items_game.xml");
-
             eLabel.Content = Translation.Get("loading_schema");
-            //await ItemsInfo.InitSchema("resource/items_game.xml");
+            //await ItemsInfo.ReadSchema();
 
             eLabel.Content = Translation.Get("download_itemimage");
             //await ItemsInfo.InitItemImage("resource/items/");
-            //await ItemsInfo.RefreshTranslate("korean");
 
             //메인 윈도우 가동
-            mainWindow = new MainWindow();
+            var mainWindow = new MainWindow();
             mainWindow.Show();
             Close();
         }

@@ -8,6 +8,6 @@ namespace TF2.Population.Element
 {
     public class Mission
     {
-        public int 
+        //public int 
     }
 }

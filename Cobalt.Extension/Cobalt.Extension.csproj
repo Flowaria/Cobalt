@@ -7,8 +7,8 @@
     <ProjectGuid>{B77DAF19-498A-4C14-AF6D-978736C30170}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Flowaria.Translation</RootNamespace>
-    <AssemblyName>cobalt.core</AssemblyName>
+    <RootNamespace>Cobalt.Extension</RootNamespace>
+    <AssemblyName>cobalt.extension</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
