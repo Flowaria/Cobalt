@@ -14,9 +14,9 @@ namespace TF2.Items
         private string name;
         private string displayname;
         private string image;
-        private TFSlot slot;
+        private TFItemSlot slot;
         private bool[] allowedclass;
-        public TFItem(string _classname, int _defid, string _name, TFSlot _slot, string _image, string _displayname, bool allclass)
+        public TFItem(string _classname, int _defid, string _name, TFItemSlot _slot, string _image, string _displayname, bool allclass)
         {
             classname = _classname;
             defid = _defid;
@@ -45,7 +45,7 @@ namespace TF2.Items
             return defid;
         }
 
-        public TFSlot GetSlot()
+        public TFItemSlot GetSlot()
         {
             return slot;
         }
@@ -67,12 +67,12 @@ namespace TF2.Items
 
         public void UsedByClassToggle(TFClass c)
         {
-            allowedclass[(int)c] ^= true;
+            allowedclass[(int)c-1] ^= true;
         }
 
         public bool IsCosmetic()
         {
-            return (slot == TFSlot.Misc);
+            return (slot == TFItemSlot.Misc);
         }
 
         public bool IsWearable()

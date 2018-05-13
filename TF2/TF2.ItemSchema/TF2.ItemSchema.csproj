@@ -45,6 +45,12 @@
     <Compile Include="TFAttribute.cs" />
     <Compile Include="TFItem.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TF2.Info\TF2.Info.csproj">
+      <Project>{f5669172-7996-4525-82df-d1ea104c79eb}</Project>
+      <Name>TF2.Info</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

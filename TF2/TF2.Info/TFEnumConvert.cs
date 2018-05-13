@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace TF2.Info
 {
-    public class TFClassFunction
+    public class TFEnumConvert
     {
-        public static TFClass StringToClass(string str)
+        public static TFClass StringToTFClass(string str)
         {
             switch (str.ToLower())
             {
@@ -34,21 +34,31 @@ namespace TF2.Info
                 case "spy":
                     return TFClass.Spy;
                 default:
-                    return TFClass.Null;
+                    return TFClass.None;
+            }
+        }
+        public static TFItemSlot StringToSlot(string str)
+        {
+            switch (str.ToLower())
+            {
+                case "primary":
+                    return TFItemSlot.Primary;
+                case "secondary":
+                    return TFItemSlot.Secondary;
+                case "melee":
+                    return TFItemSlot.Melee;
+                case "pda":
+                    return TFItemSlot.PDA1;
+                case "pda2":
+                    return TFItemSlot.PDA2;
+                case "building":
+                    return TFItemSlot.Building;
+                case "misc":
+                    return TFItemSlot.Misc;
+                default:
+                    return TFItemSlot.None;
             }
         }
     }
-    public enum TFClass
-    {
-        Null = 0,
-        Scout = 1,
-        Soldier = 2,
-        Pyro = 3,
-        Heavy = 4,
-        Engineer = 5,
-        Demoman = 6,
-        Sniper = 7,
-        Spy = 8,
-        Medic = 9
-    }
+    
 }

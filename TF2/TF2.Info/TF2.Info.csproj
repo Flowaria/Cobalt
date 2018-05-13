@@ -7,7 +7,7 @@
     <ProjectGuid>{F5669172-7996-4525-82DF-D1EA104C79EB}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TF2.Items</RootNamespace>
+    <RootNamespace>TF2.Info</RootNamespace>
     <AssemblyName>tf2</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -40,16 +40,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ItemsInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TFAttribute.cs" />
-    <Compile Include="TFItem.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\TF2.ItemSchema\TF2.ItemSchema.csproj">
-      <Project>{BB0EEF20-A25E-499A-B360-0C80E0F651A4}</Project>
-      <Name>Cobalt.TF2Info.Dll</Name>
-    </ProjectReference>
+    <Compile Include="TFEnumConvert.cs" />
+    <Compile Include="TFEnum.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
