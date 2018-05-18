@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Cobalt.Windows"
-        xmlns:TFControl="clr-namespace:Cobalt.Controls"
+        xmlns:TFControl="clr-namespace:Cobalt.UserControls"
         mc:Ignorable="d"
         Title="Cobalt"
         Height="350" Width="525"

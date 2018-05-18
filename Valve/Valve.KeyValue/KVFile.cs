@@ -16,74 +16,67 @@ namespace Valve.KeyValue
 
         static KVFile()
         {
-            regRemark = new Regex("((\\/\\/+).+)|((\\/\\*+)(.|\\n|\\r)*(\\*\\/))", RegexOptions.IgnoreCase);
-            regKv = new Regex("(\\\"([^\\\"]*?)\\\")|(\\'[^\\']*?\\')|[{}]|([^\\s][^\\s]*)");
-            regQuote = new Regex("(^\"+|\"+$)|(^'+|'+$)");
+            regRemark = new Regex("((\\/\\/+).+)|((\\/\\*+)(.|\\n|\\r)*(\\*\\/))"); //주석 제거
+            regKv = new Regex("(\\\"([^\\\"]*?)\\\")|(\\'[^\\']*?\\')|[{}]|([^\\s][^\\s]*)"); //KeyValue 형식으로 나눔
+            regQuote = new Regex("(^\"+|\"+$)|(^'+|'+$)"); //양끝 따옴표 제거
         }
 
-        public static KeyValues ImportKeyValue(string content)
+        public static KeyValues ImportKeyValue(string content, bool overrideparentnode)
         {
             var rmvRemark = regKv.Matches(regRemark.Replace(content, ""));
 
             int depth = 0;
-            string previous = null;
-            KeyValues kv = new KeyValues("WaveSchedule");
+            KeyValues kv = new KeyValues("RootKey");
             KVNode current = null;
-            foreach (Match reach in rmvRemark)
+            for (int i = 0; i < rmvRemark.Count; i++)
             {
-                string str = regQuote.Replace(reach.Value, "");
-                switch (str)
+                string str = regQuote.Replace(rmvRemark[i].Value, "");
+                string nxt_str = regQuote.Replace(rmvRemark[i + 1].Value, "");
+                if (str.Equals("#base"))
                 {
-                    default:
-                        if(previous == null) //홀수 노드
-                        {
-                            previous = str;
-                            if (current == null) //root
-                            {
-                                kv.Root.KeyName = str;
-                                current = kv.Root;
-                            }
-                            //keyvalue or parent
-                        }
-                        else //짝수 노드
-                        {
-                            if(previous == "#base") //베이스 파일 추가
-                            {
-                                kv.AddBaseFile(str);
-                            }
-                            else //전통적 키밸류
-                            {
-                                current.SetValue(str, previous);
-                            }
-                            previous = null;
-                        }
-                        break;
+                    kv.AddBaseFile(nxt_str);
+                    i++;
+                }
 
-                    case "#base":
-                        previous = "#base";
-                        break;
+                else if (str.Equals("}"))
+                {
+                    if (current.Type != KVNode.KVNodeType.Root)
+                    {
+                        current = current.Parent;
+                        depth--;
+                    }
+                }
+                else //all other value
+                {
 
-                    //새 부모 노드
-                    case "{":
-                        if(previous != null) 
+                    if (nxt_str.Equals("{"))
+                    {
+                        if (current == null)
                         {
-                            var node = new KVNode(previous);
-                            current.AppendNode(node);
-                            current = node;
-                            previous = null;
+                            kv.Root.KeyName = str;
+                            current = kv.Root;
+                        }
+                        else
+                        {
+                            if (overrideparentnode && current.FindSingleNode(str, KVNode.KVNodeType.Parent) != null)
+                            {
+                                current = current.FindSingleNode(str, KVNode.KVNodeType.Parent);
+                            }
+                            else
+                            {
+                                var node = new KVNode(str);
+                                current.AppendNode(node);
+                                current = node;
+                            }
                             depth++;
                         }
-                        break;
 
-                    //부모 노드 끝 -> 상위 노드로
-                    case "}":
-                        if (current != null && current.Type != KVNode.KVNodeType.Root)
-                        {
-                            current = current.Parent;
-                        }
-                        previous = null;
-                        depth--;
-                        break;
+                    }
+                    else
+                    {
+                        current.SetValue(nxt_str, str, true);
+                    }
+                    i++;
                 }
             }
             if(depth == 0)
@@ -91,11 +84,6 @@ namespace Valve.KeyValue
                 return kv;
             }
             return null;
-        }
-
-        private static void SkipEmptySpace(Stream stream)
-        {
-
         }
 
         public static string ExportKeyValue(KeyValues kv)

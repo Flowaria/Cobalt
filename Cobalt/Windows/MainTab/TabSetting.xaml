@@ -9,7 +9,7 @@
     <Grid>
         <Image x:Name="eImage" Stretch="Fill">
             <Image.Source>
-                <BitmapImage  UriSource="/Resources/Splash/6.png" />
+                <BitmapImage  UriSource="/Resources/BG.jpg" />
             </Image.Source>
             <Image.BitmapEffect>
                 <BlurBitmapEffect Radius="10" KernelType="Box" />

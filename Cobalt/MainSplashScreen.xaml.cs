@@ -1,7 +1,7 @@
 ﻿using Cobalt.Extension;
 using Cobalt.FileIO.CFG;
 using Cobalt.FileIO.DL;
-using Cobalt.Parser;
+using Cobalt.UserControls;
 using Cobalt.Windows;
 using System;
 using System.IO;
@@ -21,6 +21,10 @@ namespace Cobalt
             InitializeComponent();
             eLabel.Content = Translation.Get("loading_maPsetting");
             showRandomSplash(6);
+            //var icon = new TFBotIcon("resource/image/loch_rotate_darker.png");
+            //icon.IsGiant = true;
+            //icon.IsCrit = true;
+            //AddChild(icon);
         }
 
         public void showRandomSplash(int max)
@@ -32,7 +36,6 @@ namespace Cobalt
         private async void Window_ContentRendered(object sender, EventArgs e)
         {
             //선언
-            var Template = new TemplateParser();
             var icodl = new IconDownloader();
             var mCfg = new MapConfig();
 

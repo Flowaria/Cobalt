@@ -67,6 +67,11 @@ namespace TF2.Items
                 return FetchSchemaResult.FAIL_INVALID_APIKEY;
             }
 
+            if(Directory.Exists(directory))
+            {
+                Directory.CreateDirectory(directory);
+            }
+
             string schemaurl = String.Format(SCHEMA_ITEMS_URL, apikey, language);
             if (directory.EndsWith("/"))
             {

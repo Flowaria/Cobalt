@@ -74,8 +74,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Src\Parser\KeyValueParser.cs" />
-    <Compile Include="Src\UserControl\TFBotIcon.xaml.cs">
+    <Compile Include="UserControl\TFBotIcon.xaml.cs">
       <DependentUpon>TFBotIcon.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\EditTab\TabAdvanced.xaml.cs">
@@ -121,12 +120,11 @@
     <Compile Include="Src\FileIO\FileFunction.cs" />
     <Compile Include="Src\FileIO\Downloader\IconDownloader.cs" />
     <Compile Include="Src\FileIO\Config\MapConfig.cs" />
-    <Compile Include="Src\Parser\TemplateParser.cs" />
     <Compile Include="Src\StringFunction.cs" />
     <Compile Include="Windows\Tools\ItemSelect.xaml.cs">
       <DependentUpon>ItemSelect.xaml</DependentUpon>
     </Compile>
-    <Page Include="Src\UserControl\TFBotIcon.xaml">
+    <Page Include="UserControl\TFBotIcon.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -300,6 +298,12 @@
       <Project>{66A8409E-243D-462B-A6D0-DE782B6FABA7}</Project>
       <Name>Valve.KeyValue</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\Export\resource\schema\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\BG.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

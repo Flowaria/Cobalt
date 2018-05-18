@@ -1,5 +1,5 @@
 ﻿<Config>
   <ApiKey></ApiKey>
-  <UiLang>ko</UiLang>
+  <UiLang>default</UiLang>
   <ItemLang>ko</ItemLang>
 </Config>

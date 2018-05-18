@@ -1,4 +1,6 @@
 <translation>
+  <language_name value="English"/>
+  
 	<msg_error_title value="Critical Error"/>
 	<msg_warn_title value="Warning"/>
 	<msg_ui_translation_call_fail value="Error occurred while opening translation file in config.xml\nIt will load default translation file"/>

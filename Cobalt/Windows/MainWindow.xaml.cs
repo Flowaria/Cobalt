@@ -15,6 +15,7 @@ namespace Cobalt.Windows
         public static TabWaveSchedule f_tabWave;
         public static TabMission f_tabMission;
         public static TabTemplate f_tabTemplate;
+        public static Navigator f_navigator;
 
         public MainWindow()
         {
@@ -27,6 +28,8 @@ namespace Cobalt.Windows
             f_tabWave = new TabWaveSchedule(); tab_waves.Content = f_tabWave;
             f_tabMission = new TabMission(); tab_mission.Content = f_tabMission;
             f_tabTemplate = new TabTemplate(); tab_template.Content = f_tabTemplate;
+            f_navigator = new Navigator();
+            f_navigator.Show();
 
             for(int i = 0;i<8;i++)
             f_tabWave.AddWave();

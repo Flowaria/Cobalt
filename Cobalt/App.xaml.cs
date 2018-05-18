@@ -21,11 +21,11 @@ namespace Cobalt
         {
             InitResource();
             InitConfig();
-            KeyValues kv = KVFile.ImportKeyValue(File.ReadAllText("resource/templates/mvm_bigrock_flow_expert1.pop"));
-            if(kv != null)
-            {
-                kv.Debug(kv.Root);
-            }
+            //KeyValues kv = KVFile.ImportKeyValue(File.ReadAllText("resource/templates/mvm_bigrock_flow_expert1.pop"), false);
+            //if(kv != null)
+            //{
+            //    kv.Debug(kv.Root);
+            //}
         }
 
         public void InitResource()
@@ -41,6 +41,11 @@ namespace Cobalt
                     string dir = Path.Combine(String.Join("/", splited.Take(splited.Length - 2)), String.Join(".", splited[splited.Length - 2], splited[splited.Length - 1]));
                     if (!File.Exists(dir))
                     {
+                        if(!Directory.Exists(Path.GetDirectoryName(dir)))
+                        {
+                            Directory.CreateDirectory(Path.GetDirectoryName(dir));
+                        }
+
                         using (var stream = System.Reflection.Assembly.GetExecutingAssembly().GetManifestResourceStream(file))
                         {
                             using (var fileStream = new FileStream(dir, FileMode.Create))

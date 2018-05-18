@@ -11,6 +11,13 @@ namespace Valve.KeyValue
     {
         private List<string> basefile;
         public KVNode Root { get; }
+        public string[] BaseFile
+        {
+            get
+            {
+                return basefile.ToArray();
+            }
+        }
         public KeyValues(string root)
         {
             basefile = new List<string>();

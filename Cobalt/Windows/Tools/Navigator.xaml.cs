@@ -1,4 +1,4 @@
-﻿using Cobalt.Controls;
+﻿using Cobalt.UserControls;
 using System;
 using System.Windows;
 using System.Windows.Media.Imaging;
@@ -26,7 +26,7 @@ namespace Cobalt.Windows.Tools
             logo.BeginInit(); logo.UriSource = new Uri(@"/Image/Icon/demo_pirate.png", UriKind.Relative); logo.EndInit();
             TFBotIcon icon = new TFBotIcon(logo);
             icon.IsGiant = true;
-            icon.IsCrit = false;
+            icon.IsCrit = true;
             AddIcon(icon);
         }
     }
