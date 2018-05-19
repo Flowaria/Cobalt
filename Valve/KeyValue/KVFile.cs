@@ -30,15 +30,9 @@ namespace Valve.KeyValue
             KVNode current = null;
             for (int i = 0; i < rmvRemark.Count; i++)
             {
+                
                 string str = regQuote.Replace(rmvRemark[i].Value, "");
-                string nxt_str = regQuote.Replace(rmvRemark[i + 1].Value, "");
-                if (str.Equals("#base"))
-                {
-                    kv.AddBaseFile(nxt_str);
-                    i++;
-                }
-
-                else if (str.Equals("}"))
+                if (str.Equals("}")) //single
                 {
                     if (current.Type != KVNode.KVNodeType.Root)
                     {
@@ -46,10 +40,16 @@ namespace Valve.KeyValue
                         depth--;
                     }
                 }
-                else //all other value
+                else //two mixed
                 {
+                    string nxt_str = regQuote.Replace(rmvRemark[i + 1].Value, "");
 
-                    if (nxt_str.Equals("{"))
+                    if (str.Equals("#base")) //basefile
+                    {
+                        kv.AddBaseFile(nxt_str);
+                        i++;
+                    }
+                    else if (nxt_str.Equals("{")) //parent
                     {
                         if (current == null)
                         {
@@ -68,11 +68,10 @@ namespace Valve.KeyValue
                                 current.AppendNode(node);
                                 current = node;
                             }
-                            depth++;
                         }
-
+                        depth++;
                     }
-                    else
+                    else //child
                     {
                         current.SetValue(nxt_str, str, true);
                     }

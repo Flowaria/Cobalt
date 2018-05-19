@@ -59,17 +59,18 @@ namespace TF2.Info
         PDA1, PDA2, Building, Misc, Action
     }
 
-    public enum TFAttributeEffectSide
+    public enum TFAttrEffectType
     {
         Positive,
         Negative,
         Neutral
     }
 
-    public enum TFAttributeDescriptionFormat
+    public enum TFAttrDescriptionFormat
     {
         Percentage,
         Inverted_Percentage,
+
         Additive,
         Additive_Percentage,
 

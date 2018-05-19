@@ -33,7 +33,7 @@ namespace TF2.Items
         public static string Version { get { return version; } }
 
         public static Func<XmlNode, TFItem> ItemsHandler = null;
-        public static Func<XmlNode, TFItem> AttributesHandler = null;
+        public static Func<XmlNode, TFAttribute> AttributesHandler = null;
 
         public static TFItem[] Items
         {
@@ -188,11 +188,15 @@ namespace TF2.Items
                     }
                 }
                 schema.Load(schema_attributes_dir);
-                foreach (XmlNode node in schema.DocumentElement)
+                foreach (XmlNode node in schema.DocumentElement["attributes"])
                 {
-                    if (node.Name.ToLower().Equals("attributes"))
+                    if (node.Name.ToLower().Equals("attribute"))
                     {
-
+                        var attribute = AttributesHandler(node);
+                        if (attribute != null)
+                        {
+                            attributes.Add(attribute);
+                        }
                     }
                 }
             });

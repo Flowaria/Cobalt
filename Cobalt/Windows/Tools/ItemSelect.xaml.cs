@@ -16,7 +16,7 @@ namespace Cobalt.Windows.Tools
             foreach(TFItem item in items)
             {
                 t_Button = new Button();
-                t_Button.Content = item.GetDefID();
+                t_Button.Content = item.DefinitionID;
                 t_Button.Width = 96; t_Button.Height = 96;
                 t_Button.Click += handler;
 

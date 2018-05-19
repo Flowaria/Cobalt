@@ -11,6 +11,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Media.Imaging;
+using System.Xml;
+using TF2.Info;
 using TF2.Items;
 
 namespace Cobalt
@@ -25,10 +27,6 @@ namespace Cobalt
             InitializeComponent();
             eLabel.Content = Translation.Get("loading_maPsetting");
             showRandomSplash(6);
-            //var icon = new TFBotIcon("resource/image/loch_rotate_darker.png");
-            //icon.IsGiant = true;
-            //icon.IsCrit = true;
-            //AddChild(icon);
         }
 
         public void showRandomSplash(int max)
@@ -55,6 +53,8 @@ namespace Cobalt
 
             //Read Schema
             eLabel.Content = Translation.Get("loading_schema");
+            ItemsInfo.ItemsHandler += NodeToTFItem;
+            ItemsInfo.AttributesHandler += NodeToTFAttribute;
             await ItemsInfo.ReadSchema();
             
             //Items Image
@@ -65,8 +65,8 @@ namespace Cobalt
             {
                 foreach (var item in items)
                 {
-                    var path = Path.Combine("resource/backpack-image", item.GetImageName());
-                    var url = item.GetImageURL();
+                    var path = Path.Combine("resource/backpack-image", item.ImageName);
+                    var url = item.ImageURL;
                     if (File.Exists(path))
                     {
                         if (result == FetchSchemaResult.SUCCESS)
@@ -93,6 +93,7 @@ namespace Cobalt
 
             });
 
+            //download new icons
             if (dl_new.Count > 0)
             {
                 eLabel.Content = Translation.Get("download_itemimage");
@@ -107,6 +108,74 @@ namespace Cobalt
             var mainWindow = new MainWindow();
             mainWindow.Show();
             Close();
+        }
+        private TFItem NodeToTFItem(XmlNode node)
+        {
+            if (node["item_class"] != null
+                && node["defindex"] != null
+                && node["name"] != null
+                && node["item_slot"] != null
+                && !node["item_slot"].InnerText.Equals("action")
+                && node["image_url"] != null
+                && node["image_url"].InnerText.StartsWith("http://media.steampowered.com")
+                && node["item_name"] != null
+                && node["item_class"] != null
+                && !node["item_class"].InnerText.Equals("no_entity")
+            )
+            {
+                TFItem item = new TFItem();
+                if (node["used_by_classes"] != null)
+                {
+                    item.ClassName = node["item_class"].InnerText;
+                    item.DefinitionID = int.Parse(node["defindex"].InnerText);
+                    item.Name = node["name"].InnerText;
+                    item.DisplayName = node["item_name"].InnerText;
+                    item.Slot = TFEnumConvert.StringToSlot(node["item_slot"].InnerText);
+                    item.ImageURL = node["image_url"].InnerText;
+
+                    string[] splited = item.ImageURL.Split('/');
+                    var sp = splited[splited.Length - 1].Split('.');
+                    item.ImageName = String.Join(".", sp[0], sp[2]);
+
+                    if (node["used_by_classes"] != null)
+                    {
+                        foreach (XmlNode node2 in node.SelectNodes("used_by_classes"))
+                        {
+                            TFClass cls = TFEnumConvert.StringToTFClass(node2.InnerText);
+                            if (cls != TFClass.None)
+                            {
+                                item.UsedByClass(cls);
+                            }
+                        }
+                    }
+                    item.ReadOnly = true;
+                }
+                return item;
+            }
+            return null;
+        }
+
+        private TFAttribute NodeToTFAttribute(XmlNode node)
+        {
+            if (node["name"] != null
+                && node["defindex"] != null
+                && node["attribute_class"] != null
+                && node["description_string"] != null
+                && node["description_format"] != null
+                && node["effect_type"] != null
+            )
+            {
+                TFAttribute attr = new TFAttribute();
+                attr.Name = node["name"].InnerText;
+                attr.DefinitionID = int.Parse(node["defindex"].InnerText);
+                attr.AttributeClass = node["attribute_class"].InnerText;
+                attr.Description = node["description_string"].InnerText.Replace("%s1", "{0}") ;
+                attr.DescriptionFormat = TFEnumConvert.StringToDescriptionFormat(node["description_format"].InnerText);
+                attr.EffectType = TFEnumConvert.StringToEffectType(node["effect_type"].InnerText);
+                attr.ReadOnly = true;
+                return attr;
+            }
+            return null;
         }
     }
 }

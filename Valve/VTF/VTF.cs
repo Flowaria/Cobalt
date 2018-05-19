@@ -78,12 +78,17 @@ namespace Valve.TextureFormat
 
     public class VTF
     {
-        public VTF()
+        public VTF(string filename)
         {
 
         }
 
         public static bool ExportVTFtoPng(VTF vtf, string outputdir)
+        {
+            return true;
+        }
+
+        public static bool ExportFiletoPng(string vtf, string outputdir)
         {
             return true;
         }

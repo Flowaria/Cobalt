@@ -9,6 +9,8 @@ namespace TF2.Items
 {
     public class TFItem
     {
+        public bool ReadOnly { get; set; } = true;
+
         private string classname;
         private int defid;
         private string name;
@@ -16,7 +18,55 @@ namespace TF2.Items
         private string image;
         private string image_url;
         private TFItemSlot slot;
+        public string ClassName
+        {
+            get { return classname; }
+            set { if (!ReadOnly) classname = value; }
+        }
+
+        public int DefinitionID
+        {
+            get { return defid; }
+            set { if (!ReadOnly) defid = value; }
+        }
+
+        public string Name
+        {
+            get { return name; }
+            set { if (!ReadOnly) name = value; }
+        }
+
+        public string DisplayName
+        {
+            get { return displayname; }
+            set { if (!ReadOnly) displayname = value; }
+        }
+
+        public string ImageName
+        {
+            get { return image; }
+            set { if (!ReadOnly) image = value; }
+        }
+
+        public string ImageURL
+        {
+            get { return image_url; }
+            set { if (!ReadOnly) image_url = value; }
+        }
+
+        public TFItemSlot Slot
+        {
+            get { return slot; }
+            set {if (!ReadOnly) slot = value; }
+        }
+
         private bool[] allowedclass;
+
+        public TFItem()
+        {
+            ReadOnly = false;
+        }
+
         public TFItem(string _classname, int _defid, string _name, TFItemSlot _slot, string _image, string _displayname, bool allclass)
         {
             classname = _classname;
@@ -30,54 +80,17 @@ namespace TF2.Items
             else
                 allowedclass = new bool[10] { false, false, false, false, false, false, false, false, false, false };
 
-            string[] splited = image_url.Split('/');
-            var sp = splited[splited.Length - 1].Split('.');
-            image = String.Join(".", sp[0], sp[2]);
+            
         }
 
-        public string GetClassname()
+        public void UsedByClass(TFClass c)
         {
-            return classname;
+            allowedclass[(int)c] = true;
         }
 
-        public string GetName()
+        public void UnusedByClass(TFClass c)
         {
-            return name;
-        }
-
-        public int GetDefID()
-        {
-            return defid;
-        }
-
-        public TFItemSlot GetSlot()
-        {
-            return slot;
-        }
-
-        public string GetDisplayName()
-        {
-            return displayname;
-        }
-
-        public string GetImageURL()
-        {
-            return image_url;
-        }
-
-        public string GetImageName()
-        {
-            return image;
-        }
-
-        public void SetDisplayName(string newname)
-        {
-            displayname = newname;
-        }
-
-        public void UsedByClassToggle(TFClass c)
-        {
-            allowedclass[(int)c-1] ^= true;
+            allowedclass[(int)c] = false;
         }
 
         public bool IsCosmetic()
@@ -92,9 +105,14 @@ namespace TF2.Items
 
         public bool IsAllClass()
         {
-            return (allowedclass[0] && allowedclass[1] && allowedclass[2]
-                && allowedclass[3] && allowedclass[4] && allowedclass[5]
-                && allowedclass[6] && allowedclass[7] && allowedclass[8]);
+            return (allowedclass[1] && allowedclass[2] && allowedclass[3]
+                && allowedclass[4] && allowedclass[5] && allowedclass[6]
+                && allowedclass[7] && allowedclass[8] && allowedclass[9]);
+        }
+
+        public bool IsUsedByClass(TFClass cls)
+        {
+            return allowedclass[(int)cls];
         }
 
         public void Debug()
