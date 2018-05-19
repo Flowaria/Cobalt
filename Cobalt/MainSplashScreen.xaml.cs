@@ -4,7 +4,11 @@ using Cobalt.FileIO.DL;
 using Cobalt.UserControls;
 using Cobalt.Windows;
 using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Security.Cryptography;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Media.Imaging;
 using TF2.Items;
@@ -36,7 +40,6 @@ namespace Cobalt
         private async void Window_ContentRendered(object sender, EventArgs e)
         {
             //선언
-            var icodl = new IconDownloader();
             var mCfg = new MapConfig();
 
             //컨픽
@@ -45,21 +48,60 @@ namespace Cobalt
             {
                 await mCfg.loadConfigAsync(file);
             }
-            //fff.Import(FileFunction.RelativeURL("population/mvm_mannworks_expert1.pop"));
 
-            
+            //Check Schema Version (redownload)
             eLabel.Content = Translation.Get("version_schema");
-            await ItemsInfo.FetchSchema("resource/schema");
+            var result = await ItemsInfo.FetchSchema("resource/schema/");
 
-            //다운로더 컨텐츠 대상 설정
-            icodl.Progress = eBar;
-            icodl.TextBox = eLabel;
-
+            //Read Schema
             eLabel.Content = Translation.Get("loading_schema");
-            //await ItemsInfo.ReadSchema();
+            await ItemsInfo.ReadSchema();
+            
+            //Items Image
+            eLabel.Content = Translation.Get("checksum_itemimage");
+            var items = ItemsInfo.Items;
+            var dl_new = new List<string>();
+            await Task.Factory.StartNew(delegate
+            {
+                foreach (var item in items)
+                {
+                    var path = Path.Combine("resource/backpack-image", item.GetImageName());
+                    var url = item.GetImageURL();
+                    if (File.Exists(path))
+                    {
+                        if (result == FetchSchemaResult.SUCCESS)
+                        {
+                            MD5 md5 = MD5.Create();
+                            string hash = Encoding.Default.GetString(md5.ComputeHash(File.ReadAllBytes(path)));
+                            using (System.Net.WebClient wc = new System.Net.WebClient())
+                            {
+                                wc.Encoding = Encoding.UTF8;
+                                string net_hash = Encoding.Default.GetString(md5.ComputeHash(wc.DownloadData(url)));
+                                if(!net_hash.Equals(hash))
+                                {
+                                    dl_new.Add(url);
+                                }
+                            }
+                        }
+                        
+                    }
+                    else
+                    {
+                        dl_new.Add(url);
+                    }
+                }
 
-            eLabel.Content = Translation.Get("download_itemimage");
-            //await ItemsInfo.InitItemImage("resource/items/");
+            });
+
+            if (dl_new.Count > 0)
+            {
+                eLabel.Content = Translation.Get("download_itemimage");
+
+                var dl = new IconDownloader();
+                dl.Progress = eBar;
+                dl.TextBox = eLabel;
+                await dl.download(dl_new, "resource/backpack-image/");
+            }
 
             //메인 윈도우 가동
             var mainWindow = new MainWindow();

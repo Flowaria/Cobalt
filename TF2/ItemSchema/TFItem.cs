@@ -14,6 +14,7 @@ namespace TF2.Items
         private string name;
         private string displayname;
         private string image;
+        private string image_url;
         private TFItemSlot slot;
         private bool[] allowedclass;
         public TFItem(string _classname, int _defid, string _name, TFItemSlot _slot, string _image, string _displayname, bool allclass)
@@ -22,12 +23,16 @@ namespace TF2.Items
             defid = _defid;
             name = _name;
             slot = _slot;
-            image = _image;
+            image_url = _image;
             displayname = _displayname;
             if (allclass)
                 allowedclass = new bool[10] { true, true, true, true, true, true, true, true, true, true };
             else
                 allowedclass = new bool[10] { false, false, false, false, false, false, false, false, false, false };
+
+            string[] splited = image_url.Split('/');
+            var sp = splited[splited.Length - 1].Split('.');
+            image = String.Join(".", sp[0], sp[2]);
         }
 
         public string GetClassname()
@@ -53,6 +58,11 @@ namespace TF2.Items
         public string GetDisplayName()
         {
             return displayname;
+        }
+
+        public string GetImageURL()
+        {
+            return image_url;
         }
 
         public string GetImageName()

@@ -7,11 +7,6 @@ using System.Threading.Tasks;
 
 namespace Cobalt.FileIO.DL
 {
-    //DOWNLOADER
-    public enum DownloaderOverrideMode
-    {
-        All, WhenNotEqual, Off
-    };
 
     /*
      * 파일 리스트의 파일을 비동기로 받아오는 클래스
@@ -19,8 +14,6 @@ namespace Cobalt.FileIO.DL
     public class Downloader : IDisposable
     {
         private WebClient client;
-
-        public DownloaderOverrideMode Mode = DownloaderOverrideMode.Off;
         public string BaseURL; //다운로드시 중점 url
         public string BaseDirectory; //다운로드시 중점 저장 디렉토리
 
@@ -60,16 +53,10 @@ namespace Cobalt.FileIO.DL
         //URL로 단일 파일 다운로드
         private async Task downloadFile(String item, int Max, int Index)
         {
-            //파일 존재하면 걍 안받
+            //파일 존재하면 삭제
             if (File.Exists(BaseDirectory + item))
             {
-                if(Mode == DownloaderOverrideMode.Off)
-                    return;
-                else if (Mode == DownloaderOverrideMode.WhenNotEqual)
-                {
-                    if(validateFunction(BaseDirectory + item, BaseURL + item))
-                        return;
-                }
+                File.Delete(BaseDirectory + item);
             }
 
             //이름 수정

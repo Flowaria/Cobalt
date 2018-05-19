@@ -19,9 +19,8 @@ namespace TF2.Items
         private const string VERIFY_APIKEY_URL = "https://api.steampowered.com/IEconItems_440/GetSchemaURL/v1/?key={0}&format=xml";
         private const string SCHEMA_ITEMS_URL = "https://api.steampowered.com/IEconItems_440/GetSchemaItems/v1/?key={0}&language={1}&format=xml";
         private const string SCHEMA_ATTRIBUTES_URL = "https://api.steampowered.com/IEconItems_440/GetSchemaOverview/v1/?key={0}&language={1}&format=xml";
-        private static List<TFItem> items;
-        private static List<TFAttribute> attributes;
-        private static string version_string;
+        private static List<TFItem> items = new List<TFItem>();
+        private static List<TFAttribute> attributes = new List<TFAttribute>();
         private static string schema_items_dir;
         private static string schema_attributes_dir;
 
@@ -32,6 +31,25 @@ namespace TF2.Items
         public static string Apikey { get { return apikey; } }
         public static string Language { get { return language; } }
         public static string Version { get { return version; } }
+
+        public static Func<XmlNode, TFItem> ItemsHandler = null;
+        public static Func<XmlNode, TFItem> AttributesHandler = null;
+
+        public static TFItem[] Items
+        {
+            get
+            {
+                return items.ToArray();
+            }
+        }
+
+        public static TFAttribute[] Attributes
+        {
+            get
+            {
+                return attributes.ToArray();
+            }
+        }
 
         public static bool Register(string api_key, string lang = "en")
         {
@@ -73,16 +91,8 @@ namespace TF2.Items
             }
 
             string schemaurl = String.Format(SCHEMA_ITEMS_URL, apikey, language);
-            if (directory.EndsWith("/"))
-            {
-                schema_items_dir = directory + language + ".items.schama.xml";
-                schema_attributes_dir = directory + language + ".attributes.schama.xml";
-            }
-            else
-            {
-                schema_items_dir = directory + "/" + language + ".items.schama.xml";
-                schema_attributes_dir = directory + "/" + language + ".attributes.schama.xml";
-            }
+            schema_items_dir = Path.Combine(directory, language + ".items.schama.xml");
+            schema_attributes_dir = Path.Combine(directory, language + ".attributes.schama.xml");
                 
             //File not Exist (full or one)
             if(!File.Exists(schema_items_dir) || !File.Exists(schema_attributes_dir))
@@ -166,13 +176,15 @@ namespace TF2.Items
             {
                 XmlDocument schema = new XmlDocument();
                 schema.Load(schema_items_dir);
-                foreach (XmlNode node in schema.DocumentElement)
+                foreach (XmlNode node in schema.DocumentElement["items"])
                 {
-                    if (node.Name.ToLower().Equals("items"))
+                    if (node.Name.ToLower().Equals("item"))
                     {
-                        var item = NodeToTFItem(node);
+                        var item = ItemsHandler(node);
                         if(item != null)
+                        {
                             items.Add(item);
+                        }
                     }
                 }
                 schema.Load(schema_attributes_dir);
@@ -184,34 +196,7 @@ namespace TF2.Items
                     }
                 }
             });
-        }
-
-        private static TFItem NodeToTFItem(XmlNode node)
-        {
-            if (node["item_class"] != null && node["defindex"] != null && node["name"] != null
-            && node["item_slot"] != null && node["image_url"] != null && node["item_name"] != null)
-            {
-                TFItem item = null;
-                if (node["used_by_classes"] != null)
-                {
-                    item = new TFItem(node["item_class"].InnerText, int.Parse(node["defindex"].InnerText), node["name"].InnerText, TFEnumConvert.StringToSlot(node["item_slot"].InnerText), FormatImageURL(node["image_url"].InnerText), node["item_name"].InnerText, false);
-                    foreach (XmlNode node2 in node.SelectNodes("used_by_classes"))
-                    {
-                        TFClass cls = TFEnumConvert.StringToTFClass(node2.InnerText);
-                        if (cls != TFClass.None)
-                        {
-                            item.UsedByClassToggle(cls);
-                        }
-                    }
-                }
-                else
-                {
-                    item = new TFItem(node["item_class"].InnerText, int.Parse(node["defindex"].InnerText), node["name"].InnerText, TFEnumConvert.StringToSlot(node["item_slot"].InnerText), FormatImageURL(node["image_url"].InnerText), node["item_name"].InnerText, true);
-                }
-                return item;
-            }
-            return null;
-        }
+        } 
 
         public static string UrlToVersionString(string url)
         {

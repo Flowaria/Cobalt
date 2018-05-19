@@ -216,6 +216,7 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
+    <None Include="Resources\Export\resource\bot-icon\definition.list" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -290,18 +291,16 @@
       <Project>{B77DAF19-498A-4C14-AF6D-978736C30170}</Project>
       <Name>Cobalt.Extension</Name>
     </ProjectReference>
-    <ProjectReference Include="..\TF2\TF2.ItemSchema\TF2.ItemSchema.csproj">
-      <Project>{BB0EEF20-A25E-499A-B360-0C80E0F651A4}</Project>
-      <Name>TF2.ItemSchema</Name>
+    <ProjectReference Include="..\TF2\TF2.csproj">
+      <Project>{f5669172-7996-4525-82df-d1ea104c79eb}</Project>
+      <Name>TF2</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Valve\Valve.KeyValue\Valve.KeyValue.csproj">
-      <Project>{66A8409E-243D-462B-A6D0-DE782B6FABA7}</Project>
-      <Name>Valve.KeyValue</Name>
+    <ProjectReference Include="..\Valve\Valve.csproj">
+      <Project>{66a8409e-243d-462b-a6d0-de782b6faba7}</Project>
+      <Name>Valve</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Resources\Export\resource\schema\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Resource Include="Resources\BG.jpg" />
   </ItemGroup>

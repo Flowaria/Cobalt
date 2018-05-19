@@ -40,10 +40,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="KeyValues.cs" />
-    <Compile Include="KVNode.cs" />
-    <Compile Include="KVFile.cs" />
+    <Compile Include="KeyValue\KeyValues.cs" />
+    <Compile Include="KeyValue\KVNode.cs" />
+    <Compile Include="KeyValue\KVFile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="VTF\VMT.cs" />
+    <Compile Include="VTF\VTF.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -20,26 +20,11 @@ namespace Cobalt.FileIO.DL
         private int QuerryCountTotal;
         private int QuerryCount;
 
-        public async Task download()
+        public async Task download(List<String> FileList, string save_dir)
         {
             //난 초기화를 좋아하니까 ㅎ
             QuerryCountTotal = 0;
             QuerryCount = 0;
-
-            if (!Directory.Exists(Properties.Settings.Default.PATH_IMG_ITEMS)) //이미지 디렉토리
-                Directory.CreateDirectory(Properties.Settings.Default.PATH_IMG_ITEMS);
-
-            List<String> FileList = new List<String>();
-            /*foreach (TFItem item in TFItem.ItemList())
-            {
-                if (item.ImageURL != null)
-                {
-                    string fileName = Format.UrlFile(item.ImageURL);
-                    if (fileName != null && !File.Exists(Properties.Settings.Default.PATH_IMG_ITEMS + Format.ItemImage(fileName)) && !FileList.Contains(fileName))
-                        FileList.Add(fileName);
-                    item.ImageURL = Format.ItemImage(fileName);
-                }
-            }*/
 
             //파일 리스트가 비어있지 않으면
             if (FileList.Count > 0)
@@ -51,11 +36,10 @@ namespace Cobalt.FileIO.DL
                 //다운로더 생성
                 using (Downloader dl = new Downloader())
                 {
-                    dl.BaseURL = "http://media.steampowered.com/apps/440/icons/";
-                    dl.BaseDirectory = Properties.Settings.Default.PATH_IMG_ITEMS;
+                    dl.BaseURL = "";
+                    dl.BaseDirectory = save_dir;
                     dl.DownloadFileStarted += c_DownloadFileStarted;
                     dl.DownloadFileCompleted += c_DownloadFileCompleted;
-                    dl.Mode = DownloaderOverrideMode.Off;
                     dl.saveFormatFunction = Format.ItemImage;
                     await dl.downloadFiles(FileList);
                 }

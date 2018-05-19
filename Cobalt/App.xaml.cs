@@ -7,6 +7,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
 using System.Xml;
+using TF2.Info;
 using TF2.Items;
 using Valve.KeyValue;
 
@@ -21,19 +22,19 @@ namespace Cobalt
         {
             InitResource();
             InitConfig();
-            //KeyValues kv = KVFile.ImportKeyValue(File.ReadAllText("resource/templates/mvm_bigrock_flow_expert1.pop"), false);
-            //if(kv != null)
-            //{
-            //    kv.Debug(kv.Root);
-            //}
+            ItemsInfo.ItemsHandler += NodeToTFItem;
         }
 
         public void InitResource()
         {
-            //Export Included Resource
-            foreach(var file in System.Reflection.Assembly.GetExecutingAssembly().GetManifestResourceNames())
-            {
+            if (!Directory.Exists("resource/backpack-image"))
+                Directory.CreateDirectory("resource/backpack-image");
+            if (!Directory.Exists("resource/schema"))
+                Directory.CreateDirectory("resource/schema");
 
+            //Export Included Resource
+            foreach (var file in System.Reflection.Assembly.GetExecutingAssembly().GetManifestResourceNames())
+            {
                 if(file.StartsWith("Cobalt.Resources.Export."))
                 {
                     string basedir = file.Replace("Cobalt.Resources.Export.", "");
@@ -93,6 +94,42 @@ namespace Cobalt
                 MessageBox.Show(Translation.Get("msg_config_call_fail"), Translation.Get("msg_error_title"), MessageBoxButton.OK, MessageBoxImage.Error);
                 Environment.Exit(-1);
             }
+        }
+
+        private TFItem NodeToTFItem(XmlNode node)
+        {
+            if (node["item_class"] != null
+                && node["defindex"] != null
+                && node["name"] != null
+                && node["item_slot"] != null
+                && !node["item_slot"].InnerText.Equals("action")
+                && node["image_url"] != null
+                && node["image_url"].InnerText.StartsWith("http://media.steampowered.com")
+                && node["item_name"] != null
+                && node["item_class"] != null
+                && !node["item_class"].InnerText.Equals("no_entity")
+                )
+            {
+                TFItem item = null;
+                if (node["used_by_classes"] != null)
+                {
+                    item = new TFItem(node["item_class"].InnerText, int.Parse(node["defindex"].InnerText), node["name"].InnerText, TFEnumConvert.StringToSlot(node["item_slot"].InnerText), node["image_url"].InnerText, node["item_name"].InnerText, false);
+                    foreach (XmlNode node2 in node.SelectNodes("used_by_classes"))
+                    {
+                        TFClass cls = TFEnumConvert.StringToTFClass(node2.InnerText);
+                        if (cls != TFClass.None)
+                        {
+                            item.UsedByClassToggle(cls);
+                        }
+                    }
+                }
+                else
+                {
+                    item = new TFItem(node["item_class"].InnerText, int.Parse(node["defindex"].InnerText), node["name"].InnerText, TFEnumConvert.StringToSlot(node["item_slot"].InnerText), node["image_url"].InnerText, node["item_name"].InnerText, true);
+                }
+                return item;
+            }
+            return null;
         }
     }
 }

@@ -10,5 +10,6 @@
 	<loading_schema value="Loading Item Schema . . ."/>
 	<loading_template value="Loading Template Files . . ."/>
 	<loading_mapsetting value="Loading Map Setting Files . . ."/>
-	<download_itemimage value="Downloading Image From Server . . ."/>
+  <checksum_itemimage value="Checking Backpack Image Version . . ."/>
+	<download_itemimage value="Downloading Backpack Image From Server . . ."/>
 </translation>

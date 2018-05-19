@@ -27,16 +27,16 @@ namespace Cobalt
 
         /*포멧
              * 입력 포멧
-             * w_bottle.859ddb315a2748f04bcc211aa7a04f2c926e6169.png
+             * media.steampowered.com/apps/440/icons/w_bottle.859ddb315a2748f04bcc211aa7a04f2c926e6169.png
              * 출력 포멧
              * w_bottle.png
         */
         //파일이름 포멧
         public static string ItemImage(string str)
         {
-            if(str.EndsWith(".png"))
-                return str.Split('.')[0] + ".png";
-            return null;
+            string[] splited = str.Split('/');
+            var sp = splited[splited.Length - 1].Split('.');
+            return String.Join(".", sp[0], sp[2]);
         }
 
         /*포멧
