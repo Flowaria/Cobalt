@@ -65,6 +65,7 @@ namespace TF2.Items
         public TFItem()
         {
             ReadOnly = false;
+            allowedclass = new bool[10] { false, false, false, false, false, false, false, false, false, false };
         }
 
         public TFItem(string _classname, int _defid, string _name, TFItemSlot _slot, string _image, string _displayname, bool allclass)

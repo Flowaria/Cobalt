@@ -18,10 +18,10 @@ namespace Cobalt
 
         public void InitResource()
         {
-            if (!Directory.Exists("resource/backpack-image"))
-                Directory.CreateDirectory("resource/backpack-image");
-            if (!Directory.Exists("resource/schema"))
-                Directory.CreateDirectory("resource/schema");
+            Directory.CreateDirectory("Resource/Schema");
+            Directory.CreateDirectory("Resource/Backpack-Image");
+            Directory.CreateDirectory("Resource/Boticons/Image");
+            Directory.CreateDirectory("Resource/Boticons/Plugin");
 
             //Export Included Resource
             foreach (var file in System.Reflection.Assembly.GetExecutingAssembly().GetManifestResourceNames())

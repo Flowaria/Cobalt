@@ -1,31 +1,55 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Valve.KeyValue;
-using Valve.TextureFormat;
 
 namespace Cobalt.IconConverter
 {
     class Program
     {
+        public const string args_format = "-file \"{0}\" -output \"output\" -exportformat \"png\"";
         public const string OUTPUT_FILE = "output/definition.list";
         
         static void Main(string[] args)
         {
-            Regex regNameonly = new Regex("(.*leaderboard_class_)|(.vtf)|(.vmt)");
+            Process process = new Process();
+            process.StartInfo.FileName = Path.Combine(Path.GetTempPath(),"VTFCmd.exe");
+            process.StartInfo.UseShellExecute = false;
+            process.StartInfo.RedirectStandardOutput = true;
+
+            Regex regNameonly = new Regex("(.*leaderboard_class_)|(.vtf)|(.vmt)", RegexOptions.IgnoreCase);
             Directory.CreateDirectory("input");
             Directory.CreateDirectory("output");
             var vmtTarget = new Dictionary<string, List<string>>(); //sunstick_scout_giant -> sunstick_scout
+
+            //Export Included Resource
+            foreach (var file in System.Reflection.Assembly.GetExecutingAssembly().GetManifestResourceNames())
+            {
+                string[] splited = file.Split('.');
+                string dir = Path.Combine(Path.GetTempPath(), String.Join(".", splited[splited.Length - 2], splited[splited.Length - 1]));
+                if (!File.Exists(dir))
+                {
+                    using (var stream = System.Reflection.Assembly.GetExecutingAssembly().GetManifestResourceStream(file))
+                    {
+                        using (var fileStream = new FileStream(dir, FileMode.Create))
+                        {
+                            stream.CopyTo(fileStream);
+                        }
+                    }
+                }
+            }
 
             foreach (var file in Directory.GetFiles("input"))
             {
                 if(file.EndsWith(".vtf"))
                 {
-                    //VTF vtf = new VTF();
+                    process.StartInfo.Arguments = String.Format(args_format, file);
+                    process.Start();
                 }
                 else if(file.EndsWith(".vmt"))
                 {
@@ -44,8 +68,20 @@ namespace Cobalt.IconConverter
                             list.Add(vmtfilename);
                             vmtTarget.Add(basetexture, list);
                         }
-                        Console.WriteLine(String.Format("{0} - {1}", vmtfilename, basetexture));
+                        Console.WriteLine(String.Format("{0} :: {1}", basetexture, vmtfilename));
                     }
+                }
+            }
+
+            DirectoryInfo d = new DirectoryInfo("output");
+            FileInfo[] infos = d.GetFiles();
+            foreach (FileInfo f in infos)
+            {
+                if(regNameonly.IsMatch(f.FullName))
+                {
+                    var newfile = "output/" + regNameonly.Replace(f.FullName, "");
+                    if (File.Exists(newfile)) File.Delete(newfile);
+                    File.Move(f.FullName, newfile);
                 }
             }
 
@@ -57,7 +93,7 @@ namespace Cobalt.IconConverter
                     sw.AutoFlush = true;
                     foreach (var key in vmtTarget.Keys)
                     {
-                        sw.Write("$");    
+                        sw.Write("$");  
                         if (!vmtTarget[key].Exists(x => x.Equals(key)))
                             sw.Write('!');
                         vmtTarget[key].Remove(key);
@@ -65,15 +101,17 @@ namespace Cobalt.IconConverter
                         if(vmtTarget[key].Count > 0)
                         {
                             
-                            sw.Write(" | ");
-                            sw.WriteLine(String.Join(" | ", vmtTarget[key].ToArray()));
+                            sw.Write("|");
+                            sw.Write(String.Join("|", vmtTarget[key].ToArray()));
                         }
+                        sw.WriteLine();
                     }
                 }
-                    
             }
 
-            Console.ReadLine();
+            File.Delete(Path.Combine(Path.GetTempPath(), "VTFCmd.exe"));
+            File.Delete(Path.Combine(Path.GetTempPath(), "VTFLib.dll"));
+            File.Delete(Path.Combine(Path.GetTempPath(), "DevIL.dll"));
         }
     }
 }

@@ -215,13 +215,12 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
-    <None Include="Resources\Export\resource\bot-icon\definition.list" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\Export\config\config.xml" />
+    <EmbeddedResource Include="Resources\Export\Config\config.xml" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\icon.ico" />
@@ -239,13 +238,13 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\Export\resource\templates\robot_gatebot.pop" />
+    <EmbeddedResource Include="Resources\Export\Resource\Templates\robot_gatebot.pop" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\Export\resource\templates\robot_giant.pop" />
+    <EmbeddedResource Include="Resources\Export\Resource\Templates\robot_giant.pop" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\Export\resource\templates\robot_standard.pop" />
+    <EmbeddedResource Include="Resources\Export\Resource\Templates\robot_standard.pop" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Splash\0.png" />
@@ -272,18 +271,18 @@
     <Resource Include="Resources\loch_rotate_darker.png" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\Export\config\maps\mvm_bigrock.xml" />
-    <EmbeddedResource Include="Resources\Export\config\maps\mvm_coaltown.xml" />
-    <EmbeddedResource Include="Resources\Export\config\maps\mvm_decoy.xml" />
-    <EmbeddedResource Include="Resources\Export\config\maps\mvm_ghost_town.xml" />
-    <EmbeddedResource Include="Resources\Export\config\maps\mvm_mannhattan.xml">
+    <EmbeddedResource Include="Resources\Export\Config\Maps\mvm_bigrock.xml" />
+    <EmbeddedResource Include="Resources\Export\Config\Maps\mvm_coaltown.xml" />
+    <EmbeddedResource Include="Resources\Export\Config\Maps\mvm_decoy.xml" />
+    <EmbeddedResource Include="Resources\Export\Config\Maps\mvm_ghost_town.xml" />
+    <EmbeddedResource Include="Resources\Export\Config\Maps\mvm_mannhattan.xml">
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Resources\Export\config\maps\mvm_mannworks.xml" />
-    <EmbeddedResource Include="Resources\Export\config\maps\mvm_rottenburg.xml" />
+    <EmbeddedResource Include="Resources\Export\Config\Maps\mvm_mannworks.xml" />
+    <EmbeddedResource Include="Resources\Export\Config\Maps\mvm_rottenburg.xml" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\Export\translation\default.xml" />
+    <EmbeddedResource Include="Resources\Export\Translation\default.xml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Cobalt.Extension\Cobalt.Extension.csproj">

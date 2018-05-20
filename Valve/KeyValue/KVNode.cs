@@ -132,7 +132,7 @@ namespace Valve.KeyValue
         {
             try
             {
-                return Child.Find(x => x.Type == type && x.KeyName.Equals(key));
+                return Child.Find(x => x.Type == type && x.KeyName.ToLower().Equals(key.ToLower()));
             }
             catch
             {
@@ -144,7 +144,7 @@ namespace Valve.KeyValue
         {
             try
             {
-                return Child.FindAll(x => x.KeyName.Equals(key)).ToArray();
+                return Child.FindAll(x => x.KeyName.ToLower().Equals(key.ToLower())).ToArray();
             }
             catch
             {
