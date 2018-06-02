@@ -8,7 +8,7 @@ namespace TF2.Info
 {
     public class TFEnumConvert
     {
-        public static TFClass StringToTFClass(string str)
+        public static TFClass? StringToTFClass(string str)
         {
             switch (str.ToLower())
             {
@@ -34,10 +34,10 @@ namespace TF2.Info
                 case "spy":
                     return TFClass.Spy;
                 default:
-                    return TFClass.None;
+                    return null;
             }
         }
-        public static TFItemSlot StringToSlot(string str)
+        public static TFItemSlot? StringToSlot(string str)
         {
             switch (str.ToLower())
             {
@@ -56,10 +56,10 @@ namespace TF2.Info
                 case "misc":
                     return TFItemSlot.Misc;
                 default:
-                    return TFItemSlot.None;
+                    return null;
             }
         }
-        public static TFAttrDescriptionFormat StringToDescriptionFormat(string str)
+        public static TFAttrDescriptionFormat? StringToDescriptionFormat(string str)
         {
             switch (str.ToLower())
             {
@@ -84,11 +84,11 @@ namespace TF2.Info
                 case "value_is_killstreak_idleeffect_index":
                     return TFAttrDescriptionFormat.Killstreak_IdleEffect_Index;
                 default:
-                    return TFAttrDescriptionFormat.Additive;
+                    return null;
             }
         }
 
-        public static TFAttrEffectType StringToEffectType(string str)
+        public static TFAttrEffectType? StringToEffectType(string str)
         {
             switch (str.ToLower())
             {
@@ -97,8 +97,9 @@ namespace TF2.Info
                 case "negative":
                     return TFAttrEffectType.Negative;
                 case "neutral":
-                default:
                     return TFAttrEffectType.Neutral;
+                default:
+                    return null;
             }
         }
     }

@@ -8,25 +8,10 @@ namespace Valve.KeyValue
 {
     public class KVNode
     {
-        private KVNode parent;
-        public KVNode Parent
-        {
-            get
-            {
-                return parent;
-            }
-        }
-        private KVNodeType type;
-        public KVNodeType Type
-        {
-            get
-            {
-                return type;
-            }
-        }
-        public string KeyName { get; set; }
+        public KVNode Parent { get; private set; }
+        public KVNodeType Type { get; private set; }
+        public string KeyName { get; private set; }
         private List<KVNode> Child { get; }
-        
         private object value;
         public enum KVNodeType
         {
@@ -40,16 +25,16 @@ namespace Valve.KeyValue
         {
             KeyName = name;
             if (root)
-                type = KVNodeType.Root;
+                Type = KVNodeType.Root;
             else
-                type = KVNodeType.None;
+                Type = KVNodeType.None;
             Child = new List<KVNode>();
         }
 
         public KVNode(string name, params KVNode[] children) //as root, parent
         {
             KeyName = name;
-            this.type = KVNodeType.Parent;
+            Type = KVNodeType.Parent;
             Child = new List<KVNode>();
             foreach(var c in children)
             {
@@ -60,17 +45,17 @@ namespace Valve.KeyValue
         public KVNode(string name, object value) //as keyvalue
         {
             KeyName = name;
-            this.type = KVNodeType.KeyValue;
+            Type = KVNodeType.KeyValue;
             this.value = value;
             Child = new List<KVNode>();
         }
 
         public void AppendNode(KVNode node)
         {
-            if(type != KVNodeType.Root)
-                type = KVNodeType.Parent;
+            if(Type != KVNodeType.Root)
+                Type = KVNodeType.Parent;
             node.SetParent(this);
-            this.value = null;
+            value = null;
             if(node.Type == KVNodeType.KeyValue)
             {
                 if (!Child.Exists(x=>x.KeyName.Equals(node.KeyName)))
@@ -90,15 +75,15 @@ namespace Valve.KeyValue
 
         public void SetParent(KVNode node)
         {
-            parent = node;
+            Parent = node;
         }
 
         public bool SetValue(object value, string key = null, bool create = true)
         {
-            if (key == null && this.type != KVNodeType.Parent && this.type != KVNodeType.Root)
+            if (key == null && this.Type != KVNodeType.Parent && this.Type != KVNodeType.Root)
             {
                 this.value = value;
-                type = KVNodeType.KeyValue;
+                Type = KVNodeType.KeyValue;
                 return true;
             }
             var bring = FindSingleNode(key, KVNodeType.KeyValue);
@@ -116,7 +101,7 @@ namespace Valve.KeyValue
 
         public object GetValue(string key = null)
         {
-            if (type != KVNodeType.Root && type != KVNodeType.Parent)
+            if (Type != KVNodeType.Root && Type != KVNodeType.Parent)
             {
                 return value.ToString();
             }
@@ -186,7 +171,7 @@ namespace Valve.KeyValue
 
         public void Delete(KVNode node)
         {
-            node.parent = null;
+            node.Parent = null;
             if(node.Type == KVNodeType.Parent)
             {
                 node.DeleteThis();

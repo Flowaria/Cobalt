@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Net;
 using System.Threading.Tasks;
 using System.Xml;
 using TF2.Info;
@@ -14,6 +15,7 @@ namespace TF2.Items
         FAIL_ACCESS,
         SUCCESS
     }
+
     public static class ItemsInfo
     {
         private const string VERIFY_APIKEY_URL = "https://api.steampowered.com/IEconItems_440/GetSchemaURL/v1/?key={0}&format=xml";
@@ -32,8 +34,24 @@ namespace TF2.Items
         public static string Language { get { return language; } }
         public static string Version { get { return version; } }
 
-        public static Func<XmlNode, TFItem> ItemsHandler = null;
-        public static Func<XmlNode, TFAttribute> AttributesHandler = null;
+        public static Func<XmlNode, TFItem> ItemsHandler = NodeToTFItem;
+        public static Func<XmlNode, TFAttribute> AttributesHandler = NodeToTFAttribute;
+
+        public static Func<XmlNode, TFItem> DefaultItemsHandler
+        {
+            get
+            {
+                return NodeToTFItem;
+            }
+        }
+
+        public static Func<XmlNode, TFAttribute> DefaultAttributesHandler
+        {
+            get
+            {
+                return NodeToTFAttribute;
+            }
+        }
 
         public static TFItem[] Items
         {
@@ -53,7 +71,7 @@ namespace TF2.Items
 
         public static bool Register(string api_key, string lang = "en")
         {
-            using (System.Net.WebClient wc = new System.Net.WebClient())
+            using (var wc = new WebClient())
             {
                 try
                 {
@@ -123,7 +141,7 @@ namespace TF2.Items
                     doc.Load(schema_attributes_dir);
                     if(doc.DocumentElement["items_game_url"] != null)
                     {
-                        version = UrlToVersionString(doc.DocumentElement["items_game_url"].InnerText);
+                        version = doc.DocumentElement["items_game_url"].InnerText;
                     }
 
                     //Check Version
@@ -138,7 +156,7 @@ namespace TF2.Items
                                 doc.Load(content);
                                 if (doc.DocumentElement["items_game_url"] != null)
                                 {
-                                    string webversion = UrlToVersionString(doc.DocumentElement["items_game_url"].InnerText);
+                                    string webversion = doc.DocumentElement["items_game_url"].InnerText;
                                     if (!version.Equals(webversion))
                                     {
                                         version = webversion;
@@ -200,19 +218,83 @@ namespace TF2.Items
                     }
                 }
             });
-        } 
-
-        public static string UrlToVersionString(string url)
-        {
-            string[] splited = url.Split('/');
-            return splited[splited.Length - 1].Split('.')[1];
-            //http://media.steampowered.com/apps/440/scripts/items/items_game.9219e13469eb57d1a2513dc5124786b5df20cf6c.txt
         }
 
-        private static string FormatImageURL(string fullurl)
+        private static TFItem NodeToTFItem(XmlNode node)
         {
-            string[] splited = fullurl.Split('/');
-            return splited[splited.Length - 1];
+            if (node["item_class"] != null
+                && node["defindex"] != null
+                && node["name"] != null
+                && node["item_slot"] != null
+                && !node["item_slot"].InnerText.Equals("action")
+                && node["image_url"] != null
+                && node["image_url"].InnerText.StartsWith("http://media.steampowered.com")
+                && node["item_name"] != null
+                && node["item_class"] != null
+                && !node["item_class"].InnerText.Equals("no_entity")
+            )
+            {
+                var item = new TFItem()
+                {
+                    ClassName = node["item_class"].InnerText,
+                    DefinitionID = int.Parse(node["defindex"].InnerText),
+                    Name = node["name"].InnerText,
+                    DisplayName = node["item_name"].InnerText,
+                    ImageURL = node["image_url"].InnerText
+                };
+
+                var slot = TFEnumConvert.StringToSlot(node["item_slot"].InnerText);
+                if (slot.HasValue) item.Slot = slot.Value;
+
+                string[] splited = item.ImageURL.Split('/');
+                var sp = splited[splited.Length - 1].Split('.');
+                item.ImageName = String.Join(".", sp[0], sp[2]);
+
+                if (node["used_by_classes"] != null)
+                {
+                    foreach (XmlNode node2 in node.SelectNodes("used_by_classes"))
+                    {
+                        var cls = TFEnumConvert.StringToTFClass(node2.InnerText);
+                        if (cls.HasValue)
+                        {
+                            item.UsedByClass(cls.Value);
+                        }
+                    }
+                }
+                item.ReadOnly = true;
+                return item;
+            }
+            return null;
+        }
+
+        private static TFAttribute NodeToTFAttribute(XmlNode node)
+        {
+            if (node["name"] != null
+                && node["defindex"] != null
+                && node["attribute_class"] != null
+                && node["description_string"] != null
+                && node["description_format"] != null
+                && node["effect_type"] != null
+            )
+            {
+                var attr = new TFAttribute()
+                {
+                    Name = node["name"].InnerText,
+                    DefinitionID = int.Parse(node["defindex"].InnerText),
+                    AttributeClass = node["attribute_class"].InnerText,
+                    Description = node["description_string"].InnerText.Replace("%s1", "{0}")
+                };
+               
+
+                var df = TFEnumConvert.StringToDescriptionFormat(node["description_format"].InnerText);
+                var et = TFEnumConvert.StringToEffectType(node["effect_type"].InnerText);
+                if (df.HasValue) attr.DescriptionFormat = df.Value;
+                if (et.HasValue) attr.EffectType = et.Value;
+
+                attr.ReadOnly = true;
+                return attr;
+            }
+            return null;
         }
     }
 }

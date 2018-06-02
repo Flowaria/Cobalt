@@ -9,7 +9,6 @@ namespace TF2.Info
     //TF
     public enum TFClass
     {
-        None = 0,
         Scout = 1,
         Soldier = 2,
         Pyro = 3,
@@ -24,7 +23,6 @@ namespace TF2.Info
     [Flags]
     public enum TFBotAttribute //BOT ATTRIBUTE
     {
-        None,
         SpawnWithFullCharge,
         AlwaysCrit,
         AlwaysFireWeapon,
@@ -55,7 +53,7 @@ namespace TF2.Info
     //ITEMS
     public enum TFItemSlot
     {
-        None, Primary, Secondary, Melee,
+        Primary, Secondary, Melee,
         PDA1, PDA2, Building, Misc, Action
     }
 

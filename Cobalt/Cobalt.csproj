@@ -108,8 +108,8 @@
     <Compile Include="Windows\MainTab\TabWave.xaml.cs">
       <DependentUpon>TabWave.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MainSplashScreen.xaml.cs">
-      <DependentUpon>MainSplashScreen.xaml</DependentUpon>
+    <Compile Include="SetupScreen.xaml.cs">
+      <DependentUpon>SetupScreen.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -175,7 +175,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MainSplashScreen.xaml">
+    <Page Include="SetupScreen.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
