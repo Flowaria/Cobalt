@@ -75,22 +75,7 @@
                         <RowDefinition Height="1*"/>
                         <RowDefinition Height="32"/>
                     </Grid.RowDefinitions>
-                    <TabControl Grid.Row="0" Style="{StaticResource TabControl_Liner}">
-                        <!--ListView 방식-->
-                        <TabItem Header="Liner" Foreground="Black">
-                            <tab:TabLiner/>
-                        </TabItem>
-
-                        <!--원클릭 TreeView 방식-->
-                        <TabItem Header="Auto" Foreground="Black">
-                            <tab:TabAuto/>
-                        </TabItem>
-
-                        <!--상급 TreeView 방식-->
-                        <TabItem Header="Advanced" Foreground="Black">
-                            <tab:TabAdvanced/>
-                        </TabItem>
-                    </TabControl>
+					<tab:TabAdvanced/>
 
 
                     <Grid Grid.Row="1">

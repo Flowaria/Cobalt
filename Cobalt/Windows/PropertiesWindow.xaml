@@ -5,16 +5,22 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Cobalt.Windows"
         mc:Ignorable="d"
-        Title="설정" Height="600" Width="800" ResizeMode="NoResize"
+        Title="설정" Height="600" Width="400" ResizeMode="NoResize"
         Closing="Window_Closing">
     <Grid>
-        <TabControl x:Name="tabControl" Height="600" Width="800" Style="{StaticResource TabControl_Liner}">
-            <TabItem Header="프로그램 설정" Foreground="black" Width="200">
+        <TabControl x:Name="tabControl" Height="600" Width="400" Style="{StaticResource TabControl_Liner}">
+            <TabItem Header="ddd" Foreground="black" Width="98">
                 <Grid Background="#FFE5E5E5"/>
             </TabItem>
-            <TabItem Header="생성 정렬 형식" Foreground="black" Width="200">
+            <TabItem Header="생성 정렬 형식" Foreground="black" Width="98">
 
             </TabItem>
-        </TabControl>
+			<TabItem Header="생성 정렬 형식" Foreground="black" Width="98">
+
+			</TabItem>
+			<TabItem Header="생성 정렬 형식" Foreground="black" Width="98">
+
+			</TabItem>
+		</TabControl>
     </Grid>
 </Window>

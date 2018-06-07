@@ -48,7 +48,8 @@
         <!--각종 유틸-->
         <Grid Grid.Row="1">
             <TabControl x:Name="tabControl" Style="{StaticResource TabControl_Liner}">
-                <TabItem x:Name="tab_setting" Header="설정" Background="{StaticResource Color_Background_Main}" Width="128">
+				<TabItem x:Name="tab_setting" Header="{Binding Path=Translation.Get('ddd'), 
+                 StringFormat='Number of Fans: {0}'}" Background="{StaticResource Color_Background_Main}" Width="128">
                 </TabItem>
                 <TabItem x:Name="tab_waves" Header="웨이브" Background="{StaticResource Color_Background_Main}" Width="128">
                 </TabItem>

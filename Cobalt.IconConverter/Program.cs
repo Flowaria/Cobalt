@@ -48,30 +48,49 @@ namespace Cobalt.IconConverter
                     }
                 }
             }
-
-            using (var fileStream = new FileStream(OUTPUT_FILE, FileMode.OpenOrCreate))
+            
+            if(File.Exists(OUTPUT_FILE))
             {
-                fileStream.Seek(0, SeekOrigin.End);
-                using (var sw = new StreamWriter(fileStream, Encoding.UTF8))
+                string content = File.ReadAllText(OUTPUT_FILE);
+                Regex regWhitespace = new Regex("\\s");
+                content = regWhitespace.Replace(content, "");
+                var images = content.Split(new char[] { '$' }, StringSplitOptions.RemoveEmptyEntries);
+                for(int i = 0;i<images.Length;i++)
                 {
-                    sw.AutoFlush = true;
-                    foreach (var key in vmtTarget.Keys)
+                    var icons = images[i].Split('|');
+                    bool noself = icons[0].StartsWith("!");
+                    string icon = icons[0].Replace("!", "");
+                    if()
+                    if ()
+
+                        images[i] = "|" + String.Join("|", icons);
+                }
+            }
+            else
+            {
+                using (var fs = new FileStream(OUTPUT_FILE, FileMode.OpenOrCreate))
+                {
+                    fs.Seek(0, SeekOrigin.End);
+                    using (var sw = new StreamWriter(fs, Encoding.UTF8))
                     {
-                        sw.Write("$");    
-                        if (!vmtTarget[key].Exists(x => x.Equals(key)))
-                            sw.Write('!');
-                        vmtTarget[key].Remove(key);
-                        sw.Write(key);
-                        if(vmtTarget[key].Count > 0)
+                        sw.AutoFlush = true;
+                        foreach (var key in vmtTarget.Keys)
                         {
-                            
-                            sw.Write(" | ");
-                            sw.WriteLine(String.Join(" | ", vmtTarget[key].ToArray()));
+                            sw.Write("$");
+                            if (!vmtTarget[key].Exists(x => x.Equals(key)))
+                                sw.Write('!');
+                            vmtTarget[key].Remove(key);
+                            sw.Write(key);
+                            if (vmtTarget[key].Count > 0)
+                            {
+                                sw.Write("|");
+                                sw.Write(String.Join("|", vmtTarget[key].ToArray()));
+                            }
                         }
                     }
                 }
-                    
             }
+            
 
             Console.ReadLine();
         }

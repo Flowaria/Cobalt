@@ -17,7 +17,6 @@
                                         VerticalAlignment="Center"
                                         HorizontalAlignment="Center"
                                         ContentSource="Header"
-                                        Margin="5"
                                         />
                                 </Border>
                             </Grid>

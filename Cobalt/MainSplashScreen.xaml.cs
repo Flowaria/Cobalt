@@ -65,6 +65,7 @@ namespace Cobalt
             {
                 foreach (var item in items)
                 {
+                    Console.WriteLine(item.ImageURL+item.ImageName);
                     var path = Path.Combine("resource/backpack-image", item.ImageName);
                     var url = item.ImageURL;
                     if (File.Exists(path))
@@ -124,32 +125,29 @@ namespace Cobalt
             )
             {
                 TFItem item = new TFItem();
+                item.ClassName = node["item_class"].InnerText;
+                item.DefinitionID = int.Parse(node["defindex"].InnerText);
+                item.Name = node["name"].InnerText;
+                item.DisplayName = node["item_name"].InnerText;
+                item.Slot = TFEnumConvert.StringToSlot(node["item_slot"].InnerText);
+                item.ImageURL = node["image_url"].InnerText;
+
+                string[] splited = item.ImageURL.Split('/');
+                var sp = splited[splited.Length - 1].Split('.');
+                item.ImageName = String.Join(".", sp[0], sp[2]);
+
                 if (node["used_by_classes"] != null)
                 {
-                    item.ClassName = node["item_class"].InnerText;
-                    item.DefinitionID = int.Parse(node["defindex"].InnerText);
-                    item.Name = node["name"].InnerText;
-                    item.DisplayName = node["item_name"].InnerText;
-                    item.Slot = TFEnumConvert.StringToSlot(node["item_slot"].InnerText);
-                    item.ImageURL = node["image_url"].InnerText;
-
-                    string[] splited = item.ImageURL.Split('/');
-                    var sp = splited[splited.Length - 1].Split('.');
-                    item.ImageName = String.Join(".", sp[0], sp[2]);
-
-                    if (node["used_by_classes"] != null)
+                    foreach (XmlNode node2 in node.SelectNodes("used_by_classes"))
                     {
-                        foreach (XmlNode node2 in node.SelectNodes("used_by_classes"))
+                        TFClass cls = TFEnumConvert.StringToTFClass(node2.InnerText);
+                        if (cls != TFClass.None)
                         {
-                            TFClass cls = TFEnumConvert.StringToTFClass(node2.InnerText);
-                            if (cls != TFClass.None)
-                            {
-                                item.UsedByClass(cls);
-                            }
+                            item.UsedByClass(cls);
                         }
                     }
-                    item.ReadOnly = true;
                 }
+                item.ReadOnly = true;
                 return item;
             }
             return null;
