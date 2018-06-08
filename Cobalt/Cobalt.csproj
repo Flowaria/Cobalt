@@ -74,17 +74,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Src\Translation.cs" />
     <Compile Include="UserControl\TFBotIcon.xaml.cs">
       <DependentUpon>TFBotIcon.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\EditTab\TabAdvanced.xaml.cs">
       <DependentUpon>TabAdvanced.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Windows\EditTab\TabAuto.xaml.cs">
-      <DependentUpon>TabAuto.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Windows\EditTab\TabLiner.xaml.cs">
-      <DependentUpon>TabLiner.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\Element\TextFixElement.cs" />
     <Compile Include="Windows\MainTab\TabWaveSchedule.xaml.cs">
@@ -136,14 +131,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\EditTab\TabAdvanced.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Windows\EditTab\TabAuto.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Windows\EditTab\TabLiner.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -288,14 +275,6 @@
     <ProjectReference Include="..\Cobalt.Extension\Cobalt.Extension.csproj">
       <Project>{B77DAF19-498A-4C14-AF6D-978736C30170}</Project>
       <Name>Cobalt.Extension</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\TF2\TF2.csproj">
-      <Project>{f5669172-7996-4525-82df-d1ea104c79eb}</Project>
-      <Name>TF2</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Valve\Valve.csproj">
-      <Project>{66a8409e-243d-462b-a6d0-de782b6faba7}</Project>
-      <Name>Valve</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />
