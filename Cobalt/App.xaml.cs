@@ -4,7 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Windows;
 using System.Xml;
-using TF2.Items;
+using Valve.TF2.Items;
 
 namespace Cobalt
 {

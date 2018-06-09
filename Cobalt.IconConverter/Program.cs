@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
-using Valve.KeyValue;
+using Valve.FileSystem.KeyValue;
 
 namespace Cobalt.IconConverter
 {
@@ -53,7 +53,7 @@ namespace Cobalt.IconConverter
                 }
                 else if(file.EndsWith(".vmt"))
                 {
-                    KeyValues kv = KVFile.ImportKeyValue(File.ReadAllText(file), false);
+                    KeyValues kv = KeyValues.ImportKeyValue(File.ReadAllText(file), false);
                     if(kv != null)
                     {
                         var vmtfilename = regNameonly.Replace(file, "");

@@ -14,8 +14,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Media.Imaging;
 using System.Xml;
-using TF2.Info;
-using TF2.Items;
+using Valve.TF2.Items;
 
 namespace Cobalt
 {

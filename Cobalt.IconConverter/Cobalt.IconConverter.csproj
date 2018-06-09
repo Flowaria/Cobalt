@@ -50,15 +50,15 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Valve\Valve.csproj">
-      <Project>{66A8409E-243D-462B-A6D0-DE782B6FABA7}</Project>
-      <Name>Valve</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="DevIL.dll" />
     <EmbeddedResource Include="VTFCmd.exe" />
     <EmbeddedResource Include="VTFLib.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\CSharpValve\Valve.FileSystem\Valve.FileSystem.csproj">
+      <Project>{79f896e7-f212-43a7-8529-9aa36aa06723}</Project>
+      <Name>Valve.FileSystem</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

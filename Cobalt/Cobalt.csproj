@@ -272,9 +272,9 @@
     <EmbeddedResource Include="Resources\Export\Translation\default.xml" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Cobalt.Extension\Cobalt.Extension.csproj">
-      <Project>{B77DAF19-498A-4C14-AF6D-978736C30170}</Project>
-      <Name>Cobalt.Extension</Name>
+    <ProjectReference Include="..\..\CSharpValve\Valve.TF2\Valve.TF2.csproj">
+      <Project>{F5669172-7996-4525-82DF-D1EA104C79EB}</Project>
+      <Name>Valve.TF2</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />
